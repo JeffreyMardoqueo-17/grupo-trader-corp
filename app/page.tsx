@@ -1,7 +1,7 @@
 import { LandingHeader } from "@/components/landing/landing-header";
 import { LandingHero } from "@/components/landing/landing-hero";
 import { LandingCompanySection } from "@/components/landing/landing-company-section";
-import { LandingTimeline } from "@/components/landing/landing-timeline";
+import { LandingFocusCards } from "@/components/landing/landing-focus-cards";
 import { LandingBenefits } from "@/components/landing/landing-benefits";
 import { LandingTestimonials } from "@/components/landing/landing-testimonials";
 import { LandingContact } from "@/components/landing/landing-contact";
@@ -14,7 +14,7 @@ export default function Home() {
       <main>
         <LandingHero />
         <LandingCompanySection />
-        <LandingTimeline />
+        <LandingFocusCards />
         <LandingBenefits />
         <LandingTestimonials />
       </main>

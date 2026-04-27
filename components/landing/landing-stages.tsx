@@ -1,6 +1,13 @@
+"use client";
+
 import { MotionReveal } from "@/components/motion-reveal";
+import Image from "next/image";
+import { useTheme } from "next-themes";
 
 export function LandingStages() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
   return (
     <section id="etapas" className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 space-y-0">
       <div className="brand-stripe brand-stripe--head text-white">
@@ -16,7 +23,7 @@ export function LandingStages() {
         <div className="relative mx-auto grid min-h-svh w-full max-w-7xl items-center gap-10 px-6 py-16 lg:grid-cols-[1fr_1.1fr] lg:px-8">
           <MotionReveal className="order-2 lg:order-1" delayMs={40}>
             <div className="max-w-xl">
-              <p className="text-sm font-semibold text-(--gold)">01</p>
+              <p className="text-sm font-semibold text-[#d4a853]">01</p>
               <h3 className="mt-2 text-3xl font-semibold text-white sm:text-4xl">Quién es Denis</h3>
               <p className="mt-4 text-base leading-7 text-white/84">
                 Conoce la experiencia y metodología de Denis Gutiérrez como base estratégica del proceso.
@@ -35,7 +42,7 @@ export function LandingStages() {
         <div className="relative mx-auto grid min-h-svh w-full max-w-7xl items-center gap-10 px-6 py-16 lg:grid-cols-[1.1fr_1fr] lg:px-8">
           <MotionReveal className="order-1 lg:order-1" delayMs={40}>
             <div className="max-w-xl">
-              <p className="text-sm font-semibold text-(--gold)">02</p>
+              <p className="text-sm font-semibold text-[#d4a853]">02</p>
               <h3 className="mt-2 text-3xl font-semibold text-white sm:text-4xl">Academia de trading</h3>
               <p className="mt-4 text-base leading-7 text-white/84">
                 Formación estructurada para aprender con contexto real de mercado, disciplina y criterio.
@@ -54,7 +61,7 @@ export function LandingStages() {
         <div className="relative mx-auto grid min-h-svh w-full max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:px-8">
           <MotionReveal delayMs={40}>
             <div className="max-w-xl">
-              <p className="text-sm font-semibold text-(--gold)">03</p>
+              <p className="text-sm font-semibold text-[#d4a853]">03</p>
               <h3 className="mt-2 text-3xl font-semibold text-white sm:text-4xl">CopyTrading</h3>
               <p className="mt-4 text-base leading-7 text-white/84">
                 Replica operaciones con control de tu cuenta mientras aprendes una ejecución profesional.

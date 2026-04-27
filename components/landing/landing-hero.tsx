@@ -55,7 +55,7 @@ export function LandingHero() {
   ];
 
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+    <section id="inicio" className="relative min-h-[90vh] flex items-center overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <div 
           className="absolute inset-0 opacity-[0.03] dark:opacity-[0.02]"
@@ -68,24 +68,24 @@ export function LandingHero() {
         {!isDark && (
           <>
             <div 
-              className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full opacity-30 blur-3xl"
-              style={{ background: 'radial-gradient(circle, #d4a853 0%, transparent 70%)' }}
+              className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full opacity-25 blur-3xl"
+              style={{ background: 'linear-gradient(180deg, #000208, #041935)' }}
             />
             <div 
               className="absolute top-1/2 -left-32 w-[400px] h-[400px] rounded-full opacity-20 blur-3xl"
-              style={{ background: 'radial-gradient(circle, #3b82f6 0%, transparent 70%)' }}
+              style={{ background: 'linear-gradient(180deg, #000208, #041935)' }}
             />
           </>
         )}
         {isDark && (
           <>
             <div 
-              className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full opacity-40 blur-3xl"
-              style={{ background: 'radial-gradient(circle, #d4a853 0%, transparent 70%)' }}
+              className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full opacity-30 blur-3xl"
+              style={{ background: 'linear-gradient(180deg, #000208, #041935)' }}
             />
             <div 
-              className="absolute top-1/2 -left-32 w-[400px] h-[400px] rounded-full opacity-25 blur-3xl"
-              style={{ background: 'radial-gradient(circle, #6366f1 0%, transparent 70%)' }}
+              className="absolute top-1/2 -left-32 w-[400px] h-[400px] rounded-full opacity-20 blur-3xl"
+              style={{ background: 'linear-gradient(180deg, #4A90E2, #041935)' }}
             />
           </>
         )}
@@ -94,9 +94,9 @@ export function LandingHero() {
       <div className="container mx-auto max-w-7xl px-6 py-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#d4a853]/10 border border-[#d4a853]/20 mb-6">
-              <span className="w-2 h-2 rounded-full bg-[#d4a853] animate-pulse" />
-              <span className="text-sm font-medium text-[#d4a853]">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D6A556]/10 border border-[#D6A556]/20 mb-6">
+              <span className="w-2 h-2 rounded-full bg-[#D6A556] animate-pulse" />
+              <span className="text-sm font-medium text-[#D6A556]">
                 Educación Profesional en Trading
               </span>
             </div>
@@ -105,9 +105,9 @@ export function LandingHero() {
               <span className={isDark ? "text-white" : "text-gray-900"}>
                 Aprende a operar en los mercados financieros con{" "}
               </span>
-              <span className="text-[#d4a853]">estrategia</span>
+              <span className="text-[#D6A556] font-bold">estrategia</span>
               <span className={isDark ? "text-white" : "text-gray-900"}> y </span>
-              <span className="text-[#d4a853]">precisión</span>
+              <span className="text-[#D6A556] font-bold">precisión</span>
             </h1>
 
             <p className={`text-lg sm:text-xl leading-relaxed mb-4 ${isDark ? "text-gray-300" : "text-gray-600"}`}>
@@ -121,7 +121,7 @@ export function LandingHero() {
             <div className="flex flex-wrap gap-4 mb-10">
               <Link
                 href="#contacto"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-primary text-white rounded-xl font-semibold hover:bg-[#d4a853]/90 transition-all duration-200 shadow-lg shadow-[#d4a853]/20 hover:shadow-xl hover:shadow-[#d4a853]/30 hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#D6A556] rounded-xl font-semibold text-white hover:bg-[#D6A556]/90 transition-all duration-200 shadow-lg shadow-[#D6A556]/20 hover:shadow-xl hover:shadow-[#D6A556]/30 hover:-translate-y-0.5"
               >
                 Empezar ahora
                 <ArrowRightIcon className="w-4 h-4" />
@@ -141,30 +141,29 @@ export function LandingHero() {
           </div>
 
           <div className="relative">
-            <div className="relative aspect-[4/5] sm:aspect-square lg:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl shadow-[#d4a853]/10">
+            <div className="relative aspect-[16/10] sm:aspect-[3/2] lg:aspect-[4/3] xl:aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl -mt-16 lg:mt-0">
               <Image
-                src="/images/inversionistas.png"
+                src="/images/traders.png"
                 alt="Trader profesional operando"
                 fill
-                className="object-cover"
+                className="object-cover object-bottom"
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10" />
               <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-xs text-white/70 mb-0.5">Tu progreso</p>
                     <p className="text-xl font-bold text-white">+24.5%</p>
                   </div>
-                  <div className="w-10 h-10 rounded-full bg-[#d4a853] flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full bg-[#4A90E2] flex items-center justify-center">
                     <TrendingUpIcon className="w-5 h-5 text-[#0e1427]" />
                   </div>
                 </div>
               </div>
             </div>
-            <div className="absolute -top-4 -right-4 w-24 h-24 rounded-2xl bg-[#d4a853]/20 blur-xl -z-10" />
-            <div className="absolute -bottom-4 -left-4 w-32 h-32 rounded-2xl bg-blue-500/20 blur-xl -z-10" />
+            <div className="absolute -top-4 -right-4 w-24 h-24 rounded-2xl bg-blue-500/20 blur-xl -z-10" />
+            <div className="absolute -bottom-4 -left-4 w-32 h-32 rounded-2xl bg-indigo-500/20 blur-xl -z-10" />
           </div>
         </div>
 
@@ -173,7 +172,7 @@ export function LandingHero() {
             {stats.map((stat, index) => (
               <div key={index} className="text-center lg:text-left">
                 <div className="flex items-center justify-center lg:justify-start gap-2 mb-1">
-                  <stat.icon className="w-5 h-5 text-[#d4a853]" />
+                  <stat.icon className="w-5 h-5 text-[#D6A556]" />
                   <span className={`text-2xl sm:text-3xl font-bold ${isDark ? "text-white" : "text-gray-900"}`}>
                     {stat.value}
                   </span>

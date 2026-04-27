@@ -1,56 +1,137 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
 
 export function LandingCompanySection() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setIsVisible(true);
-        });
-      },
-      { threshold: 0.2 }
-    );
-    const el = document.getElementById("nosotros");
-    if (el) observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   return (
-    <section id="nosotros" className="mx-auto w-full max-w-6xl px-6 py-16 lg:py-24">
-      <div className={`grid gap-8 lg:grid-cols-2 lg:gap-16 items-center ${isVisible ? "opacity-100" : "opacity-0"} transition-all duration-700`}>
-        <div className="relative order-1">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
-            <Image
-              src="/images/inversionistas.png"
-              alt="Espacio institucional"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-          </div>
-        </div>
+    <section id="nosotros" className={`py-20 lg:py-32 ${isDark ? "bg-gradient-to-b from-[#000208] via-[#041935] to-[#000208]" : "bg-white"}`}>
+      {/* Background glow effects */}
+      {isDark && (
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(74,144,226,0.1),transparent_50%)]" />
+      )}
 
-        <div className="order-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#d4a853]">¿Qué es Grupo Trade Corp?</p>
-          <h2 className="mt-4 text-3xl font-bold tracking-tight text-[#0b1020] sm:text-4xl dark:text-white">
-            Una comunidad privada para aprender, entender y ejecutar con criterio.
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-[#5f677a] dark:text-white/80">
-            Grupo Trade Corp combina formación profesional en trading con herramientas modernas como CopyTrading para que puedas avanzar incluso si estás comenzando.
-          </p>
-          <p className="mt-4 text-base leading-relaxed text-[#5f677a] dark:text-white/80">
-            Aquí no se trata de improvisar. Se trata de construir habilidades reales, disciplina y decisiones financieras más inteligentes.
-          </p>
-          <p className="mt-4 text-base leading-relaxed text-[#5f677a] dark:text-white/80">
-            Con más de 500 traders activos, una metodología probada y el acompañamiento de profesionales con +10 años de experiencia.
-          </p>
-        </div>
+      <div className="container relative z-10 mx-auto max-w-6xl px-6">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20"
+        >
+          {/* Left: Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="relative order-2 lg:order-1"
+          >
+            <div className={`relative aspect-[4/3] overflow-hidden rounded-3xl ${isDark ? "ring-1 ring-white/5" : "shadow-2xl"}`}>
+              <Image
+                src="/images/tradercorp.png"
+                alt="Entorno de trading profesional"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div
+                className={`absolute inset-0 ${isDark ? "bg-gradient-to-tr from-[#000208]/40 to-transparent" : "bg-gradient-to-tr from-black/20 to-transparent"}`}
+              />
+            </div>
+            {/* Decorative glow */}
+            <div className={`absolute -left-6 -top-6 h-32 w-32 rounded-full blur-3xl ${isDark ? "bg-[#4A90E2]/20" : "bg-[#4A90E2]/10"}`} />
+          </motion.div>
+
+          {/* Right: Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="order-1 lg:order-2"
+          >
+            <span
+              className={`inline-block text-sm font-medium tracking-[0.2em] uppercase ${
+                isDark ? "text-[#4A90E2]" : "text-[#4A90E2]"
+              }`}
+            >
+              Grupo Trade Corp
+            </span>
+
+            <h2
+              className={`mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl ${
+                isDark ? "text-white" : "text-gray-900"
+              }`}
+            >
+              Una forma{" "}
+              <span className="text-[#4A90E2]">estructurada</span> de aprender y operar en los mercados
+            </h2>
+
+            <p
+              className={`mt-6 leading-relaxed ${
+                isDark ? "text-white/60" : "text-gray-600"
+              }`}
+            >
+              Grupo Trade Corp es una comunidad privada donde aprendes, entiendes y ejecutas con criterio.
+            </p>
+
+            <p
+              className={`mt-4 leading-relaxed ${
+                isDark ? "text-white/50" : "text-gray-500"
+              }`}
+            >
+              Combinamos formación profesional con herramientas como CopyTrading para que avances incluso si estás empezando.
+            </p>
+
+            <p
+              className={`mt-4 leading-relaxed ${
+                isDark ? "text-white/50" : "text-gray-500"
+              }`}
+            >
+              Aquí no se trata de improvisar. Se trata de construir disciplina y tomar decisiones financieras con claridad.
+            </p>
+
+            {/* Stats */}
+            <div
+              className={`mt-8 grid grid-cols-3 gap-6 rounded-2xl border p-6 ${
+                isDark
+                  ? "border-white/5 bg-white/[0.02]"
+                  : "border-gray-100 bg-gray-50"
+              }`}
+            >
+              <div>
+                <p className="text-3xl font-bold text-[#4A90E2]">500+</p>
+                <p className={`text-sm ${isDark ? "text-white/40" : "text-gray-400"}`}>Traders activos</p>
+              </div>
+              <div>
+                <p className="text-3xl font-bold text-[#4A90E2]">+10</p>
+                <p className={`text-sm ${isDark ? "text-white/40" : "text-gray-400"}`}>Años de experiencia</p>
+              </div>
+              <div>
+                <p className="text-3xl font-bold text-[#4A90E2]">100%</p>
+                <p className={`text-sm ${isDark ? "text-white/40" : "text-gray-400"}`}>Metodología probada</p>
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div className="mt-8">
+              <a
+                href="#academia"
+                className="inline-flex items-center gap-2 rounded-xl bg-[#4A90E2] px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#4A90E2]/90"
+              >
+                Conocer la academia
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
