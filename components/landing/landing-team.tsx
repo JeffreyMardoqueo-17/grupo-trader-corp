@@ -62,7 +62,7 @@ export function LandingTeam() {
           <h2 className={`mt-4 text-4xl font-black tracking-tight sm:text-5xl ${isDark ? "text-white" : "text-[#0b1020]"}`}>
             NUESTRO EQUIPO
           </h2>
-          <div className={`mx-auto mt-5 h-px w-28 ${isDark ? "bg-[#4A90E2]" : "bg-[#D6A556]"}`} />
+          <div className={`mx-auto mt-5 h-px w-28 ${isDark ? "bg-[#D6A556]" : "bg-[#D6A556]"}`} />
           <p className={`mx-auto mt-6 max-w-2xl text-sm leading-7 sm:text-base ${isDark ? "text-white/65" : "text-[#43506a]"}`}>
             Un equipo corporativo, cercano y alineado con un objetivo claro: ayudarte a tomar decisiones con criterio, estructura y visión de largo plazo.
           </p>
@@ -75,7 +75,7 @@ export function LandingTeam() {
               href={route.href}
               className={`inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold transition-all duration-300 ${
                 isDark
-                  ? "border-white/10 bg-white/5 text-white hover:border-[#4A90E2]/40 hover:bg-white/10"
+                  ? "border-white/10 bg-[#D6A556] text-white hover:border-amber-400/40 hover:bg-amber-500"
                   : "border-black/10 bg-white text-[#0b1020] hover:border-[#D6A556]/50 hover:bg-[#fffaf0]"
               }`}
             >

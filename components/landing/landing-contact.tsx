@@ -3,11 +3,11 @@ import { Mail, MessageCircle, Phone } from "lucide-react";
 
 export function LandingContact() {
   return (
-    <section id="contacto" className="section-motion border-t border-border bg-background/70">
+    <section id="contacto" className="section-motion border-t border-border bg-background">
       <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8 lg:py-16">
         <WhatsAppForm className="order-2 lg:order-1" />
 
-        <aside className="order-1 overflow-hidden rounded-[2rem] border border-white/10 bg-[#081122] text-white shadow-[0_20px_60px_rgba(0,0,0,0.35)] lg:order-2">
+        <aside className="order-1 overflow-hidden rounded-[2rem] border border-white/10 bg-[#081122] text-white  lg:order-2">
           <div className="relative p-6 sm:p-8">
             <div className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full bg-[#D6A556]/20 blur-3xl" />
             <div className="pointer-events-none absolute -bottom-20 -left-10 h-52 w-52 rounded-full bg-[#1a3a72]/35 blur-3xl" />
@@ -50,7 +50,7 @@ export function LandingContact() {
                   Email
                 </p>
                 <a href="mailto:jeffreymardoqueo260@gmail.com" className="mt-2 block break-all text-base font-semibold text-white hover:text-[#D6A556]">
-                  jeffreymardoqueo260@gmail.com
+                  info@grupotcorp.com
                 </a>
               </div>
             </div>

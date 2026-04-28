@@ -3,10 +3,14 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTheme } from "@/components/theme-provider";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 export function LandingCompanySection() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
+  const academyWhatsAppLink = buildWhatsAppLink(
+    "Hola buen día, quisiera saber más información sobre la academia de trading."
+  );
 
   return (
     <section id="nosotros" className={`py-20 lg:py-32 ${isDark ? "bg-gradient-to-b from-[#000208] via-[#041935] to-[#000208]" : "bg-white"}`}>
@@ -98,10 +102,10 @@ export function LandingCompanySection() {
 
             {/* Stats */}
             <div
-              className={`mt-8 grid grid-cols-3 gap-6 rounded-2xl border p-6 ${
+              className={`mt-8 grid grid-cols-3 gap-6 rounded-2xl  p-6 ${
                 isDark
-                  ? "border-white/5 bg-white/[0.02]"
-                  : "border-gray-100 bg-gray-50"
+                  ? " bg-white/[0.02]"
+                  : " bg-white"
               }`}
             >
               <div>
@@ -121,7 +125,9 @@ export function LandingCompanySection() {
             {/* CTA */}
             <div className="mt-8">
               <a
-                href="#academia"
+                href={academyWhatsAppLink}
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-xl bg-[#D6A556] px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#D6A556]/90"
               >
                 Conocer la academia

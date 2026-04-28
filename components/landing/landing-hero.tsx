@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useTheme } from "@/components/theme-provider";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 function ArrowRightIcon({ className }: { className?: string }) {
   return (
@@ -163,14 +163,16 @@ export function LandingHero() {
             </p>
 
             <div className="flex flex-wrap gap-4 mb-6">
-              <Link
-                href="#contacto"
+              <a
+                href={buildWhatsAppLink("Hola, estoy interesado/a y quiero saber más sobre los servicios de trading.")}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#D6A556] rounded-xl font-semibold text-white hover:bg-[#D6A556]/90 transition-all duration-200 shadow-lg shadow-[#D6A556]/20 hover:shadow-xl hover:shadow-[#D6A556]/30 hover:-translate-y-0.5"
               >
                 Empezar ahora
                 <ArrowRightIcon className="w-4 h-4" />
-              </Link>
-              <Link
+              </a>
+              {/* <Link
                 href="#proceso"
                 className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold transition-all duration-200 ${
                   isDark 
@@ -180,7 +182,7 @@ export function LandingHero() {
               >
                 <PlayIcon className="w-4 h-4" />
                 Ver cómo funciona
-              </Link>
+              </Link> */}
             </div>
 
             {/* <div className={`inline-flex items-center gap-3 rounded-full border px-4 py-2 backdrop-blur-sm ${

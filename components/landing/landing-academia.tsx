@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/components/theme-provider";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 function PlayIcon({ className }: { className?: string }) {
   return (
@@ -85,6 +85,9 @@ export function LandingAcademia() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
   const [currentImage, setCurrentImage] = useState(0);
+  const academyWhatsAppLink = buildWhatsAppLink(
+    "Hola buen día, quisiera saber más información sobre la academia de trading."
+  );
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -148,15 +151,17 @@ export function LandingAcademia() {
             Formación completa desde cero hasta ejecución real en mercado
           </p>
 
-          <Link
-            href="#contacto"
+          <a
+            href={academyWhatsAppLink}
+            target="_blank"
+            rel="noreferrer"
             className="mt-8 inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 bg-[#4A90E2] hover:bg-[#4A90E2]/90"
           >
             Quiero aprender trading
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
-          </Link>
+          </a>
         </motion.div>
 
         {/* Auto Carousel Section */}
@@ -360,15 +365,17 @@ export function LandingAcademia() {
               >
                 Únete a una comunidad que opera con estructura y disciplina
               </p>
-              <Link
-                href="#contacto"
+              <a
+                href={academyWhatsAppLink}
+                target="_blank"
+                rel="noreferrer"
                 className="mt-8 inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 bg-[#4A90E2] hover:bg-[#4A90E2]/90"
               >
                 Comenzar ahora
                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
-              </Link>
+              </a>
             </div>
           </div>
         </motion.div>

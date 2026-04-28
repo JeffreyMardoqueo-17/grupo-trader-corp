@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 
 interface Testimonial {
@@ -19,6 +20,7 @@ const testimonials: Testimonial[] = [
     company: "CopyTrading",
     text: "Increíble experiencia. Ahora opero con confianza y una estrategia clara.",
     initials: "AA",
+    image: "/images/testimonios/mujerfelizamarillo.avif",
   },
   {
     name: "Amílcar Melgar",
@@ -26,6 +28,7 @@ const testimonials: Testimonial[] = [
     company: "Academia",
     text: "Lo más valioso fue el acompañamiento real y una estrategia que pude ejecutar desde el inicio.",
     initials: "AM",
+    image: "/images/testimonios/hombrefeliz.jpg",
   },
   {
     name: "Carlos Martínez",
@@ -33,6 +36,7 @@ const testimonials: Testimonial[] = [
     company: "Grupo Trade",
     text: "Pasé de no entender nada a tener un sistema real que funciona.",
     initials: "CM",
+    image: "/images/testimonios/hombrefelizgris.avif",
   },
   {
     name: "María González",
@@ -40,6 +44,7 @@ const testimonials: Testimonial[] = [
     company: "Mercados",
     text: "La claridad del proceso y el soporte del equipo hizo toda la diferencia.",
     initials: "MG",
+    image: "/images/testimonios/mujerfeliz.jpeg",
   },
 ];
 
@@ -117,7 +122,7 @@ export function LandingTestimonials() {
                 >
                   {/* Gradient overlay on hover */}
                   <div className="absolute inset-0 -z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <div className="absolute inset-0 bg-linear-to-br from-amber-400/10 to-transparent dark:from-blue-600/10" />
+                    <div className="absolute inset-0 bg-linear-to-br from-gray/10 to-transparent dark:from-blue-950/10" />
                   </div>
 
                   {/* Content Container */}
@@ -125,8 +130,19 @@ export function LandingTestimonials() {
                     {/* Top Section: Profile + Name */}
                     <div className="flex items-center gap-4 pb-4">
                       {/* Avatar Image Space */}
-                      <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border-2 border-amber-400/30 bg-linear-to-br from-amber-400 to-amber-600 text-sm font-bold text-slate-900">
-                        {testimonial.initials}
+                      <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border-2 border-amber-400/30">
+                        {testimonial.image ? (
+                          <Image
+                            src={testimonial.image}
+                            alt={testimonial.name}
+                            fill
+                            className="object-cover"
+                          />
+                        ) : (
+                          <div className="flex h-full w-full items-center justify-center bg-linear-to-br from-[#D6A556] to-[#D6A556] text-sm font-bold text-slate-900">
+                            {testimonial.initials}
+                          </div>
+                        )}
                       </div>
 
                       {/* Name + Role */}
@@ -137,7 +153,7 @@ export function LandingTestimonials() {
                         <p className="text-xs text-slate-600 dark:text-white/60">
                           {testimonial.role}
                         </p>
-                        <p className="text-xs font-medium text-amber-600 dark:text-amber-400">
+                        <p className="text-xs font-medium text-[#D6A556]">
                           {testimonial.company}
                         </p>
                       </div>
