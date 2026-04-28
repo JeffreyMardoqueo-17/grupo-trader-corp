@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 import { useTheme } from "@/components/theme-provider";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { LandingBenefits } from "@/components/landing/landing-benefits";
@@ -71,27 +70,12 @@ export function LandingCopyTrading() {
   const copyTradingWhatsAppLink = buildWhatsAppLink(
     "Buen día, quisiera saber más información sobre el copytrading."
   );
-  const [currentImage, setCurrentImage] = useState(0);
-
-  const carouselImages = [
-    { src: "/images/copy/pantalla.jpg", alt: "Trading screens and analysis" },
-    { src: "/images/copy/pantalla.jpg", alt: "Trading screens and analysis" },
-    { src: "/images/copy/pantalla.jpg", alt: "Trading screens and analysis" },
-  ];
 
   const features = [
     { title: "Seguimiento continuo", desc: "Monitorea cada operación en tiempo real" },
     { title: "Control total", desc: "Tu cuenta, tus reglas, tu decisión" },
     { title: "Estrategia aplicada", desc: "Aprende viendo cómo se ejecutan las operaciones" },
   ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % carouselImages.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const pasos = [
     { title: "Abres tu cuenta", desc: "Elige tu broker y abre tu cuenta de trading." },
@@ -155,7 +139,12 @@ export function LandingCopyTrading() {
 
         <AnimatedItem delay={0.1}>
           <div className="mt-20 grid gap-8 lg:grid-cols-2 lg:items-center">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#D6A556]">Estrategia real</p>
               <h2 className={`mt-4 text-2xl font-bold leading-tight sm:text-3xl ${isDark ? "text-white" : "text-gray-900"}`}>
                 No se trata de promesas rápidas.
@@ -168,79 +157,122 @@ export function LandingCopyTrading() {
               </p>
 
               <div className="mt-6 space-y-2">
-                {features.map((feature) => (
-                  <FeatureCard key={feature.title} isDark={isDark} title={feature.title} desc={feature.desc} />
+                {features.map((feature, i) => (
+                  <motion.div
+                    key={feature.title}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: i * 0.1 }}
+                  >
+                    <FeatureCard isDark={isDark} title={feature.title} desc={feature.desc} />
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
-            <div className="relative">
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="relative"
+            >
               <div className={`relative aspect-[4/3] overflow-hidden rounded-2xl ${isDark ? "border border-white/5 bg-white/[0.02]" : "border border-gray-200 bg-gray-100"}`}>
-                <Image src={carouselImages[currentImage].src} alt={carouselImages[currentImage].alt} fill className="object-cover opacity-90" sizes="(max-width: 1024px) 100vw, 50vw" />
+                <Image src="/images/copy/ganancias.jpg" alt="Captura de pantalla móvil" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
                 <div className={`absolute inset-0 ${isDark ? "bg-gradient-to-t from-[#041935] via-transparent to-transparent" : "bg-gradient-to-t from-gray-200 via-transparent to-transparent"}`} />
               </div>
-            </div>
+            </motion.div>
           </div>
         </AnimatedItem>
 
         <AnimatedItem delay={0.15}>
-          <div className="mt-16">
+          <div className="mt-24">
             <div className="mx-auto mb-10 text-center">
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#D6A556]">¿Qué es?</p>
-              {/* <h2 className={`mt-2 text-2xl font-bold sm:text-3xl ${isDark ? "text-white" : "text-gray-900"}`}>
-                CopyTrading
-              </h2> */}
             </div>
 
-            <div className="grid gap-6 lg:grid-cols-2 lg:gap-10">
-              <div className="relative h-full min-h-[300px] lg:min-h-[400px] overflow-hidden rounded-2xl">
-                <Image 
-                  src="/images/copy/pantalla.jpg" 
-                  alt="CopyTrading en acción" 
-                  fill 
-                  className="object-cover"
-                />
-                <div className={`absolute inset-0 bg-gradient-to-t ${isDark ? "from-black/70 via-black/20 to-transparent" : "from-black/50 via-transparent to-transparent"}`} />
-                <div className="absolute bottom-4 left-4">
-                  <p className="text-white text-sm font-medium">Replica operaciones en tiempo real</p>
+            <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -40, rotate: -6 }}
+                whileInView={{ opacity: 1, x: 0, rotate: -3 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="relative"
+              >
+                <div className={`relative min-h-[400px] lg:min-h-[500px] overflow-hidden rounded-2xl transform -rotate-3 ${isDark ? "border border-white/5" : "border border-gray-200"}`}>
+                  <Image
+                    src="/images/copy/calendar.jpg"
+                    alt="Calendario de trading"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="flex flex-col gap-4">
-                <div className={`text-sm leading-relaxed ${isDark ? "text-gray-300" : "text-gray-600"}`}>
-                  <span className="text-[#D6A556] font-semibold">CopyTrading</span> es una herramienta que te permite replicar operaciones dentro de tu propia cuenta, siguiendo estrategias previamente configuradas por nuestro equipo.
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                className="flex flex-col gap-6"
+              >
+                <div>
+                  <h3 className={`text-3xl font-black leading-tight sm:text-4xl ${isDark ? "text-white" : "text-gray-900"}`}>
+                    Copy<span className="text-[#D6A556]">Trading</span>
+                  </h3>
+                  <p className={`mt-4 text-base leading-relaxed ${isDark ? "text-white/70" : "text-gray-600"}`}>
+                    <span className="text-[#D6A556] font-semibold">CopyTrading</span> es una herramienta que te permite replicar operaciones dentro de tu propia cuenta, siguiendo estrategias previamente configuradas por nuestro equipo.
+                  </p>
+                </div>
+
+                <div className="space-y-6">
+                  {[
+                    { big: "0%", text: "Sin experiencia necesaria" },
+                    { big: "100%", text: "Aprendes viendo operaciones reales" },
+                    { big: "100%", text: "Mantienes el control de tu cuenta" },
+                  ].map((item, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, x: 30 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: 0.3 + i * 0.15 }}
+                      className="flex items-center gap-6"
+                    >
+                      <div className={`text-6xl font-black ${isDark ? "text-[#D6A556]/20" : "text-[#D6A556]/30"}`}>
+                        {item.big}
+                      </div>
+                      <div className="flex-1">
+                        <p className={`text-lg font-semibold ${isDark ? "text-white" : "text-gray-900"}`}>{item.text}</p>
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
 
                 <div className="space-y-2">
-                  {[
-                    "Sin experiencia necesaria",
-                    "Aprende viendo operaciones reales",
-                    "Ahorras tiempo",
-                    "Mantienes el control de tu cuenta",
-                    "Puedes retirarte cuando quieras",
-                  ].map((text, i) => (
+                  {["Ahorras tiempo", "Puedes retirarte cuando quieras"].map((text, i) => (
                     <div key={i} className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-[#D6A556]" />
-                      <span className={`text-xs ${isDark ? "text-gray-400" : "text-gray-600"}`}>{text}</span>
+                      <span className={`text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}>{text}</span>
                     </div>
                   ))}
                 </div>
 
-                <div className="pt-2">
-                  <p className={`text-sm font-bold ${isDark ? "text-white" : "text-gray-800"}`}>
-                    Rendimientos: <span className="text-[#D6A556]">0% - 10%</span> mensual
+                <div className={`inline-block rounded-full border px-6 py-3 ${isDark ? "border-[#D6A556]/20 bg-[#D6A556]/10" : "border-[#D6A556]/30 bg-[#D6A556]/20"}`}>
+                  <p className={`text-sm font-bold ${isDark ? "text-[#D6A556]" : "text-[#D6A556]"}`}>
+                    Rendimientos: 0% - 10% mensual
                   </p>
                 </div>
 
-                <div className="pt-2">
-                  <p className={`text-center text-xs font-semibold tracking-wider ${isDark ? "text-[#D6A556]" : "text-[#D6A556]"}`}>
-                    "TU DINERO SIEMPRE ESTÁ EN TUS MANOS"
-                  </p>
+                <div className={`text-center text-xs font-black tracking-widest ${isDark ? "text-[#D6A556]" : "text-[#D6A556]"}`}>
+                  "TU DINERO SIEMPRE ESTÁ EN TUS MANOS"
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
-</AnimatedItem>
+        </AnimatedItem>
 
         <AnimatedItem delay={0.2}>
           <div className="mt-16">
