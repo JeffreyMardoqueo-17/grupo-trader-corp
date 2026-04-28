@@ -96,7 +96,7 @@ export function LandingAcademia() {
     return () => clearInterval(interval);
   }, []);
 
-  const blueAccent = "text-[#4A90E2]";
+  const blueAccent = "text-[#D6A556]";
 
   return (
     <section
@@ -126,11 +126,11 @@ export function LandingAcademia() {
           <span
             className={`mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-medium backdrop-blur-md ${
               isDark
-                ? "border-[#4A90E2]/30 bg-[#4A90E2]/10 text-[#4A90E2]"
-                : "border-[#4A90E2]/30 bg-[#4A90E2]/5 text-[#4A90E2]"
+                ? "border-[#D6A556]/30 bg-[#D6A556]/10 text-[#D6A556]"
+                : "border-[#D6A556]/30 bg-[#D6A556]/5 text-[#D6A556]"
             }`}
           >
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#4A90E2]" />
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#D6A556]" />
             Academia de Trading
           </span>
 
@@ -155,7 +155,7 @@ export function LandingAcademia() {
             href={academyWhatsAppLink}
             target="_blank"
             rel="noreferrer"
-            className="mt-8 inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 bg-[#4A90E2] hover:bg-[#4A90E2]/90"
+            className="mt-8 inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 bg-[#D6A556] hover:bg-[#D6A556]/90"
           >
             Quiero aprender trading
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -215,7 +215,7 @@ export function LandingAcademia() {
                   onClick={() => setCurrentImage(index)}
                   className={`h-2 rounded-full transition-all duration-300 ${
                     index === currentImage
-                      ? "w-8 bg-[#4A90E2]"
+                      ? "w-8 bg-[#D6A556]"
                       : `w-2 ${isDark ? "bg-white/30" : "bg-white/50"}`
                   }`}
                 />
@@ -251,15 +251,15 @@ export function LandingAcademia() {
                   transition={{ delay: index * 0.05, duration: 0.4 }}
                   className={`group relative min-w-[200px] overflow-hidden rounded-xl border p-4 transition-all duration-300 hover:-translate-y-0.5 sm:min-w-0 ${
                     isDark
-                      ? "border-white/5 bg-white/[0.02] hover:border-[#4A90E2]/30 hover:bg-white/[0.04]"
-                      : "border-gray-100 bg-white shadow-sm hover:border-[#4A90E2]/30 hover:shadow-md"
+                      ? "border-white/5 bg-white/[0.02] hover:border-[#D6A556]/30 hover:bg-white/[0.04]"
+                      : "border-gray-100 bg-white shadow-sm hover:border-[#D6A556]/30 hover:shadow-md"
                   }`}
                 >
                   <div
                     className={`mb-3 flex h-10 w-10 items-center justify-center rounded-lg ${
                       isDark
-                        ? "bg-[#4A90E2]/10 text-[#4A90E2]"
-                        : "bg-[#4A90E2]/5 text-[#4A90E2]"
+                        ? "bg-[#D6A556]/10 text-[#D6A556]"
+                        : "bg-[#D6A556]/5 text-[#D6A556]"
                     }`}
                   >
                     <Icon className="h-5 w-5" />
@@ -285,7 +285,7 @@ export function LandingAcademia() {
           className="mb-20 grid items-center gap-12 lg:grid-cols-2 lg:gap-20"
         >
           <div className="relative overflow-hidden rounded-3xl">
-            <div className="relative aspect-[4/3]">
+            <div className="relative aspect-4/3">
               <Image
                 src="/images/academia/clase.jpg"
                 alt="Entorno de trading profesional"
@@ -315,10 +315,10 @@ export function LandingAcademia() {
               Aprende en un entorno profesional con múltiples pantallas, análisis en tiempo real y dinámica de equipo. No solo consumes información, desarrollas habilidades reales.
             </p>
             <div
-              className={`space-y-4 rounded-2xl border p-6 ${
+              className={`space-y-4 p-6 ${
                 isDark
-                  ? "border-white/5 bg-white/[0.02]"
-                  : "border-gray-100 bg-white shadow-lg"
+                  ? "border-white/5"
+                  : "border-gray-100 bg-white "
               }`}
             >
               {["Análisis en tiempo real", "Múltiples pantallas", "Dinámica de equipo"].map(
@@ -344,8 +344,8 @@ export function LandingAcademia() {
           <div
             className={`relative overflow-hidden rounded-3xl p-10 sm:p-16 ${
               isDark
-                ? "border border-white/5 bg-white/[0.02]"
-                : "border border-gray-100 bg-white shadow-xl"
+                ? ""
+                : ""
             }`}
           >
             {isDark && (
@@ -369,7 +369,7 @@ export function LandingAcademia() {
                 href={academyWhatsAppLink}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-8 inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 bg-[#4A90E2] hover:bg-[#4A90E2]/90"
+                className="mt-8 inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 bg-[#D6A556] hover:bg-[#D6A556]/90"
               >
                 Comenzar ahora
                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

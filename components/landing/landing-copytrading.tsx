@@ -96,7 +96,7 @@ export function LandingCopyTrading() {
     { title: "Abres tu cuenta", desc: "Elige tu broker y abre tu cuenta de trading." },
     { title: "Conectas el servicio", desc: "Enlaza tu cuenta con nuestro sistema de CopyTrading." },
     { title: "Depositas en crypto", desc: "USDT, BTC, USDC o ETC - tú tienes el control." },
-    { title: "Operaciones automáticas", desc: "Las operaciones se replican automáticamente en tu cuenta." },
+    { title: "Operaciones automáticas", desc: "Las operaciones se replican automáticamente en tu cuenta - Retiros mensuales." },
   ];
 
   return (
@@ -127,9 +127,9 @@ export function LandingCopyTrading() {
             </div>
 
             <h1 className={`text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl ${isDark ? "text-white" : "text-gray-900"}`}>
-              Opera con <span className="text-[#D6A556]">estructura</span>.
+              Opera con <span className="text-[#D6A556]">estructura</span>
               <br />
-              Aprende sin improvisar.
+              Opera mientras  <span className="text-[#D6A556]">Aprendes</span>
             </h1>
 
             <p className={`mx-auto mt-6 max-w-2xl text-base leading-relaxed sm:text-lg ${isDark ? "text-white/60" : "text-gray-600"}`}>
@@ -194,17 +194,6 @@ export function LandingCopyTrading() {
                 <Image src={carouselImages[currentImage].src} alt={carouselImages[currentImage].alt} fill className="object-cover opacity-90" sizes="(max-width: 1024px) 100vw, 50vw" />
                 <div className={`absolute inset-0 ${isDark ? "bg-[linear-gradient(180deg,transparent_40%,#041935_100%)]" : "bg-[linear-gradient(180deg,transparent_40%,rgba(255,255,255,0.8)_100%)]"}`} />
 
-                <div className={`absolute bottom-6 left-6 right-6 rounded-2xl border p-5 backdrop-blur-xl ${isDark ? "border-white/10 bg-white/5" : "border-white/30 bg-white/60"}`}>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className={`text-xs ${isDark ? "text-white/50" : "text-gray-600"}`}>Rendimiento</p>
-                      <p className={`mt-1 text-2xl font-bold ${isDark ? "text-white" : "text-gray-900"}`}>+%</p>
-                    </div>
-                    <div className="rounded-full border border-[#D6A556]/20 bg-[#D6A556]/10 px-4 py-2 text-sm font-semibold text-[#D6A556]">
-                      Verificado
-                    </div>
-                  </div>
-                </div>
               </div>
 
               <div className={`absolute -bottom-6 -right-6 h-32 w-32 rounded-2xl border blur-xl ${isDark ? "border-[#D6A556]/10 bg-[#D6A556]/5" : "border-[#D6A556]/20 bg-[#D6A556]/10"}`} />
@@ -217,16 +206,16 @@ export function LandingCopyTrading() {
             <div className="mx-auto max-w-3xl text-center">
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#D6A556]">¿Qué es?</p>
               <h2 className={`mt-4 text-3xl font-bold sm:text-4xl ${isDark ? "text-white" : "text-gray-900"}`}>
-                What is CopyTrading
+                CopyTrading
               </h2>
             </div>
 
             <div className="mx-auto mt-8 max-w-2xl">
-              <div className={`rounded-3xl border p-8 backdrop-blur-xl ${isDark ? "border-white/5 bg-white/[0.03]" : "border-gray-300 bg-white/50"}`}>
-                <p className={`text-center text-base leading-relaxed ${isDark ? "text-white/60" : "text-gray-700"}`}>
-                  Una herramienta que te permite replicar operaciones de traders experimentados
-                  dentro de tu propia cuenta. <span className={isDark ? "text-white" : "text-gray-900"}>Tú mantienes el control</span>,
-                  decides cuánto invertir y puedes detener la replicación en cualquier momento.
+              <div className={`rounded-3xl border p-8 backdrop-blur-xl ${isDark ? "border-white/5" : "border-gray-300 "}`}>
+                <p className={`text-center text-base leading-relaxed ${isDark ? "text-white/80" : "text-gray-700"}`}>
+                  Una herramienta que te permite replicar operaciones
+                  dentro de tu propia cuenta. Siguiendo  <span className={isDark ? "text-white" : "text-gray-900"}>Estrategias </span>,
+                  previamente configuradas por nuestro equipo y a bajo riesgo.
                 </p>
               </div>
             </div>
@@ -252,8 +241,8 @@ export function LandingCopyTrading() {
 
         <AnimatedItem delay={0.25}>
           <div className="mt-24 text-center">
-            <div className={`mx-auto max-w-3xl rounded-3xl border p-10 backdrop-blur-xl ${isDark ? "border-[#D6A556]/10 bg-[#D6A556]/5" : "border-[#D6A556]/20 bg-[#D6A556]/10"}`}>
-              <p className={`text-2xl font-bold leading-tight sm:text-3xl lg:text-4xl ${isDark ? "text-white" : "text-gray-900"}`}>
+            <div className={`mx-auto max-w-3xl rounded-3xl border p-10 backdrop-blur-xl`}>
+              <p className={`text-2xl font-bold leading-tight sm:text-3xl lg:text-4xl`}>
                 Aprendes viendo operaciones reales{' '}
                 <span className="text-[#D6A556]">sin perder el control</span>{' '}
                 de tu cuenta.
@@ -264,7 +253,7 @@ export function LandingCopyTrading() {
                 href={copyTradingWhatsAppLink}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl bg-[#4A90E2] px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#4A90E2]/90"
+                className="inline-flex items-center gap-2 rounded-xl bg-[#D6A556] px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#D6A555]/90"
               >
                 Comenzar ahora
                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

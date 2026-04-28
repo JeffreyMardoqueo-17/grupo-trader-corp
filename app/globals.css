@@ -178,6 +178,10 @@
     color-scheme: light;
     scrollbar-width: thin;
     scrollbar-color: var(--brand-blue) transparent;
+    select::selection {
+      background-color: var(--brand-gold);
+      color: var(--white);
+    }
   }
   
   .dark {
