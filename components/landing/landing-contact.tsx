@@ -19,7 +19,7 @@ export function LandingContact() {
             </p>
 
             <div className="relative mt-7 space-y-3">
-              <div className="rounded-2xl border border-white/15 bg-white/6 p-4 backdrop-blur-sm">
+              <div className="rounded-2xl border border-white/15 bg-white/6 p-4 ">
                 <p className="flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-white/60">
                   <Phone className="h-4 w-4" />
                   Teléfono
@@ -29,7 +29,7 @@ export function LandingContact() {
                 </a>
               </div>
 
-              <div className="rounded-2xl border border-white/15 bg-white/6 p-4 backdrop-blur-sm">
+              <div className="rounded-2xl border border-white/15 bg-white/6 p-4 ">
                 <p className="flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-white/60">
                   <MessageCircle className="h-4 w-4" />
                   WhatsApp directo
@@ -44,7 +44,7 @@ export function LandingContact() {
                 </a>
               </div>
 
-              <div className="rounded-2xl border border-white/15 bg-white/6 p-4 backdrop-blur-sm">
+              <div className="rounded-2xl border border-white/15 bg-white/6 p-4 ">
                 <p className="flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-white/60">
                   <Mail className="h-4 w-4" />
                   Email

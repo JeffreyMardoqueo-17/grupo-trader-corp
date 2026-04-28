@@ -114,8 +114,8 @@ export function LandingDenis() {
               transition={{ duration: 0.6, delay: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
               className={`grid grid-cols-3 gap-6 sm:gap-10 p-6 rounded-2xl ${
                 isDark
-                  ? "bg-white/[0.03] border border-white/5 backdrop-blur-sm"
-                  : "bg-white border border-gray-100 shadow-lg"
+                  ? "bg-white/[0.03]  backdrop-blur-sm"
+                  : "bg-white border "
               }`}
             >
               <div>

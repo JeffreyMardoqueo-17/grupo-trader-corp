@@ -182,7 +182,7 @@ export function LandingTestimonials() {
 
         {/* Trust Badge - Centered Below */}
         <AnimatedItem delay={0.4}>
-          <div className="rounded-2xl border-2 border-white/20 bg-white/8 p-6 backdrop-blur-xl dark:border-white/15 dark:bg-white/6 sm:p-8">
+          <div className="rounded-2xl  border-white/20  p-6 sm:p-8">
             <div className="flex flex-col items-center gap-4 text-center">
               {/* Rating */}
               <div className="flex flex-col items-center gap-2 text-[#D6A556]">
@@ -198,14 +198,11 @@ export function LandingTestimonials() {
 
               {/* Trust Message */}
               <div>
-                <p className="text-sm font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400">
+                <p className="text-3xl font-bold uppercase tracking-wider text-amber-600 dark:text-[#D6A556]">
                   Confianza verificada
                 </p>
                 <p className="mt-2 text-base font-medium text-slate-900 dark:text-white">
                   Resultados reales de estudiantes reales. No solo números, sino vidas transformadas.
-                </p>
-                <p className="mt-2 text-xs text-slate-600 dark:text-white/60">
-                  500+ estudiantes | Desde 2023 transformando trayectorias financieras
                 </p>
               </div>
             </div>
