@@ -189,7 +189,7 @@ export function LandingCopyTrading() {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-xs text-white/50">Rendimiento</p>
-                      <p className="mt-1 text-2xl font-bold text-white">+24.5%</p>
+                      <p className="mt-1 text-2xl font-bold text-white">+%</p>
                     </div>
                     <div className="rounded-full border border-[#D6A556]/20 bg-[#D6A556]/10 px-4 py-2 text-sm font-semibold text-[#D6A556]">
                       Verificado

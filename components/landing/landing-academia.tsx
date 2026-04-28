@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from "next-themes";
+import { useTheme } from "@/components/theme-provider";
 
 function PlayIcon({ className }: { className?: string }) {
   return (

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useTheme } from "next-themes";
+import { useTheme } from "@/components/theme-provider";
 
 function ArrowRightIcon({ className }: { className?: string }) {
   return (
@@ -68,11 +68,11 @@ export function LandingHero() {
         {!isDark && (
           <>
             <div 
-              className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full opacity-25 blur-3xl"
+              className="absolute -top-40 -right-40 w-125 h-125 rounded-full opacity-25 blur-3xl"
               style={{ background: 'linear-gradient(180deg, #000208, #041935)' }}
             />
             <div 
-              className="absolute top-1/2 -left-32 w-[400px] h-[400px] rounded-full opacity-20 blur-3xl"
+              className="absolute top-1/2 -left-32 w-100 h-100 rounded-full opacity-20 blur-3xl"
               style={{ background: 'linear-gradient(180deg, #000208, #041935)' }}
             />
           </>
@@ -80,11 +80,11 @@ export function LandingHero() {
         {isDark && (
           <>
             <div 
-              className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full opacity-30 blur-3xl"
+              className="absolute -top-40 -right-40 w-125 h-125 rounded-full opacity-30 blur-3xl"
               style={{ background: 'linear-gradient(180deg, #000208, #041935)' }}
             />
             <div 
-              className="absolute top-1/2 -left-32 w-[400px] h-[400px] rounded-full opacity-20 blur-3xl"
+              className="absolute top-1/2 -left-32 w-100 h-100 rounded-full opacity-20 blur-3xl"
               style={{ background: 'linear-gradient(180deg, #4A90E2, #041935)' }}
             />
           </>
@@ -141,7 +141,7 @@ export function LandingHero() {
           </div>
 
           <div className="relative">
-            <div className="relative aspect-[16/10] sm:aspect-[3/2] lg:aspect-[4/3] xl:aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl -mt-16 lg:mt-0">
+            <div className="relative aspect-16/10 sm:aspect-3/2 lg:aspect-4/3 xl:aspect-16/10 rounded-3xl overflow-hidden shadow-2xl -mt-16 lg:mt-0">
               <Image
                 src="/images/traders.png"
                 alt="Trader profesional operando"

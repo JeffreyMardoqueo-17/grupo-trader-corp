@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useTheme } from "next-themes";
+import { useTheme } from "@/components/theme-provider";
 
 export function LandingDenis() {
   const { theme } = useTheme();
@@ -38,7 +38,7 @@ export function LandingDenis() {
             >
               <div className="relative aspect-[4/5]">
                 <Image
-                  src="/images/denistrader.png"
+                  src="/images/denis.jpeg"
                   alt="Denis Gutiérrez - Fundador Grupo Trade Corp"
                   fill
                   className="object-cover object-top"

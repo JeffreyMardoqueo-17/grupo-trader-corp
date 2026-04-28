@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useTheme } from "next-themes";
+import { useTheme } from "@/components/theme-provider";
 
 export function LandingCompanySection() {
   const { theme } = useTheme();

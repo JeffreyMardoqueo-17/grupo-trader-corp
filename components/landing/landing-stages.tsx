@@ -2,7 +2,7 @@
 
 import { MotionReveal } from "@/components/motion-reveal";
 import Image from "next/image";
-import { useTheme } from "next-themes";
+import { useTheme } from "@/components/theme-provider";
 
 export function LandingStages() {
   const { theme } = useTheme();
