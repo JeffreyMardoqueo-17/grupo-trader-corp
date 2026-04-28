@@ -68,12 +68,12 @@ export function LandingHero() {
         {!isDark && (
           <>
             <div 
-              className="absolute -top-40 -right-40 w-125 h-125 rounded-full opacity-25 blur-3xl"
-              style={{ background: 'linear-gradient(180deg, #000208, #041935)' }}
+              className="absolute -top-40 -right-40 w-125 h-125 rounded-full opacity-10 blur-3xl"
+              style={{ background: 'radial-gradient(circle, rgba(214,165,86,0.32) 0%, rgba(214,165,86,0.10) 38%, transparent 72%)' }}
             />
             <div 
-              className="absolute top-1/2 -left-32 w-100 h-100 rounded-full opacity-20 blur-3xl"
-              style={{ background: 'linear-gradient(180deg, #000208, #041935)' }}
+              className="absolute top-1/2 -left-32 w-100 h-100 rounded-full opacity-10 blur-3xl"
+              style={{ background: 'radial-gradient(circle, rgba(74,144,226,0.22) 0%, rgba(74,144,226,0.08) 42%, transparent 74%)' }}
             />
           </>
         )}

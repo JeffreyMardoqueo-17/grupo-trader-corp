@@ -93,7 +93,7 @@ export function LandingTestimonials() {
       <div className="mx-auto max-w-7xl">
         {/* Header - Eyebrow + Title */}
         <div className="mb-12 text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-amber-600 dark:text-amber-400">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#D6A556] dark:text-[#D6A556]">
             Experiencias reales
           </p>
           <h2 className="mt-4 text-6xl font-black tracking-tight text-slate-950 dark:text-white sm:text-7xl">
@@ -147,7 +147,7 @@ export function LandingTestimonials() {
                     <div className="my-3 h-px bg-linear-to-r from-white/20 to-transparent" />
 
                     {/* Middle Section: Stars */}
-                    <div className="flex gap-1 pb-3">
+                    <div className="flex gap-1 pb-3 text-[#D6A556]">
                       {[...Array(5)].map((_, i) => (
                         <StarIcon key={i} />
                       ))}
@@ -169,7 +169,7 @@ export function LandingTestimonials() {
           <div className="rounded-2xl border-2 border-white/20 bg-white/8 p-6 backdrop-blur-xl dark:border-white/15 dark:bg-white/6 sm:p-8">
             <div className="flex flex-col items-center gap-4 text-center">
               {/* Rating */}
-              <div className="flex flex-col items-center gap-2">
+              <div className="flex flex-col items-center gap-2 text-[#D6A556]">
                 <div className="flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <StarIcon key={i} />
@@ -186,7 +186,7 @@ export function LandingTestimonials() {
                   Confianza verificada
                 </p>
                 <p className="mt-2 text-base font-medium text-slate-900 dark:text-white">
-                  Trusted by traders, backed by results.
+                  Resultados reales de estudiantes reales. No solo números, sino vidas transformadas.
                 </p>
                 <p className="mt-2 text-xs text-slate-600 dark:text-white/60">
                   500+ estudiantes | Desde 2023 transformando trayectorias financieras

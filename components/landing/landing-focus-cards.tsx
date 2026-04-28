@@ -37,7 +37,7 @@ export function LandingFocusCards() {
   const isDark = theme === "dark";
 
   return (
-    <section className={`py-20 lg:py-32 ${isDark ? "bg-[#000208]" : "bg-gray-50"}`}>
+    <section className={`py-20 lg:py-32 ${isDark ? "bg-[#000208]" : "bg-white"}`}>
       <div className="container mx-auto max-w-6xl px-6">
         <div className="grid gap-6 lg:grid-cols-3">
           {cards.map((card, index) => (
@@ -47,13 +47,13 @@ export function LandingFocusCards() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.15, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className={`group relative overflow-hidden rounded-[2rem] border shadow-[0_20px_70px_rgba(0,0,0,0.22)] transition-all duration-500 hover:-translate-y-1 ${
+              className={`group relative overflow-hidden rounded-[2rem] border shadow-[0_20px_70px_rgba(0,0,0,0.14)] transition-all duration-500 hover:-translate-y-1 ${
                 isDark
-                  ? "border-white/10 bg-white/3 shadow-black/30"
-                  : "border-gray-200 bg-white shadow-[0_20px_70px_rgba(4,25,53,0.08)]"
+                  ? "border-white/10 bg-[#000208] shadow-black/30"
+                  : "border-black/5 bg-white shadow-[0_20px_70px_rgba(4,25,53,0.06)]"
               }`}
             >
-              <div className={`relative h-67.5 overflow-hidden sm:h-75 lg:h-80 ${isDark ? "bg-[#061024]" : "bg-[#f4f7fb]"}`}>
+              <div className={`relative h-67.5 overflow-hidden sm:h-75 lg:h-80 ${isDark ? "bg-[#061024]" : "bg-white"}`}>
                 <Image
                   src={card.image}
                   alt={card.title}
@@ -61,9 +61,7 @@ export function LandingFocusCards() {
                   className="object-contain p-5 transition-transform duration-700 group-hover:scale-[1.02]"
                   sizes="(max-width: 1024px) 100vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-black/18 via-transparent to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-black/35 to-transparent" />
-                <div className="absolute inset-0 ring-1 ring-inset ring-white/5" />
+                <div className={`absolute inset-0 ring-1 ring-inset ${isDark ? "ring-white/5" : "ring-black/5"}`} />
               </div>
 
               <div className={`relative p-6 lg:p-7 ${isDark ? "bg-[#000208]" : "bg-white"}`}>
@@ -93,8 +91,8 @@ export function LandingFocusCards() {
                         key={i}
                         className={`rounded-2xl border px-3 py-2 text-center text-xs font-medium tracking-wide ${
                           isDark
-                            ? "border-white/8 bg-white/3 text-white/72"
-                            : "border-gray-200 bg-gray-50 text-gray-600"
+                            ? "border-white/8 bg-white/5 text-white/72"
+                            : "border-black/5 bg-black/2 text-gray-600"
                         }`}
                       >
                         {point}
