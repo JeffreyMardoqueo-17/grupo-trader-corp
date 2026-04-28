@@ -79,6 +79,7 @@ const carouselImages = [
   { src: "/images/academia/clase.jpg", alt: "Clase de trading en vivo" },
   { src: "/images/academia/clase2.jpg", alt: "Entorno real de trading" },
   { src: "/images/academia/clase3.jpg", alt: "Análisis de mercado" },
+    { src: "/images/academia/clase4.jpg", alt: "Análisis de mercado" },
 ];
 
 export function LandingAcademia() {
@@ -99,130 +100,90 @@ export function LandingAcademia() {
   const blueAccent = "text-[#D6A556]";
 
   return (
-    <section
-      id="academia"
-      className={`relative overflow-hidden py-20 lg:py-32 ${
-        isDark
-          ? "bg-gradient-to-b from-[#000208] via-[#041935] to-[#000208]"
-          : "bg-gradient-to-b from-white via-gray-50 to-white"
-      }`}
-    >
-      {isDark && (
-        <>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(74,144,226,0.12),transparent_50%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(4,25,53,0.15),transparent_50%)]" />
-        </>
-      )}
-
-      <div className="container relative z-10 mx-auto max-w-6xl px-6">
-        {/* Hero Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="mx-auto mb-20 max-w-4xl text-center"
-        >
-          <span
-            className={`mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-medium backdrop-blur-md ${
-              isDark
-                ? "border-[#D6A556]/30 bg-[#D6A556]/10 text-[#D6A556]"
-                : "border-[#D6A556]/30 bg-[#D6A556]/5 text-[#D6A556]"
-            }`}
-          >
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#D6A556]" />
-            Academia de Trading
-          </span>
-
-          <h2
-            className={`text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl ${
-              isDark ? "text-white" : "text-gray-900"
-            }`}
-          >
-            Aprende a operar con{" "}
-            <span className={blueAccent}>estructura</span>, no con improvisación
-          </h2>
-
-          <p
-            className={`mx-auto mt-6 max-w-2xl text-lg leading-relaxed ${
-              isDark ? "text-white/60" : "text-gray-500"
-            }`}
-          >
-            Formación completa desde cero hasta ejecución real en mercado
-          </p>
-
-          <a
-            href={academyWhatsAppLink}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-8 inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 bg-[#D6A556] hover:bg-[#D6A556]/90"
-          >
-            Quiero aprender trading
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </a>
-        </motion.div>
-
-        {/* Auto Carousel Section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-20"
-        >
-          <div
-            className={`relative overflow-hidden rounded-3xl ${
-              isDark
-                ? "border border-white/5 bg-white/[0.03] backdrop-blur-sm"
-                : "border border-gray-100 bg-white shadow-xl"
-            }`}
-          >
-            <div className="relative aspect-[21/9] overflow-hidden">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentImage}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.7 }}
-                  className="absolute inset-0"
-                >
-                  <Image
-                    src={carouselImages[currentImage].src}
-                    alt={carouselImages[currentImage].alt}
-                    fill
-                    className="object-cover object-center"
-                    sizes="100vw"
-                  />
-                </motion.div>
-              </AnimatePresence>
-              <div
-                className={`absolute inset-0 ${
-                  isDark
-                    ? "bg-gradient-to-t from-[#000208]/70 via-transparent to-[#000208]/30"
-                    : "bg-gradient-to-t from-black/40 via-transparent to-black/10"
-                }`}
+    <section id="academia" className="relative">
+      {/* Hero con imagen de fondo - solo primeros 500px */}
+      <div className="relative h-[500px] overflow-hidden">
+        {/* Background Images Carousel */}
+        <div className="absolute inset-0">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentImage}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 2 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.30 }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={carouselImages[currentImage].src}
+                alt={carouselImages[currentImage].alt}
+                fill
+                className="object-cover"
+                priority
               />
-            </div>
+            </motion.div>
+          </AnimatePresence>
 
-            {/* Indicators */}
-            <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
-              {carouselImages.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentImage(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    index === currentImage
-                      ? "w-8 bg-[#D6A556]"
-                      : `w-2 ${isDark ? "bg-white/30" : "bg-white/50"}`
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-        </motion.div>
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/70" />
+
+          {/* Grid Pattern */}
+          <div 
+            className="absolute inset-0 opacity-10"
+            style={{
+              backgroundImage: `linear-gradient(to right, white 1px, transparent 1px),
+                linear-gradient(to bottom, white 1px, transparent 1px)`,
+              backgroundSize: '64px 64px'
+            }}
+          />
+
+          {/* Radial Gradient */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.8)_100%)]" />
+        </div>
+
+        {/* Contenido del Hero */}
+        <div className="container relative z-10 mx-auto max-w-6xl px-6 h-full flex items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="max-w-4xl"
+          >
+            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-md">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#D6A556]" />
+              Academia de Trading
+            </span>
+
+            <h2 className="text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Aprende a operar con <span className="text-[#D6A556]">estructura</span>, no con improvisación
+            </h2>
+
+            <p className="mt-4 max-w-2xl text-lg text-white/80">
+              Formación completa desde cero hasta ejecución real en mercado
+            </p>
+
+            <a
+              href={academyWhatsAppLink}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#D6A556] px-8 py-4 text-base font-semibold text-[#000418] shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#e6b566]"
+            >
+              Quiero aprender trading
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+
+            <p className="mt-6 text-sm text-white/60">
+              📷 Clase de trading en vivo
+            </p>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Resto del contenido con fondo normal */}
+      <div className="container relative z-10 mx-auto max-w-6xl px-6 py-20">
 
         {/* Training Blocks - Horizontal compact layout */}
         <motion.div
