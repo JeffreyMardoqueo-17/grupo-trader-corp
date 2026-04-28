@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { useTheme } from "@/components/theme-provider";
 
 function ArrowRightIcon({ className }: { className?: string }) {
@@ -44,15 +45,58 @@ function AwardIcon({ className }: { className?: string }) {
   );
 }
 
+const sectionPills = [
+  { id: "inicio", label: "Inicio" },
+  { id: "nosotros", label: "Nosotros" },
+  { id: "denis", label: "Denis" },
+  { id: "academia", label: "Academia" },
+  { id: "copytrading", label: "CopyTrading" },
+  { id: "testimonios", label: "Testimonios" },
+  { id: "contacto", label: "Contacto" },
+];
+
 export function LandingHero() {
   const { theme } = useTheme();
+  const [activeSection, setActiveSection] = useState("inicio");
   const isDark = theme === "dark";
+  const currentSectionLabel = sectionPills.find((section) => section.id === activeSection)?.label ?? "Inicio";
 
   const stats = [
     { label: "Traders activos", value: "500+", icon: UsersIcon },
     { label: "Rentabilidad media", value: "24%", icon: TrendingUpIcon },
     { label: "Años de experiencia", value: "10+", icon: AwardIcon },
   ];
+
+  useEffect(() => {
+    const elements = sectionPills
+      .map((section) => document.getElementById(section.id))
+      .filter((element): element is HTMLElement => Boolean(element));
+
+    if (!elements.length) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntries = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (visibleEntries[0]) {
+          setActiveSection(visibleEntries[0].target.id);
+        }
+      },
+      {
+        root: null,
+        threshold: [0.25, 0.4, 0.55, 0.7],
+        rootMargin: "-18% 0px -58% 0px",
+      }
+    );
+
+    elements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section id="inicio" className="relative min-h-[90vh] flex items-center overflow-hidden">
@@ -118,7 +162,7 @@ export function LandingHero() {
               No necesitas experiencia, necesitas la comunidad y el sistema correcto.
             </p>
 
-            <div className="flex flex-wrap gap-4 mb-10">
+            <div className="flex flex-wrap gap-4 mb-6">
               <Link
                 href="#contacto"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#D6A556] rounded-xl font-semibold text-white hover:bg-[#D6A556]/90 transition-all duration-200 shadow-lg shadow-[#D6A556]/20 hover:shadow-xl hover:shadow-[#D6A556]/30 hover:-translate-y-0.5"
@@ -138,19 +182,33 @@ export function LandingHero() {
                 Ver cómo funciona
               </Link>
             </div>
+
+            {/* <div className={`inline-flex items-center gap-3 rounded-full border px-4 py-2 backdrop-blur-sm ${
+              isDark ? "border-white/10 bg-white/5" : "border-black/5 bg-white"
+            }`}>
+              <span className="h-2 w-2 rounded-full bg-[#D6A556] shadow-[0_0_0_6px_rgba(214,165,86,0.14)]" />
+              <div className="flex flex-col">
+                <span className={`text-[10px] font-semibold uppercase tracking-[0.3em] ${isDark ? "text-white/45" : "text-gray-400"}`}>
+                  Sección activa
+                </span>
+                <span className={`text-sm font-semibold ${isDark ? "text-white" : "text-gray-900"}`}>
+                  {currentSectionLabel}
+                </span>
+              </div>
+            </div> */}
           </div>
 
           <div className="relative">
             <div className="relative aspect-16/10 sm:aspect-3/2 lg:aspect-4/3 xl:aspect-16/10 rounded-3xl overflow-hidden shadow-2xl -mt-16 lg:mt-0">
               <Image
-                src="/images/traders.png"
+                src="/images/inversionistas.jpeg"
                 alt="Trader profesional operando"
                 fill
                 className="object-cover object-bottom"
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-              <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20">
+              {/* <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-xs text-white/70 mb-0.5">Tu progreso</p>
@@ -160,7 +218,7 @@ export function LandingHero() {
                     <TrendingUpIcon className="w-5 h-5 text-[#0e1427]" />
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className="absolute -top-4 -right-4 w-24 h-24 rounded-2xl bg-blue-500/20 blur-xl -z-10" />
             <div className="absolute -bottom-4 -left-4 w-32 h-32 rounded-2xl bg-indigo-500/20 blur-xl -z-10" />

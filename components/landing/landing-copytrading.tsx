@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { useTheme } from "@/components/theme-provider";
 
 function AnimatedItem({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const ref = useRef(null);
@@ -21,34 +22,51 @@ function AnimatedItem({ children, delay = 0 }: { children: React.ReactNode; dela
   );
 }
 
-function StepCard({ number, title, desc }: { number: number; title: string; desc: string }) {
+function StepCard({ number, title, desc, isDark }: { number: number; title: string; desc: string; isDark: boolean }) {
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-white/5 bg-white/[0.03] p-6 backdrop-blur-xl transition-all duration-300 hover:border-[#D6A556]/30 hover:bg-white/[0.06]">
-      <div className="absolute -right-4 -top-4 text-[80px] font-black text-white/[0.03] select-none">
+    <div className={`group relative overflow-hidden rounded-2xl border p-6 backdrop-blur-xl transition-all duration-300 ${
+      isDark
+        ? "border-white/5 bg-white/[0.03] hover:border-[#D6A556]/30 hover:bg-white/[0.06]"
+        : "border-gray-200 bg-white/50 hover:border-[#D6A556]/50 hover:bg-white/80"
+    }`}>
+      <div className={`absolute -right-4 -top-4 text-[80px] font-black select-none ${
+        isDark ? "text-white/[0.03]" : "text-gray-900/[0.03]"
+      }`}>
         {number}
       </div>
-      <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-[#D6A556]/20 bg-[#D6A556]/10 text-[#D6A556]">
-        <span className="text-lg font-bold">{number}</span>
+      <div className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl border text-lg font-bold ${
+        isDark
+          ? "border-[#D6A556]/20 bg-[#D6A556]/10 text-[#D6A556]"
+          : "border-[#D6A556]/30 bg-[#D6A556]/20 text-[#D6A556]"
+      }`}>
+        {number}
       </div>
-      <h4 className="mb-2 text-lg font-semibold text-white">{title}</h4>
-      <p className="text-sm leading-relaxed text-white/60">{desc}</p>
+      <h4 className={`mb-2 text-lg font-semibold ${isDark ? "text-white" : "text-gray-900"}`}>{title}</h4>
+      <p className={`text-sm leading-relaxed ${isDark ? "text-white/60" : "text-gray-600"}`}>{desc}</p>
     </div>
   );
 }
 
-function FeatureCard({ title, desc }: { title: string; desc: string }) {
+function FeatureCard({ title, desc, isDark }: { title: string; desc: string; isDark: boolean }) {
   return (
-    <div className="flex items-start gap-3 rounded-xl border border-white/5 bg-white/[0.02] p-4 transition-all duration-300 hover:border-[#D6A556]/20">
+    <div className={`flex items-start gap-3 rounded-xl border p-4 transition-all duration-300 ${
+      isDark
+        ? "border-white/5 bg-white/[0.02] hover:border-[#D6A556]/20"
+        : "border-gray-200 bg-gray-100/50 hover:border-[#D6A556]/30"
+    }`}>
       <div className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#D6A556]" />
       <div>
-        <h4 className="text-sm font-semibold text-white">{title}</h4>
-        <p className="mt-1 text-xs leading-relaxed text-white/50">{desc}</p>
+        <h4 className={`text-sm font-semibold ${isDark ? "text-white" : "text-gray-900"}`}>{title}</h4>
+        <p className={`mt-1 text-xs leading-relaxed ${isDark ? "text-white/50" : "text-gray-600"}`}>{desc}</p>
       </div>
     </div>
   );
 }
 
 export function LandingCopyTrading() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
   const pasos = [
     {
       title: "Abres tu cuenta",
@@ -70,18 +88,26 @@ export function LandingCopyTrading() {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      {/* Premium dark gradient background */}
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,#000418,#041935)]" />
+      {/* Background gradient */}
+      <div className={`absolute inset-0 ${
+        isDark
+          ? "bg-[linear-gradient(180deg,#000418,#041935)]"
+          : "bg-[linear-gradient(180deg,#ffffff,#f5f5f5)]"
+      }`} />
       
       {/* Soft glow effects */}
-      <div className="absolute left-1/4 top-20 h-96 w-96 rounded-full bg-[#041935]/40 blur-3xl" />
-      <div className="absolute right-1/4 bottom-20 h-96 w-96 rounded-full bg-[#D6A556]/10 blur-3xl" />
+      {isDark && (
+        <>
+          <div className="absolute left-1/4 top-20 h-96 w-96 rounded-full bg-[#041935]/40 blur-3xl" />
+          <div className="absolute right-1/4 bottom-20 h-96 w-96 rounded-full bg-[#D6A556]/10 blur-3xl" />
+        </>
+      )}
       
       {/* Subtle grid pattern */}
       <div 
-        className="absolute inset-0 opacity-[0.02]"
+        className={`absolute inset-0 ${isDark ? "opacity-[0.02]" : "opacity-[0.01]"}`}
         style={{
-          backgroundImage: `linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(to right, ${isDark ? 'white' : 'gray'} 1px, transparent 1px), linear-gradient(to bottom, ${isDark ? 'white' : 'gray'} 1px, transparent 1px)`,
           backgroundSize: '60px 60px'
         }}
       />
@@ -92,7 +118,11 @@ export function LandingCopyTrading() {
         <AnimatedItem>
           <div className="mx-auto max-w-4xl text-center">
             {/* Badge */}
-            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-[#D6A556]/20 bg-[#D6A556]/10 px-5 py-2">
+            <div className={`mb-8 inline-flex items-center gap-2 rounded-full border px-5 py-2 ${
+              isDark
+                ? "border-[#D6A556]/20 bg-[#D6A556]/10"
+                : "border-[#D6A556]/30 bg-[#D6A556]/20"
+            }`}>
               <span className="h-1.5 w-1.5 rounded-full bg-[#D6A556] animate-pulse" />
               <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[#D6A556]">
                 CopyTrading
@@ -100,7 +130,9 @@ export function LandingCopyTrading() {
             </div>
 
             {/* Main headline */}
-            <h1 className="text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h1 className={`text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl ${
+              isDark ? "text-white" : "text-gray-900"
+            }`}>
               Opera con{' '}
               <span className="text-[#D6A556]">estructura</span>.
               <br />
@@ -108,7 +140,9 @@ export function LandingCopyTrading() {
             </h1>
 
             {/* Subheadline */}
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/60 sm:text-lg">
+            <p className={`mx-auto mt-6 max-w-2xl text-base leading-relaxed sm:text-lg ${
+              isDark ? "text-white/60" : "text-gray-600"
+            }`}>
               CopyTrading te permite acompañar estrategias reales dentro de tu propia cuenta, 
               con control y claridad.
             </p>
@@ -118,7 +152,11 @@ export function LandingCopyTrading() {
               {["Sin experiencia previa", "Operaciones reales", "Tú mantienes el control"].map((item) => (
                 <div 
                   key={item} 
-                  className="rounded-full border border-white/10 bg-white/[0.05] px-5 py-2.5 text-sm text-white/70 backdrop-blur-sm transition-all duration-300 hover:border-[#D6A556]/30 hover:bg-[#D6A556]/5"
+                  className={`rounded-full border px-5 py-2.5 text-sm backdrop-blur-sm transition-all duration-300 ${
+                    isDark
+                      ? "border-white/10 bg-white/[0.05] text-white/70 hover:border-[#D6A556]/30 hover:bg-[#D6A556]/5"
+                      : "border-gray-300 bg-white/50 text-gray-700 hover:border-[#D6A556]/40 hover:bg-white/80"
+                  }`}
                 >
                   {item}
                 </div>
@@ -146,26 +184,28 @@ export function LandingCopyTrading() {
             {/* Text on left */}
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#D6A556]">Estrategia real</p>
-              <h2 className="mt-4 text-3xl font-bold leading-tight text-white sm:text-4xl">
+              <h2 className={`mt-4 text-3xl font-bold leading-tight sm:text-4xl ${
+                isDark ? "text-white" : "text-gray-900"
+              }`}>
                 No se trata de promesas rápidas.
                 <br />
-                <span className="text-white/60">Se trata de operar con estructura.</span>
+                <span className={isDark ? "text-white/60" : "text-gray-600"}>Se trata de operar con estructura.</span>
               </h2>
-              <p className="mt-6 text-sm leading-relaxed text-white/50">
+              <p className={`mt-6 text-sm leading-relaxed ${isDark ? "text-white/50" : "text-gray-600"}`}>
                 Un entorno diseñado para que aprendas viendo operaciones reales, 
                 con seguimiento constante y sin perder el control de tu cuenta.
               </p>
 
               <div className="mt-8 space-y-3">
-                <FeatureCard 
+                <FeatureCard isDark={isDark}
                   title="Seguimiento continuo" 
                   desc="Monitorea cada operación en tiempo real" 
                 />
-                <FeatureCard 
+                <FeatureCard isDark={isDark}
                   title="Control total" 
                   desc="Tu cuenta, tus reglas, tu decisión" 
                 />
-                <FeatureCard 
+                <FeatureCard isDark={isDark}
                   title="Estrategia aplicada" 
                   desc="Aprende viendo cómo se ejecutan las operaciones" 
                 />
@@ -174,7 +214,11 @@ export function LandingCopyTrading() {
 
             {/* Image on right */}
             <div className="relative">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/5 bg-white/[0.02]">
+              <div className={`relative aspect-[4/3] overflow-hidden rounded-3xl border ${
+                isDark
+                  ? "border-white/5 bg-white/[0.02]"
+                  : "border-gray-300 bg-gray-100"
+              }`}>
                 <Image
                   src="/images/copy/pantalla.jpg"
                   alt="Trading screens and analysis"
@@ -182,14 +226,22 @@ export function LandingCopyTrading() {
                   className="object-cover opacity-90"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_40%,#041935_100%)]" />
+                <div className={`absolute inset-0 ${
+                  isDark
+                    ? "bg-[linear-gradient(180deg,transparent_40%,#041935_100%)]"
+                    : "bg-[linear-gradient(180deg,transparent_40%,rgba(255,255,255,0.8)_100%)]"
+                }`} />
                 
                 {/* Floating stats */}
-                <div className="absolute bottom-6 left-6 right-6 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl">
+                <div className={`absolute bottom-6 left-6 right-6 rounded-2xl border p-5 backdrop-blur-xl ${
+                  isDark
+                    ? "border-white/10 bg-white/5"
+                    : "border-white/30 bg-white/60"
+                }`}>
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-xs text-white/50">Rendimiento</p>
-                      <p className="mt-1 text-2xl font-bold text-white">+%</p>
+                      <p className={`text-xs ${isDark ? "text-white/50" : "text-gray-600"}`}>Rendimiento</p>
+                      <p className={`mt-1 text-2xl font-bold ${isDark ? "text-white" : "text-gray-900"}`}>+%</p>
                     </div>
                     <div className="rounded-full border border-[#D6A556]/20 bg-[#D6A556]/10 px-4 py-2 text-sm font-semibold text-[#D6A556]">
                       Verificado
@@ -199,7 +251,11 @@ export function LandingCopyTrading() {
               </div>
 
               {/* Decorative elements */}
-              <div className="absolute -bottom-6 -right-6 h-32 w-32 rounded-2xl border border-[#D6A556]/10 bg-[#D6A556]/5 blur-xl" />
+              <div className={`absolute -bottom-6 -right-6 h-32 w-32 rounded-2xl border blur-xl ${
+                isDark
+                  ? "border-[#D6A556]/10 bg-[#D6A556]/5"
+                  : "border-[#D6A556]/20 bg-[#D6A556]/10"
+              }`} />
             </div>
           </div>
         </AnimatedItem>
@@ -209,16 +265,22 @@ export function LandingCopyTrading() {
           <div className="mt-24">
             <div className="mx-auto max-w-3xl text-center">
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#D6A556]">¿Qué es?</p>
-              <h2 className="mt-4 text-3xl font-bold text-white sm:text-4xl">
+              <h2 className={`mt-4 text-3xl font-bold sm:text-4xl ${
+                isDark ? "text-white" : "text-gray-900"
+              }`}>
                 What is CopyTrading
               </h2>
             </div>
 
             <div className="mx-auto mt-8 max-w-2xl">
-              <div className="rounded-3xl border border-white/5 bg-white/[0.03] p-8 backdrop-blur-xl">
-                <p className="text-center text-base leading-relaxed text-white/60">
+              <div className={`rounded-3xl border p-8 backdrop-blur-xl ${
+                isDark
+                  ? "border-white/5 bg-white/[0.03]"
+                  : "border-gray-300 bg-white/50"
+              }`}>
+                <p className={`text-center text-base leading-relaxed ${isDark ? "text-white/60" : "text-gray-700"}`}>
                   Una herramienta que te permite replicar operaciones de traders experimentados 
-                  dentro de tu propia cuenta. <span className="text-white">Tú mantienes el control</span>, 
+                  dentro de tu propia cuenta. <span className={isDark ? "text-white" : "text-gray-900"}>Tú mantienes el control</span>, 
                   decides cuánto invertir y puedes detener la replicación en cualquier momento.
                 </p>
               </div>
@@ -231,7 +293,9 @@ export function LandingCopyTrading() {
           <div className="mt-24">
             <div className="mx-auto max-w-3xl text-center">
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#D6A556]">Proceso</p>
-              <h2 className="mt-4 text-3xl font-bold text-white sm:text-4xl">
+              <h2 className={`mt-4 text-3xl font-bold sm:text-4xl ${
+                isDark ? "text-white" : "text-gray-900"
+              }`}>
                 Cómo funciona
               </h2>
             </div>
@@ -239,7 +303,8 @@ export function LandingCopyTrading() {
             <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {pasos.map((paso, index) => (
                 <StepCard 
-                  key={paso.title} 
+                  key={paso.title}
+                  isDark={isDark}
                   number={index + 1} 
                   title={paso.title} 
                   desc={paso.desc} 
@@ -252,8 +317,14 @@ export function LandingCopyTrading() {
         {/* Final Bold Statement */}
         <AnimatedItem delay={0.25}>
           <div className="mt-24 text-center">
-            <div className="mx-auto max-w-3xl rounded-3xl border border-[#D6A556]/10 bg-[#D6A556]/5 p-10 backdrop-blur-xl">
-              <p className="text-2xl font-bold leading-tight text-white sm:text-3xl lg:text-4xl">
+            <div className={`mx-auto max-w-3xl rounded-3xl border p-10 backdrop-blur-xl ${
+              isDark
+                ? "border-[#D6A556]/10 bg-[#D6A556]/5"
+                : "border-[#D6A556]/20 bg-[#D6A556]/10"
+            }`}>
+              <p className={`text-2xl font-bold leading-tight sm:text-3xl lg:text-4xl ${
+                isDark ? "text-white" : "text-gray-900"
+              }`}>
                 Aprendes viendo operaciones reales{' '}
                 <span className="text-[#D6A556]">sin perder el control</span>{' '}
                 de tu cuenta.
