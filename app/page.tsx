@@ -2,9 +2,9 @@ import { LandingHeader } from "@/components/landing/landing-header";
 import { LandingHero } from "@/components/landing/landing-hero";
 import { LandingCompanySection } from "@/components/landing/landing-company-section";
 import { LandingFocusCards } from "@/components/landing/landing-focus-cards";
-import { LandingBenefits } from "@/components/landing/landing-benefits";
+// import { LandingBenefits } from "@/components/landing/landing-benefits";
 import { LandingTestimonials } from "@/components/landing/landing-testimonials";
-import { LandingTeam } from "@/components/landing/landing-team";
+// import { LandingTeam } from "@/components/landing/landing-team";
 import { LandingContact } from "@/components/landing/landing-contact";
 import { LandingFooter } from "@/components/landing/landing-footer";
 
@@ -16,7 +16,7 @@ export default function Home() {
         <LandingHero />
         <LandingCompanySection />
         <LandingFocusCards />
-        <LandingBenefits />
+        {/* <LandingBenefits /> */}
         <LandingTestimonials />
         {/* <LandingTeam /> */}
       </main>

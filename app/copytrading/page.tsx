@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { LandingHeader } from "@/components/landing/landing-header";
 import { LandingCopyTrading } from "@/components/landing/landing-copytrading";
 
@@ -10,14 +9,21 @@ export const metadata: Metadata = {
 
 export default function CopyTradingPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="relative min-h-screen">
+      <div className="absolute inset-0 -z-10 bg-background" />
+      <div 
+        className="absolute inset-0 -z-10 opacity-[0.03] dark:opacity-[0.02]"
+        style={{
+          backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px),
+            linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
+          backgroundSize: '64px 64px'
+        }}
+      />
+      <div className="absolute inset-0 -z-10 hidden dark:block bg-[radial-gradient(circle_at_top,rgba(74,144,226,0.08),transparent_45%),linear-gradient(180deg,#000208,#050b18)]" />
+      <div className="absolute inset-0 -z-10 dark:hidden bg-[radial-gradient(circle_at_top,rgba(214,165,86,0.06),transparent_45%),linear-gradient(180deg,#ffffff,#fafafa)]" />
+      
       <LandingHeader />
-      <main className="pt-16">
-        {/* <div className="mx-auto max-w-6xl px-4 pt-8 sm:px-6 lg:px-8">
-          <Link href="/#explora" className="inline-flex rounded-full border border-border px-4 py-2 text-sm text-muted-foreground transition hover:border-[var(--brand-gold)] hover:text-foreground">
-            Volver a las cards
-          </Link>
-        </div> */}
+      <main className="relative z-10 pt-16">
         <LandingCopyTrading />
       </main>
     </div>

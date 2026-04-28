@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { useTheme } from "@/components/theme-provider";
 
 // Premium thin-line icons
 function ShieldCheckIcon({ className }: { className?: string }) {
@@ -112,6 +113,8 @@ const benefits = [
 ];
 
 export function LandingBenefits() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
   const [isPaused, setIsPaused] = useState(false);
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -146,25 +149,18 @@ export function LandingBenefits() {
   };
 
   return (
-    <section id="beneficios" ref={containerRef} className="relative overflow-hidden px-6 py-16 sm:py-20 lg:py-24">
-      {/* Dark gradient background with glows */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-white dark:hidden" />
-        <div className="absolute inset-0 hidden bg-linear-to-b from-slate-950 via-[#0a1428]/95 to-slate-950 dark:block" />
-        <div className="absolute -top-40 left-1/4 h-80 w-80 rounded-full bg-blue-500/8 blur-3xl dark:bg-blue-900/10" />
-        <div className="absolute bottom-0 right-1/3 h-96 w-96 rounded-full bg-blue-500/8 blur-3xl dark:bg-blue-900/10" />
-      </div>
+    <section id="beneficios" ref={containerRef} className="relative px-4 py-10 sm:py-12">
 
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         {/* Header Section */}
-        <div className="mb-10 text-center sm:mb-12">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#D6A556] dark:text-[#D6A556]">
+        <div className="mb-8 text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#D6A556]">
             ¿Por qué elegirnos?
           </p>
-          <h2 className="mt-3 text-4xl font-black tracking-tight text-slate-950 dark:text-white sm:text-5xl">
+          <h2 className={`mt-2 text-2xl font-bold tracking-tight sm:text-3xl ${isDark ? "text-white" : "text-gray-900"}`}>
             Una forma más inteligente de convertirse en trader
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600 dark:text-white/70">
+          <p className={`mx-auto mt-3 max-w-xl text-sm ${isDark ? "text-white/60" : "text-gray-600"}`}>
             Menos ruido. Más claridad. Un sistema diseñado para resultados reales.
           </p>
         </div>
@@ -172,9 +168,9 @@ export function LandingBenefits() {
         {/* Horizontal Auto-Scrolling Carousel */}
         <div className="relative overflow-hidden">
           {/* Left gradient mask */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent dark:from-slate-950 z-10 pointer-events-none" />
-          {/* Right gradient mask */}
-          <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent dark:from-slate-950 z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-16 z-10 pointer-events-none bg-gradient-to-r from-white to-transparent dark:from-transparent dark:to-transparent" />
+          {/* Right gradient mask */} 
+          <div className="absolute right-0 top-0 bottom-0 w-16 z-10 pointer-events-none bg-gradient-to-l from-white to-transparent dark:from-transparent dark:to-transparent" />
 
           {/* Carousel inner container - Fixed elegant speed */}
           <div
@@ -192,27 +188,22 @@ export function LandingBenefits() {
               return (
                 <div
                   key={`${benefit.title}-${index}`}
-                  className={`relative min-w-[280px] sm:min-w-[320px] p-6 rounded-xl border transition-all duration-300 cursor-pointer ${
+                  className={`relative min-w-[240px] sm:min-w-[280px] p-4 rounded-xl border transition-all duration-300 cursor-pointer ${
                     isSelected
-                      ? "border-[#D6A556] bg-[#D6A556]/80 shadow-lg shadow-[#D6A556]/20 dark:bg-[#D6A556]/15 dark:border-[#D6A556]"
-                      : "border-slate-200 bg-white shadow-sm hover:border-[#D6A556]/50 hover:shadow-md dark:border-white/5 dark:bg-white/[0.03] dark:hover:border-[#D6A556]/30 dark:hover:bg-white/10"
+                      ? "border-[#D6A556] bg-[#D6A556]/10"
+                      : isDark
+                        ? "border-white/5 bg-white/[0.03] hover:border-[#D6A556]/30 hover:bg-white/[0.06]"
+                        : "border-gray-200 bg-white hover:border-[#D6A556]/50 hover:shadow-md"
                   }`}
                   onClick={(e) => handleCardClick(e, index)}
                 >
-                  {/* Animated blue bottom border on selected card */}
-                  {isSelected && (
-                    <div className="absolute bottom-0 left-0 right-0 h-0.5 overflow-hidden">
-                      <div className="h-full bg-linear-to-r from-transparent via-[#D6A556] to-transparent animate-pulse" />
-                    </div>
-                  )}
-                  
-                  <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[#D6A556]/20 bg-[#D6A556]/10 text-[#D6A556] dark:border-[#D6A556]/20 dark:bg-[#D6A556]/10 dark:text-[#D6A556]">
-                    <Icon className="h-5 w-5" />
+                  <div className={`mb-3 inline-flex h-8 w-8 items-center justify-center rounded-lg border border-[#D6A556]/20 bg-[#D6A556]/10 text-[#D6A556]`}>
+                    <Icon className="h-4 w-4" />
                   </div>
-                  <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-2">
+                  <h3 className={`text-sm font-semibold ${isDark ? "text-white" : "text-gray-900"} mb-1`}>
                     {benefit.title}
                   </h3>
-                  <p className="text-xs leading-relaxed text-slate-600 dark:text-white/70">
+                  <p className={`text-xs leading-relaxed ${isDark ? "text-white/60" : "text-gray-600"}`}>
                     {benefit.desc}
                   </p>
                 </div>
@@ -221,10 +212,10 @@ export function LandingBenefits() {
           </div>
         </div>
 
-        {/* Custom thin blue progress bar (elegant scroll indicator) */}
-        <div className="mt-6 h-[2px] bg-slate-200/50 dark:bg-white/5 rounded-full overflow-hidden">
+        {/* Custom thin progress bar */}
+        <div className={`mt-6 h-[2px] ${isDark ? "bg-white/5" : "bg-gray-200"} rounded-full overflow-hidden`}>
           <div 
-            className="h-full bg-linear-to-r from-[#041935] via-[#D6A556] to-[#041935] rounded-full"
+            className={`h-full bg-gradient-to-r ${isDark ? "from-[#041935] via-[#D6A556] to-[#041935]" : "from-gray-400 via-[#D6A556] to-gray-400"} rounded-full`}
             style={{
               animation: 'progress 45s linear infinite',
               animationPlayState: isPaused ? "paused" : "running",
