@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function LandingFooter() {
   return (
     <footer className="border-t border-white/12 bg-[#0e1427] text-white">
@@ -13,7 +15,10 @@ export function LandingFooter() {
           <p className="mt-3 text-sm text-[rgba(255,255,255,0.65)]">© 2026 Grupo Trade Corp</p>
         </div>
 
-        <div className="flex flex-wrap gap-2 text-sm text-[rgba(255,255,255,0.72)]">
+        <div className="flex flex-wrap items-center gap-2 text-sm text-[rgba(255,255,255,0.72)]">
+          <Link href="/team" className="rounded-full bg-[#D6A556] px-5 py-2.5 font-semibold text-[#0b1020] transition hover:bg-[#e0b365]">
+            Equipo de trabajo
+          </Link>
           <a href="#" className="rounded-full border border-white/18 px-4 py-2 hover:bg-white/8">Términos y condiciones</a>
           <a href="#" className="rounded-full border border-white/18 px-4 py-2 hover:bg-white/8">Privacidad</a>
           <a href="#contacto" className="rounded-full border border-white/18 px-4 py-2 hover:bg-white/8">Contacto</a>

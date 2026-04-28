@@ -4,6 +4,7 @@ import { LandingCompanySection } from "@/components/landing/landing-company-sect
 import { LandingFocusCards } from "@/components/landing/landing-focus-cards";
 import { LandingBenefits } from "@/components/landing/landing-benefits";
 import { LandingTestimonials } from "@/components/landing/landing-testimonials";
+import { LandingTeam } from "@/components/landing/landing-team";
 import { LandingContact } from "@/components/landing/landing-contact";
 import { LandingFooter } from "@/components/landing/landing-footer";
 
@@ -17,6 +18,7 @@ export default function Home() {
         <LandingFocusCards />
         <LandingBenefits />
         <LandingTestimonials />
+        {/* <LandingTeam /> */}
       </main>
       <LandingContact />
       <LandingFooter />

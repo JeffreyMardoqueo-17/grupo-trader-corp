@@ -44,7 +44,7 @@ export function LandingCompanySection() {
               />
             </div>
             {/* Decorative glow */}
-            <div className={`absolute -left-6 -top-6 h-32 w-32 rounded-full blur-3xl ${isDark ? "bg-[#4A90E2]/20" : "bg-[#4A90E2]/10"}`} />
+            <div className={`absolute -left-6 -top-6 h-32 w-32 rounded-full blur-3xl ${isDark ? "bg-[#D6A556]/20" : "bg-[#D6A556]/10"}`} />
           </motion.div>
 
           {/* Right: Content */}
@@ -57,7 +57,7 @@ export function LandingCompanySection() {
           >
             <span
               className={`inline-block text-sm font-medium tracking-[0.2em] uppercase ${
-                isDark ? "text-[#4A90E2]" : "text-[#4A90E2]"
+                isDark ? "text-[#D6A556]" : "text-[#D6A556]"
               }`}
             >
               Grupo Trade Corp
@@ -69,7 +69,7 @@ export function LandingCompanySection() {
               }`}
             >
               Una forma{" "}
-              <span className="text-[#4A90E2]">estructurada</span> de aprender y operar en los mercados
+              <span className="text-[#D6A556]">estructurada</span> de aprender y operar en los mercados
             </h2>
 
             <p
@@ -105,15 +105,15 @@ export function LandingCompanySection() {
               }`}
             >
               <div>
-                <p className="text-3xl font-bold text-[#4A90E2]">500+</p>
+                <p className="text-3xl font-bold text-[#D6A556]">500+</p>
                 <p className={`text-sm ${isDark ? "text-white/40" : "text-gray-400"}`}>Traders activos</p>
               </div>
               <div>
-                <p className="text-3xl font-bold text-[#4A90E2]">+10</p>
+                <p className="text-3xl font-bold text-[#D6A556]">+10</p>
                 <p className={`text-sm ${isDark ? "text-white/40" : "text-gray-400"}`}>Años de experiencia</p>
               </div>
               <div>
-                <p className="text-3xl font-bold text-[#4A90E2]">100%</p>
+                <p className="text-3xl font-bold text-[#D6A556]">100%</p>
                 <p className={`text-sm ${isDark ? "text-white/40" : "text-gray-400"}`}>Metodología probada</p>
               </div>
             </div>
@@ -122,7 +122,7 @@ export function LandingCompanySection() {
             <div className="mt-8">
               <a
                 href="#academia"
-                className="inline-flex items-center gap-2 rounded-xl bg-[#4A90E2] px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#4A90E2]/90"
+                className="inline-flex items-center gap-2 rounded-xl bg-[#D6A556] px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#D6A556]/90"
               >
                 Conocer la academia
                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

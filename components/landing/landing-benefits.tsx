@@ -158,7 +158,7 @@ export function LandingBenefits() {
       <div className="mx-auto max-w-6xl">
         {/* Header Section */}
         <div className="mb-10 text-center sm:mb-12">
-          <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 dark:text-blue-400">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#D6A556] dark:text-[#D6A556]">
             ¿Por qué elegirnos?
           </p>
           <h2 className="mt-3 text-4xl font-black tracking-tight text-slate-950 dark:text-white sm:text-5xl">
@@ -194,19 +194,19 @@ export function LandingBenefits() {
                   key={`${benefit.title}-${index}`}
                   className={`relative min-w-[280px] sm:min-w-[320px] p-6 rounded-xl border transition-all duration-300 cursor-pointer ${
                     isSelected
-                      ? "border-blue-500 bg-blue-50/80 shadow-lg shadow-blue-500/20 dark:bg-blue-500/15 dark:border-blue-400"
-                      : "border-slate-200 bg-white shadow-sm hover:border-blue-400/50 hover:shadow-md dark:border-white/5 dark:bg-white/[0.03] dark:hover:border-blue-400/30 dark:hover:bg-white/10"
+                      ? "border-[#D6A556] bg-[#D6A556]/80 shadow-lg shadow-[#D6A556]/20 dark:bg-[#D6A556]/15 dark:border-[#D6A556]"
+                      : "border-slate-200 bg-white shadow-sm hover:border-[#D6A556]/50 hover:shadow-md dark:border-white/5 dark:bg-white/[0.03] dark:hover:border-[#D6A556]/30 dark:hover:bg-white/10"
                   }`}
                   onClick={(e) => handleCardClick(e, index)}
                 >
                   {/* Animated blue bottom border on selected card */}
                   {isSelected && (
                     <div className="absolute bottom-0 left-0 right-0 h-0.5 overflow-hidden">
-                      <div className="h-full bg-linear-to-r from-transparent via-blue-500 to-transparent animate-pulse" />
+                      <div className="h-full bg-linear-to-r from-transparent via-[#D6A556] to-transparent animate-pulse" />
                     </div>
                   )}
                   
-                  <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-blue-400/20 bg-blue-400/10 text-blue-600 dark:border-blue-500/20 dark:bg-blue-500/10 dark:text-blue-400">
+                  <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[#D6A556]/20 bg-[#D6A556]/10 text-[#D6A556] dark:border-[#D6A556]/20 dark:bg-[#D6A556]/10 dark:text-[#D6A556]">
                     <Icon className="h-5 w-5" />
                   </div>
                   <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-2">

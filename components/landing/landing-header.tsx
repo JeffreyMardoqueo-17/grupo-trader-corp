@@ -8,8 +8,9 @@ import { useTheme } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 const navItems = [
-  { href: "/#inicio", label: "Inicio" },
+  { href: "/", label: "Inicio" },
   { href: "/#nosotros", label: "Nosotros" },
+  { href: "/#equipo", label: "Equipo" },
   { href: "/denis", label: "Denis" },
   { href: "/academia", label: "Academia" },
   { href: "/copytrading", label: "CopyTrading" },
@@ -29,7 +30,7 @@ export function LandingHeader() {
       return;
     }
 
-    const trackableSections = ["inicio", "nosotros", "contacto"];
+    const trackableSections = ["inicio", "nosotros", "equipo", "contacto"];
 
     const updateFromScroll = () => {
       if (window.scrollY < 120) {

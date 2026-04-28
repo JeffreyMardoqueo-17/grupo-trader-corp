@@ -119,7 +119,7 @@ export function WhatsAppForm({ className }: WhatsAppFormProps) {
       <div className="mt-6">
         <button
           type="submit"
-          className="inline-flex w-full items-center justify-center rounded-full bg-[#0b1020] px-7 py-3 text-sm font-semibold text-white transition hover:opacity-95 dark:bg-white dark:text-[#0b1020]"
+          className="inline-flex w-full items-center justify-center rounded-full bg-[#0b1020] px-7 py-3 text-sm font-semibold text-white transition hover:opacity-95 dark:bg-[#D6A556] dark:text-[#0b1020]"
         >
           Enviar mensaje
         </button>
