@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useTheme } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -17,13 +18,79 @@ const navItems = [
 
 export function LandingHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeHref, setActiveHref] = useState("/#inicio");
+  const pathname = usePathname();
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
-  const linkBase = "px-4 py-2 text-sm font-medium transition-all duration-300 relative";
+  useEffect(() => {
+    if (pathname !== "/") {
+      setActiveHref(pathname);
+      return;
+    }
+
+    const trackableSections = ["inicio", "nosotros", "contacto"];
+
+    const updateFromScroll = () => {
+      if (window.scrollY < 120) {
+        setActiveHref("/#inicio");
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntries = entries.filter((entry) => entry.isIntersecting);
+        if (visibleEntries.length === 0) {
+          updateFromScroll();
+          return;
+        }
+
+        const topEntry = visibleEntries.sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        const sectionId = topEntry.target.getAttribute("id");
+        if (sectionId) {
+          setActiveHref(`/#${sectionId}`);
+        }
+      },
+      {
+        threshold: [0.2, 0.4, 0.6],
+        rootMargin: "-15% 0px -55% 0px",
+      }
+    );
+
+    trackableSections.forEach((id) => {
+      const section = document.getElementById(id);
+      if (section) {
+        observer.observe(section);
+      }
+    });
+
+    updateFromScroll();
+    window.addEventListener("scroll", updateFromScroll, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", updateFromScroll);
+    };
+  }, [pathname]);
+
+  const linkBase = "px-4 py-2 text-sm font-medium transition-all duration-300 relative rounded-full border";
   const linkStyle = isDark 
     ? "text-white/70 hover:text-white" 
     : "text-[#0e1427]/70 hover:text-[#0e1427]";
+
+  const activeLinkStyle = isDark
+    ? "border-white/25 bg-white/10 text-white"
+    : "border-[#0e1427]/20 bg-[#0e1427]/5 text-[#0e1427]";
+
+  const defaultLinkBorder = "border-transparent";
+
+  const isLinkActive = (href: string) => {
+    if (href.startsWith("/#")) {
+      return pathname === "/" && activeHref === href;
+    }
+
+    return pathname === href;
+  };
 
   return (
     <>
@@ -38,7 +105,7 @@ export function LandingHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`${linkBase} ${linkStyle}`}
+                className={`${linkBase} ${linkStyle} ${isLinkActive(item.href) ? activeLinkStyle : defaultLinkBorder}`}
               >
                 {item.label}
               </Link>
@@ -94,9 +161,13 @@ export function LandingHeader() {
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className={`px-4 py-3 text-base font-medium rounded-lg transition ${
-                  isDark 
-                    ? "text-white/70 hover:text-white hover:bg-white/5" 
-                    : "text-[#0e1427]/70 hover:text-[#0e1427] hover:bg-gray-100"
+                  isLinkActive(item.href)
+                    ? isDark
+                      ? "text-white bg-white/10 border border-white/20"
+                      : "text-[#0e1427] bg-[#0e1427]/5 border border-[#0e1427]/15"
+                    : isDark
+                      ? "text-white/70 hover:text-white hover:bg-white/5 border border-transparent"
+                      : "text-[#0e1427]/70 hover:text-[#0e1427] hover:bg-gray-100 border border-transparent"
                 }`}
               >
                 {item.label}
