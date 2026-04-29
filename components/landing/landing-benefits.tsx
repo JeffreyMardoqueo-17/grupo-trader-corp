@@ -149,7 +149,7 @@ export function LandingBenefits() {
   };
 
   return (
-    <section id="beneficios" ref={containerRef} className="relative px-4 py-10 sm:py-12">
+     <section id="beneficios" ref={containerRef} className="relative px-4 py-10 sm:py-12 overflow-x-hidden">
 
       <div className="mx-auto max-w-7xl">
         {/* Header Section */}
