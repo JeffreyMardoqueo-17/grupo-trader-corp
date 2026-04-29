@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useTheme } from "@/components/theme-provider";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { LandingContact } from "./landing-contact";
+ 
 
 function PlayIcon({ className }: { className?: string }) {
   return (

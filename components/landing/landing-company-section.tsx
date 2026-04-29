@@ -6,6 +6,22 @@ import { useTheme } from "@/components/theme-provider";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { useState, useEffect } from "react";
 
+// Slides definidos fuera del componente para evitar recreación en cada render
+const slides = [
+  {
+    image: "/images/nosotros/asesoramiento.jpg",
+    phrase: "Asesoramiento claro y conciso",
+  },
+  {
+    image: "/images/nosotros/asesoramientodelamano.jpg",
+    phrase: "Acompañamiento especializado en cada paso",
+  },
+  {
+    image: "/images/nosotros/eventostradercorps.jpg",
+    phrase: "Eventos traders donde la comunidad es lo primero",
+  },
+];
+
 export function LandingCompanySection() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
@@ -32,7 +48,7 @@ export function LandingCompanySection() {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, [slides.length]);
+  }, []);
 
   const academyWhatsAppLink = buildWhatsAppLink(
     "Hola buen día, quisiera saber más información sobre la academia de trading."

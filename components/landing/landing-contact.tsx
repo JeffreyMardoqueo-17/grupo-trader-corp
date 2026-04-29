@@ -6,31 +6,33 @@ import { useTheme } from "@/components/theme-provider";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+// Pasar la definición de pasos fuera del componente para evitar recrearla en cada render
+const steps = [
+  {
+    number: "01",
+    title: "Diagnóstico inicial",
+    description:
+      "Escuchamos su meta, entendemos su contexto y detectamos el mejor punto de partida.",
+  },
+  {
+    number: "02",
+    title: "Estrategia clara",
+    description:
+      "Traducimos la idea en una ruta accionable, medible y aterrizada a su realidad.",
+  },
+  {
+    number: "03",
+    title: "Seguimiento con disciplina",
+    description:
+      "No se trata solo de empezar bien, sino de sostener el avance con orden y enfoque.",
+  },
+];
+
 export function LandingContact() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
   const [currentStep, setCurrentStep] = useState(0);
-
-  const steps = [
-    {
-      number: "01",
-      title: "Diagnóstico inicial",
-      description:
-        "Escuchamos su meta, entendemos su contexto y detectamos el mejor punto de partida.",
-    },
-    {
-      number: "02",
-      title: "Estrategia clara",
-      description:
-        "Traducimos la idea en una ruta accionable, medible y aterrizada a su realidad.",
-    },
-    {
-      number: "03",
-      title: "Seguimiento con disciplina",
-      description:
-        "No se trata solo de empezar bien, sino de sostener el avance con orden y enfoque.",
-    },
-  ];
+ 
 
   // Auto scroll carrusel cada 5 segundos
   useEffect(() => {
@@ -38,7 +40,7 @@ export function LandingContact() {
       setCurrentStep((prev) => (prev + 1) % steps.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, [steps.length]);
+  }, []);
 
   return (
     <section
@@ -79,7 +81,7 @@ export function LandingContact() {
                 className="space-y-6"
               >
                 <div
-                  className={`text-6xl lg:text-7xl font-black ${isDark ? "text-white" : "text-gray-100"}`}
+                  className={`text-6xl lg:text-7xl font-black text-[#D6A556]`}
                 >
                   {steps[currentStep].number}
                 </div>
