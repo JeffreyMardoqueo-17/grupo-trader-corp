@@ -27,21 +27,6 @@ export function LandingCompanySection() {
   const isDark = theme === "dark";
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const slides = [
-    {
-      image: "/images/nosotros/asesoramiento.jpg",
-      phrase: "Asesoramiento claro y conciso",
-    },
-    {
-      image: "/images/nosotros/asesoramientodelamano.jpg",
-      phrase: "Acompañamiento especializado en cada paso",
-    },
-    {
-      image: "/images/nosotros/eventostradercorps.jpg",
-      phrase: "Eventos traders donde la comunidad es lo primero",
-    },
-  ];
-
   // Auto scroll carrusel cada 5 segundos
   useEffect(() => {
     const interval = setInterval(() => {
@@ -55,7 +40,7 @@ export function LandingCompanySection() {
   );
 
   return (
-    <section id="nosotros" className={`py-20 lg:py-32 ${isDark ? "bg-gradient-to-b from-[#000208] via-[#041935] to-[#000208]" : "bg-white"}`}>
+    <section id="nosotros" className={`py-20 lg:py-32 ${isDark ? "bg-linear-to-b from-[#000208] via-[#041935] to-[#000208]" : "bg-white"}`}>
       {/* Background glow effects */}
       {isDark && (
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(74,144,226,0.1),transparent_50%)]" />
@@ -79,14 +64,14 @@ export function LandingCompanySection() {
           >
             {/* Carrusel Container */}
             <div className="space-y-4">
-              <div className={`relative aspect-[4/3] overflow-hidden rounded-3xl ${isDark ? "ring-1 ring-white/5" : "shadow-2xl"}`}>
+              <div className={`relative aspect-4/3 overflow-hidden rounded-3xl ${isDark ? "ring-1 ring-white/5" : "shadow-2xl"}`}>
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentSlide}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 0.1}}
                     className="relative w-full h-full"
                   >
                     <Image
@@ -97,7 +82,7 @@ export function LandingCompanySection() {
                       sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                     <div
-                      className={`absolute inset-0 ${isDark ? "bg-gradient-to-tr from-[#000208]/40 to-transparent" : "bg-gradient-to-tr from-black/20 to-transparent"}`}
+                      className={`absolute inset-0 ${isDark ? "bg-linear-to-tr from-[#000208]/40 to-transparent" : "bg-linear-to-tr from-black/20 to-transparent"}`}
                     />
                   </motion.div>
                 </AnimatePresence>

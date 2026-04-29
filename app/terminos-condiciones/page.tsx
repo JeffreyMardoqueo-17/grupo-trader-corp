@@ -169,18 +169,17 @@ export default function TerminosCondiciones() {
       <LandingHeader />
 
       <div
-        className="fixed left-0 top-0 z-[60] h-1 bg-linear-to-r from-[#D6A556] to-[#F4D03F] transition-all duration-150"
+        className="fixed left-0 top-0 z-60 h-1 bg-linear-to-r from-[#D6A556] to-[#F4D03F] transition-all duration-150"
         style={{ width: `${scrollProgress}%` }}
       />
 
       <section className="w-full px-6 pb-16 pt-24 lg:px-10 lg:pt-28">
-        <div className="mx-auto w-full max-w-[1400px] grid grid-cols-1 xl:grid-cols-[280px_1fr] gap-12 xl:gap-16">
-          1
-       <aside className="hidden xl:block sticky top-24 h-fit">
+        <div className="mx-auto w-full max-w-350 grid grid-cols-1 xl:grid-cols-[280px_1fr] gap-12 xl:gap-16">
+          <aside className="hidden xl:block sticky top-24 h-fit">
             <div
               className={`rounded-[30px] border p-5 sm:p-6 ${
                 isDark
-                  ? "border-white/10 bg-white/[0.03] shadow-[0_24px_80px_rgba(0,0,0,0.22)]"
+                  ? "border-white/10 bg-white/3 shadow-[0_24px_80px_rgba(0,0,0,0.22)]"
                   : "border-neutral-200 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.06)]"
               }`}
             >
@@ -202,10 +201,10 @@ export default function TerminosCondiciones() {
                       className={`group relative flex w-full items-center gap-3 overflow-hidden rounded-2xl border px-4 py-3.5 text-left transition-all duration-200 ${
                         isActive
                           ? isDark
-                            ? "border-white/10 bg-white/[0.06] text-white"
+                            ? "border-white/10 bg-white/6 text-white"
                             : "border-neutral-200 bg-neutral-50 text-gray-950"
                           : isDark
-                            ? "border-transparent text-white/65 hover:border-white/10 hover:bg-white/[0.04] hover:text-white"
+                            ? "border-transparent text-white/65 hover:border-white/10 hover:bg-white/4 hover:text-white"
                             : "border-transparent text-gray-600 hover:border-neutral-200 hover:bg-neutral-50 hover:text-gray-950"
                       }`}
                     >
@@ -248,14 +247,14 @@ export default function TerminosCondiciones() {
               </div>
             </div>
           </aside>
-       <article className="min-w-0 space-y-12">
+          <article className="min-w-0 space-y-12">
             <motion.section
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, ease: "easeOut" }}
               className={`rounded-[32px] border px-6 py-8 sm:px-8 sm:py-10 ${
                 isDark
-                  ? "border-white/10 bg-white/[0.03] shadow-[0_30px_120px_rgba(0,0,0,0.28)]"
+                  ? "border-white/10 bg-white/3 shadow-[0_30px_120px_rgba(0,0,0,0.28)]"
                   : "border-neutral-200 bg-white shadow-[0_30px_120px_rgba(15,23,42,0.07)]"
               }`}
             >
@@ -264,7 +263,7 @@ export default function TerminosCondiciones() {
               >
                 Documento legal
               </p>
-              <div className="mt-4 max-w-[720px]">
+              <div className="mt-4 max-w-180">
                 <h1
                   className={`text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl ${isDark ? "text-white" : "text-gray-950"}`}
                 >
@@ -305,7 +304,7 @@ export default function TerminosCondiciones() {
                     {section.number}
                   </span>
 
-                  <div className="max-w-[650px]">
+                  <div className="max-w-162.5">
                     <h2
                       className={`text-3xl font-semibold tracking-tight sm:text-4xl ${isDark ? "text-white" : "text-gray-950"}`}
                     >
@@ -357,7 +356,7 @@ export default function TerminosCondiciones() {
                             {principles.map((principle) => (
                               <div
                                 key={principle.num}
-                                className={`rounded-[20px] border p-4 ${isDark ? "border-white/10 bg-white/[0.03]" : "border-neutral-200 bg-neutral-50/80"}`}
+                                className={`rounded-[20px] border p-4 ${isDark ? "border-white/10 bg-white/3" : "border-neutral-200 bg-neutral-50/80"}`}
                               >
                                 <div className="flex items-start gap-3">
                                   <span className="text-lg font-semibold text-[#D6A556]">
@@ -385,7 +384,7 @@ export default function TerminosCondiciones() {
                       <>
                         <div className="mt-8 grid gap-4 sm:grid-cols-2">
                           <div
-                            className={`rounded-[20px] border p-5 ${isDark ? "border-white/10 bg-white/[0.03]" : "border-neutral-200 bg-neutral-50/80"}`}
+                            className={`rounded-[20px] border p-5 ${isDark ? "border-white/10 bg-white/3" : "border-neutral-200 bg-neutral-50/80"}`}
                           >
                             <h3 className="text-xs font-semibold tracking-[0.22em] uppercase text-[#D6A556]">
                               Email
@@ -398,7 +397,7 @@ export default function TerminosCondiciones() {
                           </div>
 
                           <div
-                            className={`rounded-[20px] border p-5 ${isDark ? "border-white/10 bg-white/[0.03]" : "border-neutral-200 bg-neutral-50/80"}`}
+                            className={`rounded-[20px] border p-5 ${isDark ? "border-white/10 bg-white/3" : "border-neutral-200 bg-neutral-50/80"}`}
                           >
                             <h3 className="text-xs font-semibold tracking-[0.22em] uppercase text-[#D6A556]">
                               Teléfono
@@ -440,7 +439,7 @@ export default function TerminosCondiciones() {
                               href="/#contacto"
                               className={`inline-flex items-center gap-1.5 rounded-xl border px-5 py-3 text-sm font-semibold transition-colors ${
                                 isDark
-                                  ? "border-white/10 text-white hover:bg-white/[0.04]"
+                                  ? "border-white/10 text-white hover:bg-white/4"
                                   : "border-neutral-200 text-gray-900 hover:bg-neutral-50"
                               }`}
                             >

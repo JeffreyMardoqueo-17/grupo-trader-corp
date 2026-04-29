@@ -27,7 +27,7 @@ const cards = [
     title: "Operar",
     description: "Una ruta acompañada para entender cómo operar con control y seguimiento.",
     points: ["Control", "Seguimiento", "Estrategia"],
-    image: "/images/copy/pantalla.jpg",
+    image: "/images/copy/nasdaq.jpg",
     href: "/copytrading",
   },
 ];
