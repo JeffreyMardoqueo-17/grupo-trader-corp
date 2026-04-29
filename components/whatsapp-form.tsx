@@ -39,7 +39,7 @@ export function WhatsAppForm({ className }: WhatsAppFormProps) {
     <form
       onSubmit={handleSubmit}
       className={cn(
-        "rounded-3xl border border-border bg-white p-6 shadow-md sm:p-8 dark:bg-[var(--card)]",
+        "rounded-3xl bg-gray-50 p-6 sm:p-8 dark:bg-[var(--card)]",
         className
       )}
     >

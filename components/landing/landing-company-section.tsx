@@ -1,13 +1,39 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/components/theme-provider";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { useState, useEffect } from "react";
 
 export function LandingCompanySection() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    {
+      image: "/images/nosotros/asesoramiento.jpg",
+      phrase: "Asesoramiento claro y conciso",
+    },
+    {
+      image: "/images/nosotros/asesoramientodelamano.jpg",
+      phrase: "Acompañamiento especializado en cada paso",
+    },
+    {
+      image: "/images/nosotros/eventostradercorps.jpg",
+      phrase: "Eventos traders donde la comunidad es lo primero",
+    },
+  ];
+
+  // Auto scroll carrusel cada 5 segundos
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [slides.length]);
+
   const academyWhatsAppLink = buildWhatsAppLink(
     "Hola buen día, quisiera saber más información sobre la academia de trading."
   );
@@ -27,7 +53,7 @@ export function LandingCompanySection() {
           transition={{ duration: 0.8 }}
           className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20"
         >
-          {/* Left: Image */}
+          {/* Left: Carrusel */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -35,18 +61,63 @@ export function LandingCompanySection() {
             transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="relative order-2 lg:order-1"
           >
-            <div className={`relative aspect-[4/3] overflow-hidden rounded-3xl ${isDark ? "ring-1 ring-white/5" : "shadow-2xl"}`}>
-              <Image
-                src="/images/tradercorp.png"
-                alt="Entorno de trading profesional"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-              <div
-                className={`absolute inset-0 ${isDark ? "bg-gradient-to-tr from-[#000208]/40 to-transparent" : "bg-gradient-to-tr from-black/20 to-transparent"}`}
-              />
+            {/* Carrusel Container */}
+            <div className="space-y-4">
+              <div className={`relative aspect-[4/3] overflow-hidden rounded-3xl ${isDark ? "ring-1 ring-white/5" : "shadow-2xl"}`}>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentSlide}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="relative w-full h-full"
+                  >
+                    <Image
+                      src={slides[currentSlide].image}
+                      alt={slides[currentSlide].phrase}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                    <div
+                      className={`absolute inset-0 ${isDark ? "bg-gradient-to-tr from-[#000208]/40 to-transparent" : "bg-gradient-to-tr from-black/20 to-transparent"}`}
+                    />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              {/* Phrase below image */}
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={currentSlide}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.5 }}
+                  className={`text-center text-lg font-semibold ${isDark ? "text-[#D6A556]" : "text-[#D6A556]"}`}
+                >
+                  {slides[currentSlide].phrase}
+                </motion.p>
+              </AnimatePresence>
+
+              {/* Indicadores */}
+              <div className="flex justify-center gap-2">
+                {slides.map((_, idx) => (
+                  <motion.button
+                    key={idx}
+                    onClick={() => setCurrentSlide(idx)}
+                    className={`h-2 rounded-full transition-all ${
+                      idx === currentSlide
+                        ? "bg-[#D6A556] w-8"
+                        : `${isDark ? "bg-white/20" : "bg-gray-300"} w-2`
+                    }`}
+                    whileHover={{ scale: 1.2 }}
+                  />
+                ))}
+              </div>
             </div>
+
             {/* Decorative glow */}
             <div className={`absolute -left-6 -top-6 h-32 w-32 rounded-full blur-3xl ${isDark ? "bg-[#D6A556]/20" : "bg-[#D6A556]/10"}`} />
           </motion.div>
@@ -104,7 +175,7 @@ export function LandingCompanySection() {
             <div
               className={`mt-8 grid grid-cols-3 gap-6 rounded-2xl  p-6 ${
                 isDark
-                  ? " bg-white/[0.02]"
+                  ? " "
                   : " bg-white"
               }`}
             >

@@ -19,8 +19,8 @@ export function LandingFooter() {
           <Link href="/team" className="rounded-full bg-[#D6A556] px-5 py-2.5 font-semibold text-[#0b1020] transition hover:bg-[#e0b365]">
             Equipo de trabajo
           </Link>
-          <a href="#" className="rounded-full border border-white/18 px-4 py-2 hover:bg-white/8">Términos y condiciones</a>
-          <a href="#" className="rounded-full border border-white/18 px-4 py-2 hover:bg-white/8">Privacidad</a>
+          <Link href="/terminos-condiciones" className="rounded-full border border-white/18 px-4 py-2 hover:bg-white/8">Términos y condiciones</Link>
+          <Link href="/privacidad" className="rounded-full border border-white/18 px-4 py-2 hover:bg-white/8">Privacidad</Link>
           <a href="#contacto" className="rounded-full border border-white/18 px-4 py-2 hover:bg-white/8">Contacto</a>
         </div>
       </div>

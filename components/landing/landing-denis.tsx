@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useTheme } from "@/components/theme-provider";
+import { LandingContact } from "./landing-contact";
 
 export function LandingDenis() {
   const { theme } = useTheme();
@@ -140,6 +141,7 @@ export function LandingDenis() {
           </div>
         </div>
       </div>
+      {/* <LandingContact /> */}
     </section>
   );
 }

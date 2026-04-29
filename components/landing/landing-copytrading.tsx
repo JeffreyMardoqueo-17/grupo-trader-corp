@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/components/theme-provider";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { LandingBenefits } from "@/components/landing/landing-benefits";
+import { LandingContact } from "./landing-contact";
 
 function AnimatedItem({
   children,
@@ -312,18 +313,7 @@ export function LandingCopyTrading() {
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-12 lg:py-16">
         <AnimatedItem>
           <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
-             <div className="flex items-center justify-center">
-               <Image
-                 src="/images/copy/ganancias.jpg"
-                 alt="Captura de pantalla móvil"
-                 width={400}
-                 height={600}
-                 className="rounded-2xl object-contain"
-                 priority
-               />
-             </div>
-
-            <div>
+            <div className="order-1 lg:order-2">
               <div
                 className={`mb-8 inline-flex items-center gap-2 rounded-full border px-5 py-2 ${isDark ? "border-[#D6A556]/20 bg-[#D6A556]/10" : "border-[#D6A556]/30 bg-[#D6A556]/20"}`}
               >
@@ -391,9 +381,19 @@ export function LandingCopyTrading() {
                 </a>
               </div>
             </div>
+            
+            <div className="flex items-center justify-center order-2 lg:order-1">
+              <Image
+                src="/images/copy/ganancias.jpg"
+                alt="Captura de pantalla móvil"
+                width={400}
+                height={600}
+                className="rounded-2xl object-contain w-44 sm:w-64 lg:w-auto h-auto"
+                priority
+              />
+            </div>
           </div>
-        </AnimatedItem>
-
+          </AnimatedItem>
         <AnimatedItem delay={0.1}>
           <div className="mt-20 relative">
             <InteractiveFeatures isDark={isDark} features={features} />
@@ -550,7 +550,7 @@ export function LandingCopyTrading() {
         <AnimatedItem delay={0.25}>
           <div className="mt-16 text-center">
             <div
-              className={`mx-auto max-w-2xl rounded-2xl border p-6 ${isDark ? "border-white/5 bg-white/[0.02]" : "border-gray-200 bg-gray-50"}`}
+              className={`mx-auto max-w-2xl  p-6 `}
             >
               <p
                 className={`text-lg font-bold leading-tight sm:text-xl ${isDark ? "text-white" : "text-gray-900"}`}
@@ -585,6 +585,7 @@ export function LandingCopyTrading() {
             </div>
           </div>
         </AnimatedItem>
+        <LandingContact />
       </div>
     </div>
   );

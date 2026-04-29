@@ -56,7 +56,13 @@ function StarIcon() {
   );
 }
 
-function AnimatedItem({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+function AnimatedItem({
+  children,
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  delay?: number;
+}) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
@@ -136,6 +142,7 @@ export function LandingTestimonials() {
                             src={testimonial.image}
                             alt={testimonial.name}
                             fill
+                            sizes="(max-width: 768px) 100vw, 33vw"
                             className="object-cover"
                           />
                         ) : (
@@ -192,7 +199,10 @@ export function LandingTestimonials() {
                   ))}
                 </div>
                 <p className="text-3xl font-bold text-slate-900 dark:text-white">
-                  4.9<span className="text-lg text-slate-500 dark:text-white/60">/5</span>
+                  4.9
+                  <span className="text-lg text-slate-500 dark:text-white/60">
+                    /5
+                  </span>
                 </p>
               </div>
 
@@ -202,7 +212,8 @@ export function LandingTestimonials() {
                   Confianza verificada
                 </p>
                 <p className="mt-2 text-base font-medium text-slate-900 dark:text-white">
-                  Resultados reales de estudiantes reales. No solo números, sino vidas transformadas.
+                  Resultados reales de estudiantes reales. No solo números, sino
+                  vidas transformadas.
                 </p>
               </div>
             </div>
