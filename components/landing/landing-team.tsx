@@ -27,7 +27,7 @@ const teamMembers: TeamMember[] = [
   { name: "Carlos Arzú", role: "Asesor", initials: "CA" },
   { name: "Corina Ramos", role: "Asesora", initials: "CR" },
   { name: "Diego Portillo", role: "Asesor", initials: "DP" },
-  { name: "Jeffrey Jiménez", role: "Asistente de Telemercadeo", initials: "JJ" },
+  { name: "Jeffrey Mardoqueo", role: "Web Developer y Asistente de Telemercadeo", initials: "JJ" },
   { name: "Sorayda Samayoa", role: "Asistente Administrativa", initials: "SS" },
   { name: "Ulises Cortez", role: "Departamento Administrativo", initials: "UC" },
 ];
@@ -112,7 +112,7 @@ export function LandingTeam() {
                       alt={member.name}
                       width={88}
                       height={88}
-                      className="h-full w-full object-cover grayscale contrast-125 brightness-110"
+                      className="h-full w-full object-cover "
                     />
                   ) : (
                     <span className={`text-lg font-bold tracking-wide ${isDark ? "text-[#0b1020]" : "text-[#0b1020]"}`}>
