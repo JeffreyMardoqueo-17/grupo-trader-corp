@@ -79,7 +79,7 @@ export function LandingContact() {
                 className="space-y-6"
               >
                 <div
-                  className={`text-6xl lg:text-7xl font-black ${isDark ? "text-white/15" : "text-gray-100"}`}
+                  className={`text-6xl lg:text-7xl font-black ${isDark ? "text-white" : "text-gray-100"}`}
                 >
                   {steps[currentStep].number}
                 </div>
@@ -137,7 +137,7 @@ export function LandingContact() {
 
                 {/* INFO */}
                 <div className="space-y-4 pt-4">
-                  <div className="flex items-center gap-1 bg-red-700">
+                  <div className="flex items-center gap-1 ">
                     <div
                       className={`flex h-10 w-10 items-center justify-center rounded-full flex-shrink-0 ${isDark ? "bg-[#D6A556]/20 text-[#D6A556]" : "bg-[#D6A556]/10 text-[#D6A556]"}`}
                     >
