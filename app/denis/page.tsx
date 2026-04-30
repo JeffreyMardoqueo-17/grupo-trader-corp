@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LandingHeader } from "@/components/landing/landing-header";
 import { LandingDenis } from "@/components/landing/landing-denis";
+import { LandingContact } from "@/components/landing/landing-contact";
+import { LandingFooter } from "@/components/landing/landing-footer";
 
 export const metadata: Metadata = {
   title: "Sobre Denis | Grupo Trade Corp",
@@ -19,6 +21,8 @@ export default function DenisPage() {
           </Link>
         </div> */}
         <LandingDenis />
+        <LandingContact />
+        <LandingFooter />
       </main>
     </div>
   );

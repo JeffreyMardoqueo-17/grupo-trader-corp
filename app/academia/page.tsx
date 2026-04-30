@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LandingHeader } from "@/components/landing/landing-header";
 import { LandingAcademia } from "@/components/landing/landing-academia";
+import { LandingFooter } from "@/components/landing/landing-footer";
 
 export const metadata: Metadata = {
   title: "Academia de Trading | Grupo Trade Corp",
@@ -25,6 +26,7 @@ export default function AcademiaPage() {
       <LandingHeader />
       <main className="relative z-10 pt-16">
         <LandingAcademia />
+        <LandingFooter />
       </main>
     </div>
   );

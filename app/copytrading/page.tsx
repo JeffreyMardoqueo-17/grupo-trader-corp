@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LandingHeader } from "@/components/landing/landing-header";
 import { LandingCopyTrading } from "@/components/landing/landing-copytrading";
+import { LandingFooter } from "@/components/landing/landing-footer";
 
 export const metadata: Metadata = {
   title: "CopyTrading | Grupo Trade Corp",
@@ -25,6 +26,7 @@ export default function CopyTradingPage() {
       <LandingHeader />
       <main className="relative z-10 pt-16">
         <LandingCopyTrading />
+        <LandingFooter />
       </main>
     </div>
   );

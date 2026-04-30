@@ -37,7 +37,7 @@ export function LandingFocusCards() {
   const isDark = theme === "dark";
 
   return (
-    <section className={`py-20 lg:py-32 ${isDark ? "bg-[#000208]" : "bg-white"}`}>
+    <section id="pilares" className={`py-20 lg:py-32 ${isDark ? "bg-[#000208]" : "bg-white"}`}>
       <div className="container mx-auto max-w-6xl px-6">
         <div className="grid gap-6 lg:grid-cols-3">
           {cards.map((card, index) => (

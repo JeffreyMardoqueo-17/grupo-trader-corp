@@ -75,15 +75,17 @@ export default function PrivacidadPage() {
 
   return (
     <main className={`min-h-screen ${isDark ? "bg-[#000208]" : "bg-white"}`}>
-      <LandingHeader />
+      <div className="mb-15">
 
+      <LandingHeader />
+      </div>
       <div
-        className="fixed left-0 top-0 z-60 h-1 bg-linear-to-r from-[#D6A556] to-[#F4D03F] transition-all duration-150"
+        className="fixed left-0 top-0 z-60 h-1 bg-linear-to-r from-[#D6A556] to-[#F4D03F] transition-all duration-150 "
         style={{ width: `${scrollProgress}%` }}
       />
 
-      <section className="pt-24 lg:pt-28">
-        <div className="mx-auto max-w-7xl px-6">
+      <section className="pt-48 lg:pt-56">
+        <div className="mx-auto max-w-4xl px-6">
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
@@ -97,11 +99,11 @@ export default function PrivacidadPage() {
             <p className={`text-xs font-semibold tracking-[0.28em] uppercase ${isDark ? "text-[#D6A556]" : "text-[#D6A556]"}`}>
               Política de privacidad
             </p>
-            <div className="mt-4 max-w-3xl">
+            <div className="mx-auto mt-4 max-w-3xl text-center">
               <h1 className={`text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl ${isDark ? "text-white" : "text-gray-950"}`}>
                 Privacidad
               </h1>
-              <p className={`mt-5 text-base leading-8 sm:text-lg ${isDark ? "text-white/65" : "text-gray-600"}`}>
+              <p className={`mt-5 text-base leading-8 text-justify sm:text-lg ${isDark ? "text-white/65" : "text-gray-600"}`}>
                 Explicación breve y clara de cómo recogemos, usamos y protegemos la información que comparte con Grupo Trade Corp.
               </p>
               <div className={`mt-6 flex flex-wrap gap-4 text-sm font-medium ${isDark ? "text-white/55" : "text-gray-500"}`}>
@@ -113,155 +115,90 @@ export default function PrivacidadPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 pb-16 pt-10 lg:pt-12">
-        <div className="grid gap-8 lg:grid-cols-[280px_minmax(0,1fr)]">
-          <aside className="lg:sticky lg:top-24 lg:self-start">
-            <div className={`rounded-[30px] border p-5 ${isDark ? "border-white/10 bg-white/3" : "border-gray-200 bg-gray-50/60"}`}>
-              <p className={`text-xs font-semibold tracking-[0.26em] uppercase ${isDark ? "text-[#D6A556]" : "text-[#D6A556]"}`}>
-                Contenido
-              </p>
-
-              <nav className="mt-5 space-y-2">
-                {sections.map((section) => {
-                  const isActive = activeSection === section.id;
-                  return (
-                    <button
-                      key={section.id}
-                      type="button"
-                      onClick={() => scrollToSection(section.id)}
-                      className={`flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-left transition-colors ${
-                        isActive
-                          ? isDark
-                            ? "bg-white/10 text-white"
-                            : "bg-gray-100 text-gray-950"
-                          : isDark
-                            ? "text-white/65 hover:bg-white/5 hover:text-white"
-                            : "text-gray-600 hover:bg-white hover:text-gray-950"
-                      }`}
-                    >
-                      <span className={`w-9 text-xs font-semibold tracking-[0.26em] ${isActive ? "text-[#D6A556]" : isDark ? "text-white/35" : "text-gray-400"}`}>
-                        {section.number}
-                      </span>
-                      <span className="text-sm font-semibold">{section.title}</span>
-                    </button>
-                  );
-                })}
-              </nav>
-            </div>
-          </aside>
-
-          <article className="min-w-0 space-y-10 lg:space-y-12">
-            <section className="lg:hidden">
-              <div className={`rounded-[28px] border p-4 ${isDark ? "border-white/10 bg-white/3" : "border-gray-200 bg-white"}`}>
-                <p className={`text-xs font-semibold tracking-[0.24em] uppercase ${isDark ? "text-[#D6A556]" : "text-[#D6A556]"}`}>
-                  Índice
-                </p>
-                <div className="mt-4 flex gap-2 overflow-x-auto pb-1">
-                  {sections.map((section) => {
-                    const isActive = activeSection === section.id;
-                    return (
-                      <button
-                        key={section.id}
-                        type="button"
-                        onClick={() => scrollToSection(section.id)}
-                        className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
-                          isActive
-                            ? "bg-[#D6A556] text-[#000208]"
-                            : isDark
-                              ? "bg-white/5 text-white/70"
-                              : "bg-gray-100 text-gray-700"
-                        }`}
-                      >
-                        {section.title}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-            </section>
-
-            <section id="datos-que-recogemos" ref={(element) => { sectionRefs.current["datos-que-recogemos"] = element; }} className="scroll-mt-28 border-b border-white/5 pb-10">
-              <div className="flex items-start gap-4">
+      <section className="mx-auto max-w-4xl px-6 pb-16 pt-16 lg:pt-20">
+        <div className="space-y-10 lg:space-y-12">
+            <section id="datos-que-recogemos" ref={(element) => { sectionRefs.current["datos-que-recogemos"] = element; }} className="scroll-mt-32 border-b border-white/5 pb-10">
+              <div className="flex flex-col items-center gap-4 text-center">
                 <span className={`text-3xl font-semibold tracking-[0.2em] ${activeSection === "datos-que-recogemos" ? "text-[#D6A556]" : isDark ? "text-white/20" : "text-gray-200"}`}>
                   01
                 </span>
-                <div className="max-w-3xl">
+                <div className="mx-auto max-w-3xl">
                   <h2 className={`text-3xl font-semibold tracking-tight sm:text-4xl ${isDark ? "text-white" : "text-gray-950"}`}>
                     Datos que recopilamos
                   </h2>
-                  <p className={`mt-5 text-lg leading-8 ${isDark ? "text-white/70" : "text-gray-700"}`}>
+                  <p className={`mt-5 text-lg leading-8 text-justify ${isDark ? "text-white/70" : "text-gray-700"}`}>
                     Podemos recibir su nombre, correo, teléfono y el mensaje que nos envía por formulario, WhatsApp o correo directo.
                   </p>
                 </div>
               </div>
             </section>
 
-            <section id="uso-de-datos" ref={(element) => { sectionRefs.current["uso-de-datos"] = element; }} className="scroll-mt-28 border-b border-white/5 pb-10">
-              <div className="flex items-start gap-4">
+            <section id="uso-de-datos" ref={(element) => { sectionRefs.current["uso-de-datos"] = element; }} className="scroll-mt-32 border-b border-white/5 pb-10">
+              <div className="flex flex-col items-center gap-4 text-center">
                 <span className={`text-3xl font-semibold tracking-[0.2em] ${activeSection === "uso-de-datos" ? "text-[#D6A556]" : isDark ? "text-white/20" : "text-gray-200"}`}>
                   02
                 </span>
-                <div className="max-w-3xl">
+                <div className="mx-auto max-w-3xl">
                   <h2 className={`text-3xl font-semibold tracking-tight sm:text-4xl ${isDark ? "text-white" : "text-gray-950"}`}>
                     Uso de datos
                   </h2>
-                  <p className={`mt-5 text-lg leading-8 ${isDark ? "text-white/70" : "text-gray-700"}`}>
+                  <p className={`mt-5 text-lg leading-8 text-justify ${isDark ? "text-white/70" : "text-gray-700"}`}>
                     Utilizamos la información solo para responderle, dar seguimiento a su consulta y mejorar la atención.
                   </p>
                 </div>
               </div>
             </section>
 
-            <section id="compartir-informacion" ref={(element) => { sectionRefs.current["compartir-informacion"] = element; }} className="scroll-mt-28 border-b border-white/5 pb-10">
-              <div className="flex items-start gap-4">
+            <section id="compartir-informacion" ref={(element) => { sectionRefs.current["compartir-informacion"] = element; }} className="scroll-mt-32 border-b border-white/5 pb-10">
+              <div className="flex flex-col items-center gap-4 text-center">
                 <span className={`text-3xl font-semibold tracking-[0.2em] ${activeSection === "compartir-informacion" ? "text-[#D6A556]" : isDark ? "text-white/20" : "text-gray-200"}`}>
                   03
                 </span>
-                <div className="max-w-3xl">
+                <div className="mx-auto max-w-3xl">
                   <h2 className={`text-3xl font-semibold tracking-tight sm:text-4xl ${isDark ? "text-white" : "text-gray-950"}`}>
                     Compartir información
                   </h2>
-                  <p className={`mt-5 text-lg leading-8 ${isDark ? "text-white/70" : "text-gray-700"}`}>
+                  <p className={`mt-5 text-lg leading-8 text-justify ${isDark ? "text-white/70" : "text-gray-700"}`}>
                     No vendemos su información. Solo la compartimos si es necesario para prestarle el servicio o por obligación legal.
                   </p>
                 </div>
               </div>
             </section>
 
-            <section id="retencion" ref={(element) => { sectionRefs.current["retencion"] = element; }} className="scroll-mt-28 border-b border-white/5 pb-10">
-              <div className="flex items-start gap-4">
+            <section id="retencion" ref={(element) => { sectionRefs.current["retencion"] = element; }} className="scroll-mt-32 border-b border-white/5 pb-10">
+              <div className="flex flex-col items-center gap-4 text-center">
                 <span className={`text-3xl font-semibold tracking-[0.2em] ${activeSection === "retencion" ? "text-[#D6A556]" : isDark ? "text-white/20" : "text-gray-200"}`}>
                   04
                 </span>
-                <div className="max-w-3xl">
+                <div className="mx-auto max-w-3xl">
                   <h2 className={`text-3xl font-semibold tracking-tight sm:text-4xl ${isDark ? "text-white" : "text-gray-950"}`}>
                     Retención
                   </h2>
-                  <p className={`mt-5 text-lg leading-8 ${isDark ? "text-white/70" : "text-gray-700"}`}>
+                  <p className={`mt-5 text-lg leading-8 text-justify ${isDark ? "text-white/70" : "text-gray-700"}`}>
                     Conservamos sus datos solo durante el tiempo necesario para responderle o cumplir con fines administrativos razonables.
                   </p>
                 </div>
               </div>
             </section>
 
-            <section id="derechos" ref={(element) => { sectionRefs.current["derechos"] = element; }} className="scroll-mt-28 border-b border-white/5 pb-10">
-              <div className="flex items-start gap-4">
+            <section id="derechos" ref={(element) => { sectionRefs.current["derechos"] = element; }} className="scroll-mt-32 border-b border-white/5 pb-10">
+              <div className="flex flex-col items-center gap-4 text-center">
                 <span className={`text-3xl font-semibold tracking-[0.2em] ${activeSection === "derechos" ? "text-[#D6A556]" : isDark ? "text-white/20" : "text-gray-200"}`}>
                   05
                 </span>
-                <div className="max-w-3xl">
+                <div className="mx-auto max-w-3xl">
                   <h2 className={`text-3xl font-semibold tracking-tight sm:text-4xl ${isDark ? "text-white" : "text-gray-950"}`}>
                     Derechos
                   </h2>
-                  <p className={`mt-5 text-lg leading-8 ${isDark ? "text-white/70" : "text-gray-700"}`}>
+                  <p className={`mt-5 text-lg leading-8 text-justify ${isDark ? "text-white/70" : "text-gray-700"}`}>
                     Puede pedir corrección, actualización o eliminación de datos escribiéndonos directamente.
                   </p>
                 </div>
               </div>
             </section>
 
-            <section id="contacto-privacidad" ref={(element) => { sectionRefs.current["contacto-privacidad"] = element; }} className="scroll-mt-28 pb-10">
-              <div className="flex items-start gap-4">
+            <section id="contacto-privacidad" ref={(element) => { sectionRefs.current["contacto-privacidad"] = element; }} className="scroll-mt-32 pb-10">
+              <div className="flex flex-col items-center gap-4 text-center">
                 <span className={`text-3xl font-semibold tracking-[0.2em] ${activeSection === "contacto-privacidad" ? "text-[#D6A556]" : isDark ? "text-white/20" : "text-gray-200"}`}>
                   06
                 </span>
@@ -269,7 +206,7 @@ export default function PrivacidadPage() {
                   <h2 className={`text-3xl font-semibold tracking-tight sm:text-4xl ${isDark ? "text-white" : "text-gray-950"}`}>
                     Contacto
                   </h2>
-                  <p className={`mt-5 text-lg leading-8 ${isDark ? "text-white/70" : "text-gray-700"}`}>
+                  <p className={`mt-5 text-lg leading-8 text-justify ${isDark ? "text-white/70" : "text-gray-700"}`}>
                     Si desea revisar esto con más detalle, escríbanos y lo atendemos de forma directa.
                   </p>
 
@@ -317,7 +254,6 @@ export default function PrivacidadPage() {
                 </div>
               </div>
             </section>
-          </article>
         </div>
       </section>
     </main>
