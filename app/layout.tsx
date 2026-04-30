@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeInitializer } from "@/components/theme-initializer";
 import { FloatingWhatsAppButton } from "@/components/floating-whatsapp-button";
+import { RouterMonitor } from "@/components/router-monitor";
 
 const manrope = Manrope({
   variable: "--font-sans",
@@ -62,6 +63,7 @@ export default function RootLayout({
       <body className={`${manrope.variable} min-h-screen bg-background text-foreground transition-colors duration-300`} suppressHydrationWarning>
         <ThemeProvider>
           <ThemeInitializer />
+          <RouterMonitor />
           {children}
           <FloatingWhatsAppButton />
         </ThemeProvider>
