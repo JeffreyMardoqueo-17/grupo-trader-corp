@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useLayoutEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -15,6 +15,7 @@ const navItems = [
     subItems: [
       { href: "/denis", label: "Denis" },
       { href: "/academia", label: "Academia" },
+      { href: "/team", label: "Equipo" },
       { href: "/copytrading", label: "CopyTrading" },
     ],
   },
@@ -35,6 +36,24 @@ export function LandingHeader() {
   useEffect(() => {
     setNosotrosOpen(false);
   }, [pathname]);
+
+  // Indicator for active nav link (underline) that follows scroll
+  const navRef = useRef<HTMLElement | null>(null);
+  const [indicator, setIndicator] = useState({ left: 0, width: 0, visible: false });
+
+  useLayoutEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+    const query = `a[href="${activeHref}"]`;
+    const el = nav.querySelector(query) as HTMLElement | null;
+    if (el) {
+      const navRect = nav.getBoundingClientRect();
+      const rect = el.getBoundingClientRect();
+      setIndicator({ left: rect.left - navRect.left, width: rect.width, visible: true });
+    } else {
+      setIndicator((s) => ({ ...s, visible: false }));
+    }
+  }, [activeHref]);
 
   useEffect(() => {
     if (pathname !== "/") {
@@ -110,14 +129,14 @@ export function LandingHeader() {
             <Image src="/images/logo.svg" alt="Grupo Trade Corp" width={36} height={36} className="h-9 w-auto" priority />
           </Link>
 
-          <nav className="hidden items-center gap-1 lg:flex">
+          <nav ref={navRef} className="hidden items-center gap-1 lg:flex relative">
             {navItems.map((item) => {
               const active = isLinkActive(item.href);
 
               if (item.subItems) {
                 return (
                   <div key={item.href} className="relative">
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1 bg-red-700">
                       <Link
                         href={item.href}
                         className={`${linkBase} ${linkStyle} ${active ? activeLinkStyle : defaultLinkBorder}`}
@@ -127,7 +146,7 @@ export function LandingHeader() {
                       <button
                         aria-expanded={nosotrosOpen}
                         onClick={() => setNosotrosOpen((s) => !s)}
-                        className={`ml-1 rounded p-1 text-sm ${isDark ? 'text-white/70' : 'text-gray-600'}`}
+                        className={`ml-1 rounded  p-1 text-sm ${isDark ? 'text-white/70' : 'text-gray-600'}`}
                         aria-label="Abrir opciones de Nosotros"
                       >
                         <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -141,18 +160,21 @@ export function LandingHeader() {
                     </div>
 
                     {nosotrosOpen && (
-                      <div onMouseLeave={() => setNosotrosOpen(false)} className={`absolute right-0 mt-3 w-44 rounded-md border bg-white/0 backdrop-blur-sm ${isDark ? 'bg-[#071025]/80 border-white/10' : 'bg-white border-gray-200'} drop-shadow-lg z-50 animate-fadeIn`}>
+                      <div onMouseLeave={() => setNosotrosOpen(false)} className={`absolute right-0 mt-3 w-44 rounded-md border ${isDark ? 'bg-[#071025]/90 border-white/10' : 'bg-white border-gray-200'} drop-shadow-lg z-50 animate-fadeIn`}>
                         <div className="py-2">
-                          {item.subItems.map((sub) => (
-                            <Link
-                              key={sub.href}
-                              href={sub.href}
-                              onClick={() => setNosotrosOpen(false)}
-                              className={`block w-full px-4 py-2 text-sm ${isDark ? 'text-white' : 'text-gray-800'} border-l-2 border-transparent hover:border-[#D6A556] focus:outline-none focus:ring-2 focus:ring-[#D6A556]/30`}
-                            >
-                              {sub.label}
-                            </Link>
-                          ))}
+                          {item.subItems.map((sub) => {
+                            const subActive = isLinkActive(sub.href);
+                            return (
+                              <Link
+                                key={sub.href}
+                                href={sub.href}
+                                onClick={() => setNosotrosOpen(false)}
+                                className={`block w-full px-4 py-2 text-sm transition-colors ${isDark ? (subActive ? 'bg-white/6 text-white' : 'text-white/80 hover:bg-white/5') : (subActive ? 'bg-gray-100 text-[#0e1427]' : 'text-gray-800 hover:bg-gray-100')} focus:outline-none`}
+                              >
+                                {sub.label}
+                              </Link>
+                            );
+                          })}
                         </div>
                       </div>
                     )}
@@ -170,6 +192,12 @@ export function LandingHeader() {
                 </Link>
               );
             })}
+            {/** Animated indicator underline */}
+            <span
+              aria-hidden
+              className={`absolute bottom-0 h-0.5 rounded bg-[#D6A556] transition-all duration-200 ${indicator.visible ? 'opacity-100' : 'opacity-0'}`}
+              style={{ left: indicator.left, width: indicator.width }}
+            />
           </nav>
 
           <div className="flex items-center gap-3">

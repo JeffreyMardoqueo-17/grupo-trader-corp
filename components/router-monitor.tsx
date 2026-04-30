@@ -29,12 +29,33 @@ export function RouterMonitor() {
 
     let operationCount = 0;
 
+    const shouldIgnoreNavigation = (rawUrl: unknown) => {
+      if (typeof rawUrl !== "string") return false;
+      try {
+        const resolved = new URL(rawUrl, window.location.href);
+        // If resulting href equals current href, ignore (prevents duplicate hash pushes)
+        if (resolved.href === window.location.href) return true;
+        // If only the hash is the same, ignore
+        if (resolved.hash && resolved.hash === window.location.hash) return true;
+      } catch (e) {
+        // If URL parsing fails, don't block — be permissive
+        return false;
+      }
+      return false;
+    };
+
     window.history.replaceState = function (...args) {
+      // If this navigation would be a no-op (same href/hash), ignore it
+      if (shouldIgnoreNavigation(args[2])) {
+        return; // skip counting
+      }
+
       operationCount++;
       if (operationCount > 10) {
         console.error("❌ Multiple router operations detected - possible infinite loop");
         operationCount = 0;
       }
+
       if (!routerReady && typeof args[2] === "string" && args[2].includes("/nose")) {
         console.error("🚨 FOUND IT! Attempting to navigate to /nose before router ready");
         console.error("Stack:", new Error().stack);
@@ -44,6 +65,11 @@ export function RouterMonitor() {
     };
 
     window.history.pushState = function (...args) {
+      // If this navigation would be a no-op (same href/hash), ignore it
+      if (shouldIgnoreNavigation(args[2])) {
+        return; // skip counting
+      }
+
       operationCount++;
       if (!routerReady && typeof args[2] === "string" && args[2].includes("/nose")) {
         console.error("🚨 FOUND IT! Attempting to pushState to /nose before router ready");

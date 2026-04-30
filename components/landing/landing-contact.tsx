@@ -44,6 +44,7 @@ export function LandingContact() {
 
   return (
     <section
+      id="contacto"
       className={`py-20 lg:py-28 border-t transition-colors ${isDark ? "bg-[#000208] border-white/10" : "bg-white border-black/5"}`}
     >
       <div className="mx-auto max-w-6xl px-6">
