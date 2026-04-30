@@ -469,7 +469,7 @@ export function LandingCopyTrading() {
                       className="flex items-center gap-6"
                     >
                       <div
-                        className={`text-6xl font-black ${isDark ? "text-[#D6A556]/30" : "text-[#D6A556]"}`}
+                        className={`text-6xl font-black text-[#D6A556]`}
                       >
                         {item.big}
                       </div>
@@ -500,8 +500,7 @@ export function LandingCopyTrading() {
                 </div>
 
                 <div
-                  className={`inline-block rounded-full border px-6 py-3 ${isDark ? "border-[#D6A556]/20 bg-[#D6A556]/10" : "border-[#D6A556]/30 bg-[#D6A556]/20"}`}
-                >
+                  className={`inline-block  px-6 py-3 rounded-full ${isDark ? "border-[#D6A556]/20  bg-[#D6A556]/20" : "border-[#D6A556]/30 bg-[#D6A556]/20"}`}>
                   <p
                     className={`text-sm font-bold ${isDark ? "text-[#D6A556]" : "text-[#D6A556]"}`}
                   >

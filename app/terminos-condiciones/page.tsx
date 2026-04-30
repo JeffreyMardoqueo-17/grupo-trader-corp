@@ -163,9 +163,7 @@ export default function TerminosCondiciones() {
   };
 
   return (
-    <main
-      className={`min-h-screen ${isDark ? "bg-[#0b0f14] text-white" : "bg-white text-gray-950"}`}
-    >
+    <main className={`min-h-screen ${isDark ? "bg-[#0b0f14] text-white" : "bg-white text-gray-950"}`}>
       <LandingHeader />
 
       <div
@@ -173,9 +171,9 @@ export default function TerminosCondiciones() {
         style={{ width: `${scrollProgress}%` }}
       />
 
-      <section className="w-full px-6 pb-16 pt-24 lg:px-10 lg:pt-28">
-        <div className="mx-auto w-full max-w-350 grid grid-cols-1 xl:grid-cols-[280px_1fr] gap-12 xl:gap-16">
-          <aside className="hidden xl:block sticky top-24 h-fit">
+      <section className="w-full px-6 pb-16 pt-24 lg:px-10 lg:pt-28 mt-7">
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-12 xl:flex-row xl:items-start xl:justify-center xl:gap-16">
+          <aside className="hidden h-fit xl:sticky xl:top-24 xl:block xl:w-[280px] xl:shrink-0">
             <div
               className={`rounded-[30px] border p-5 sm:p-6 ${
                 isDark
@@ -247,7 +245,7 @@ export default function TerminosCondiciones() {
               </div>
             </div>
           </aside>
-          <article className="min-w-0 space-y-12">
+          <article className="min-w-0 space-y-12 xl:max-w-5xl xl:flex-1">
             <motion.section
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -263,7 +261,7 @@ export default function TerminosCondiciones() {
               >
                 Documento legal
               </p>
-              <div className="mt-4 max-w-180">
+              <div className="mt-4 max-w-180 xl:max-w-none">
                 <h1
                   className={`text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl ${isDark ? "text-white" : "text-gray-950"}`}
                 >
