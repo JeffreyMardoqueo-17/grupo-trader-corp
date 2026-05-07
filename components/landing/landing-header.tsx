@@ -136,7 +136,7 @@ export function LandingHeader() {
               if (item.subItems) {
                 return (
                   <div key={item.href} className="relative">
-                    <div className="flex items-center gap-1 bg-red-700">
+                    <div className="flex items-center gap-1">
                       <Link
                         href={item.href}
                         className={`${linkBase} ${linkStyle} ${active ? activeLinkStyle : defaultLinkBorder}`}
