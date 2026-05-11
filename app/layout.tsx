@@ -51,7 +51,7 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `document.documentElement.classList.add('dark'); localStorage.setItem('theme', 'dark');`,
+            __html: `document.documentElement.classList.add('dark');`,
           }}
         />
         <style

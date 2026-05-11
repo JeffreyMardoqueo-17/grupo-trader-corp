@@ -44,10 +44,14 @@ export function LandingContact() {
   }, []);
 
   return (
-    <section
+    <motion.section
       ref={sectionRef}
       id="contacto"
-      className={`relative overflow-hidden border-t py-20 lg:py-28 transition-colors ${
+      initial={{ opacity: 0, x: 120 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.18 }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      className={`relative overflow-hidden border-t  lg:py-28 transition-colors scroll-mt-16 ${
         isDark ? "border-white/10 bg-[#000208]" : "border-black/5 bg-white"
       }`}
     >
@@ -93,7 +97,7 @@ export function LandingContact() {
           <div
             className={`relative overflow-hidden rounded-[2rem] border p-8 lg:p-10 ${
               isDark
-                ? "border-white/10 bg-white/[0.03]"
+                ? "border-white/10 bg-white/3"
                 : "border-black/5 bg-gray-50/80"
             }`}
           >
@@ -107,7 +111,7 @@ export function LandingContact() {
               >
                 <div className="flex items-start gap-6">
                   {/* NUMBER */}
-                  <div className="flex-shrink-0">
+                  <div className="shrink-0">
                     <span className="text-6xl font-black leading-none text-[#D6A556] lg:text-7xl">
                       {steps[currentStep].number}
                     </span>
@@ -203,7 +207,7 @@ export function LandingContact() {
                   href="tel:+50369842090"
                   className={`group flex items-center justify-between rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-1 ${
                     isDark
-                      ? "border-white/10 bg-white/[0.03] hover:border-[#D6A556]/30 hover:bg-white/[0.05]"
+                      ? "border-white/10 bg-white/3 hover:border-[#D6A556]/30 hover:bg-white/5"
                       : "border-black/5 bg-gray-50 hover:border-[#D6A556]/20 hover:bg-white"
                   }`}
                 >
@@ -243,7 +247,7 @@ export function LandingContact() {
                   rel="noreferrer"
                   className={`group flex items-center justify-between rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-1 ${
                     isDark
-                      ? "border-white/10 bg-white/[0.03] hover:border-[#25D366]/30 hover:bg-white/[0.05]"
+                      ? "border-white/10 bg-white/3 hover:border-[#25D366]/30 hover:bg-white/5"
                       : "border-black/5 bg-gray-50 hover:border-[#25D366]/20 hover:bg-white"
                   }`}
                 >
@@ -281,7 +285,7 @@ export function LandingContact() {
                   href="mailto:info@grupotcorp.com"
                   className={`group flex items-center justify-between rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-1 ${
                     isDark
-                      ? "border-white/10 bg-white/[0.03] hover:border-[#6C7DFF]/30 hover:bg-white/[0.05]"
+                      ? "border-white/10 bg-white/3 hover:border-[#6C7DFF]/30 hover:bg-white/5"
                       : "border-black/5 bg-gray-50 hover:border-[#6C7DFF]/20 hover:bg-white"
                   }`}
                 >
@@ -347,6 +351,6 @@ export function LandingContact() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

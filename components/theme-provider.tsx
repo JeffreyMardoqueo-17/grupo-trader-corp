@@ -4,10 +4,6 @@ import * as React from "react";
 
 type Theme = "light" | "dark";
 
-type ThemeProviderProps = React.PropsWithChildren<{
-  defaultTheme?: Theme;
-}>;
-
 type ThemeContextValue = {
   theme: Theme;
   resolvedTheme: Theme;
@@ -16,36 +12,18 @@ type ThemeContextValue = {
 
 const ThemeContext = React.createContext<ThemeContextValue | undefined>(undefined);
 
-export function ThemeProvider({ children, defaultTheme = "dark" }: ThemeProviderProps) {
-  const [theme, setTheme] = React.useState<Theme>("dark");
+const themeValue: ThemeContextValue = {
+  theme: "dark",
+  resolvedTheme: "dark",
+  setTheme: () => {},
+};
 
-  const handleSetTheme = React.useCallback((newTheme: Theme) => {
-    const nextTheme = newTheme === "dark" ? "dark" : "dark";
-    window.localStorage.setItem("theme", nextTheme);
-  }, []);
-
-  const value = React.useMemo<ThemeContextValue>(
-    () => ({
-      theme: "dark",
-      resolvedTheme: "dark",
-      setTheme: handleSetTheme,
-    }),
-    [handleSetTheme]
-  );
-
-  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
+export function ThemeProvider({ children }: React.PropsWithChildren) {
+  return <ThemeContext.Provider value={themeValue}>{children}</ThemeContext.Provider>;
 }
 
 export function useTheme() {
   const context = React.useContext(ThemeContext);
 
-  if (!context) {
-    return {
-      theme: "dark" as Theme,
-      resolvedTheme: "dark" as Theme,
-      setTheme: (_theme: Theme) => {},
-    };
-  }
-
-  return context;
+  return context ?? themeValue;
 }

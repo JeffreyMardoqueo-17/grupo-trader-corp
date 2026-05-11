@@ -1,5 +1,4 @@
 "use client";
-"use client";
 
 import { motion } from "framer-motion";
 import { useTheme } from "@/components/theme-provider";
@@ -19,7 +18,7 @@ export function LandingPrinciples() {
   return (
     <section
       id="principios"
-      className={`relative overflow-hidden py-32 lg:py-40 ${
+      className={`relative overflow-hidden py-32 lg:py-40 scroll-mt-16 ${
         isDark ? "bg-[#0a0e1a]" : "bg-[#fafbfc]"
       }`}
     >
@@ -64,11 +63,8 @@ export function LandingPrinciples() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className={`rounded-3xl border p-8 ${
-              isDark
-                ? "border-white/8 bg-white/[0.03]"
-                : "border-gray-200 bg-white"
-            }`}
+            className={`rounded-3xl border p-8 ${isDark ? "border-white/8" : "border-gray-200 bg-white"}`}
+            style={isDark ? { backgroundColor: "rgba(255,255,255,0.03)" } : undefined}
           >
             <div className="mb-6 inline-flex rounded-full border border-[#D6A556]/20 bg-[#D6A556]/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[#D6A556]">
               Principios
@@ -98,11 +94,8 @@ export function LandingPrinciples() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className={`rounded-3xl border p-8 ${
-              isDark
-                ? "border-white/8 bg-white/[0.03]"
-                : "border-gray-200 bg-white"
-            }`}
+            className={`rounded-3xl border p-8 ${isDark ? "border-white/8" : "border-gray-200 bg-white"}`}
+            style={isDark ? { backgroundColor: "rgba(255,255,255,0.03)" } : undefined}
           >
             <div className="mb-6 inline-flex rounded-full border border-[#D6A556]/20 bg-[#D6A556]/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[#D6A556]">
               Misión
@@ -133,11 +126,8 @@ export function LandingPrinciples() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className={`rounded-3xl border p-8 ${
-              isDark
-                ? "border-white/8 bg-white/[0.03]"
-                : "border-gray-200 bg-white"
-            }`}
+            className={`rounded-3xl border p-8 ${isDark ? "border-white/8" : "border-gray-200 bg-white"}`}
+            style={isDark ? { backgroundColor: "rgba(255,255,255,0.03)" } : undefined}
           >
             <div className="mb-6 inline-flex rounded-full border border-[#D6A556]/20 bg-[#D6A556]/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[#D6A556]">
               Visión

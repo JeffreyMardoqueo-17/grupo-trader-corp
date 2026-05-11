@@ -55,11 +55,11 @@ export function LandingDenis() {
             >
               <div className="relative h-full w-full">
                 <Image
-                  src="/images/denis.jpeg"
+                  src="/images/denis.jpg"
                   alt="Denis Gutiérrez - Fundador Grupo Trade Corp"
                   fill
                   className="object-cover object-top"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes=""
                 />
               </div>
               <div

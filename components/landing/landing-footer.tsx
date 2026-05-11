@@ -11,10 +11,9 @@ export function LandingFooter() {
               <Image
                 src="/images/logo.jpg"
                 alt="Grupo Trade Corp"
-                width={500}
-                height={500}
+                width={50}
+                height={50}
                 className="h-20 w-auto"
-                priority
               />
             </div>
             <div>

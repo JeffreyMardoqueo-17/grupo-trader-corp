@@ -116,6 +116,68 @@
   
   --radius: 0.625rem;
   --shadow: 0 10px 30px rgba(4, 25, 53, 0.08);
+  
+  /* ===== UNIFIED DESIGN SYSTEM TOKENS ===== */
+  
+  /* SPACING SCALE - Vertical rhythm */
+  --spacing-xs: 0.75rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
+  --spacing-3xl: 5rem;
+  --spacing-4xl: 6rem;
+  
+  /* SECTION PADDING - Consistent vertical separation */
+  --section-py-mobile: 2rem;
+  --section-py-tablet: 3rem;
+  --section-py-desktop: 5rem;
+  
+  /* CONTAINER - Unified width */
+  --container-max: 80rem;
+  --container-px: 1.5rem;
+  
+  /* BORDER RADIUS - Scaled system */
+  --radius-2: 0.5rem;
+  --radius-3: 0.75rem;
+  --radius-4: 1rem;
+  --radius-5: 1.25rem;
+  --radius-6: 1.5rem;
+  --radius-7: 1.75rem;
+  --radius-8: 2rem;
+  --radius-9: 2.5rem;
+  --radius-10: 3rem;
+  
+  /* SECTION BACKGROUNDS - Only palette colors, NO BLUR */
+  --bg-primary-dark: #000208;
+  --bg-secondary-dark: #0a0e1a;
+  --bg-tertiary-dark: #041935;
+  --bg-light: #ffffff;
+  --bg-light-alt: #fafbfc;
+  
+  /* CARD SYSTEM - Unified styling */
+  --card-py: 2rem;
+  --card-px: 2rem;
+  --card-border-color-dark: rgba(255, 255, 255, 0.08);
+  --card-border-color-light: rgba(0, 0, 0, 0.05);
+  --card-bg-dark: rgba(255, 255, 255, 0.02);
+  --card-bg-light: rgba(255, 255, 255, 0.8);
+  
+  /* SHADOWS - Consistent depth */
+  --shadow-sm: 0 4px 12px;
+  --shadow-md: 0 10px 30px;
+  --shadow-lg: 0 20px 40px;
+  --shadow-dark: rgba(0, 0, 0, 0.3);
+  --shadow-light: rgba(0, 0, 0, 0.08);
+  
+  /* Z-INDEX SCALE */
+  --z-base: 0;
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-fixed: 30;
+  --z-modal: 40;
+  --z-tooltip: 50;
 }
 
 .dark {
@@ -168,6 +230,133 @@
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
+/* ===== UNIFIED DESIGN SYSTEM COMPONENTS ===== */
+
+/* SECTION WRAPPER - Consistent vertical spacing & width */
+.section-unified {
+  width: 100%;
+  padding-top: var(--section-py-mobile);
+  padding-bottom: var(--section-py-mobile);
+  overflow-x: hidden;
+  scroll-margin-top: 64px;
+}
+
+@media (min-width: 768px) {
+  .section-unified {
+    padding-top: var(--section-py-tablet);
+    padding-bottom: var(--section-py-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-unified {
+    padding-top: var(--section-py-desktop);
+    padding-bottom: var(--section-py-desktop);
+  }
+}
+
+/* SECTION BACKGROUND - Primary dark */
+.section-unified.bg-primary {
+  background-color: var(--bg-primary-dark);
+}
+
+.section-unified.bg-primary.light {
+  background-color: var(--bg-light);
+}
+
+/* SECTION BACKGROUND - Secondary alternate */
+.section-unified.bg-secondary {
+  background-color: var(--bg-secondary-dark);
+}
+
+.section-unified.bg-secondary.light {
+  background-color: var(--bg-light-alt);
+}
+
+/* CONTAINER WRAPPER - Unified max-width & padding */
+.container-unified {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-px);
+  padding-right: var(--container-px);
+  position: relative;
+  z-index: var(--z-base);
+}
+
+/* UNIFIED CARD - Consistent styling */
+.card-unified {
+  border: var(--card-border-color-dark);
+  border-radius: var(--radius-9);
+  padding: var(--card-py) var(--card-px);
+  background: var(--card-bg-dark);
+  box-shadow: var(--shadow-md) var(--shadow-dark);
+  transition: all 0.3s ease;
+}
+
+.card-unified:hover {
+  border-color: rgba(214, 165, 86, 0.2);
+  box-shadow: var(--shadow-lg) var(--shadow-dark);
+  transform: translateY(-2px);
+}
+
+.light .card-unified {
+  border-color: var(--card-border-color-light);
+  background: var(--card-bg-light);
+  box-shadow: var(--shadow-md) var(--shadow-light);
+}
+
+.light .card-unified:hover {
+  box-shadow: var(--shadow-lg) var(--shadow-light);
+}
+
+/* SECTION DIVIDER - Consistent spacing between sections */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--brand-blue), var(--brand-gold), var(--brand-blue), transparent);
+  opacity: 0.2;
+}
+
+/* SECTION HEADER - Consistent title styling */
+.section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: var(--spacing-4xl);
+  gap: var(--spacing-lg);
+}
+
+.section-header h2 {
+  font-size: clamp(2.5rem, 7vw, 3.75rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.section-header p {
+  max-width: 42rem;
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  line-height: 1.6;
+}
+
+/* SPACING UTILITIES - Consistent gaps */
+.gap-section { gap: var(--spacing-4xl); }
+.gap-section-sm { gap: var(--spacing-2xl); }
+.gap-section-lg { gap: var(--spacing-5xl); }
+
+.mt-section { margin-top: var(--spacing-4xl); }
+.mb-section { margin-bottom: var(--spacing-4xl); }
+.py-section { padding-top: var(--spacing-4xl); padding-bottom: var(--spacing-4xl); }
+
+@media (min-width: 768px) {
+  .gap-section { gap: var(--spacing-5xl); }
+  .mt-section { margin-top: var(--spacing-5xl); }
+  .mb-section { margin-bottom: var(--spacing-5xl); }
+  .py-section { padding-top: var(--spacing-5xl); padding-bottom: var(--spacing-5xl); }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -189,6 +378,8 @@
     font-family: var(--font-sans), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    touch-action: pan-y;
   }
   
   /* Custom scrollbar - Brand blue/gold */
@@ -221,6 +412,18 @@
   background-image: 
     radial-gradient(circle at 20% 50%, rgba(4, 25, 53, 0.03) 0%, transparent 50%),
     radial-gradient(circle at 80% 50%, rgba(214, 165, 86, 0.03) 0%, transparent 50%);
+}
+
+/* Ensure media are responsive and don't overflow on small screens */
+img, picture, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Prevent horizontal overflow from components */
+.container, .max-w-7xl, .max-w-6xl {
+  overflow-x: hidden;
 }
 
 .dark .brand-pattern {

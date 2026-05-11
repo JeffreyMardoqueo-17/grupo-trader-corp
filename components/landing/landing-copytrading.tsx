@@ -200,6 +200,10 @@ export function LandingCopyTrading() {
                 con estructura.
               </span>
             </h2>
+              <p className="mt-12 text-xl leading-relaxed text-white  ">
+            Un entorno diseñado para que aprendas viendo operaciones reales, con
+            seguimiento constante y sin perder el control de tu cuenta.
+          </p>
           </motion.div>
 
           <div className="max-w-2xl">
@@ -280,10 +284,7 @@ export function LandingCopyTrading() {
             })}
           </div>
 
-          <p className="mt-12 text-xs leading-relaxed text-white  ">
-            Un entorno diseñado para que aprendas viendo operaciones reales, con
-            seguimiento constante y sin perder el control de tu cuenta.
-          </p>
+        
         </div>
       </div>
     );

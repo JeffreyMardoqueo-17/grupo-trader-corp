@@ -34,12 +34,14 @@ export function LandingTeam() {
   };
 
   return (
-    <section
+    <motion.section
       id="equipo"
-      className={`relative overflow-hidden py-32 lg:py-40 ${
-        isDark
-          ? "bg-[#0a0e1a]"
-          : "bg-[#fafbfc]"
+      initial={{ opacity: 0, x: 120 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.18 }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      className={`scroll-mt-16 relative overflow-hidden py-32 lg:py-40 ${
+        isDark ? "bg-[#0a0e1a]" : "bg-[#fafbfc]"
       }`}
     >
       <div className="absolute inset-0 opacity-40">
@@ -164,6 +166,6 @@ export function LandingTeam() {
       </div>
       {/* <LandingFocusCards /> */}
       {/* <LandingContact /> */}
-    </section>
+    </motion.section>
   );
 }

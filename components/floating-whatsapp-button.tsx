@@ -45,7 +45,7 @@ export function FloatingWhatsAppButton() {
       target="_blank"
       rel="noreferrer"
       aria-label="Abrir WhatsApp"
-      className="floating-whatsapp fixed bottom-5 right-5 z-[70] inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_12px_28px_rgba(37,211,102,0.45)] transition-transform duration-300 hover:scale-105"
+      className="floating-whatsapp fixed bottom-5 right-5 z-70 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_12px_28px_rgba(37,211,102,0.45)] transition-transform duration-300 hover:scale-105"
     >
       <svg
         viewBox="0 0 24 24"

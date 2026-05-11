@@ -52,13 +52,13 @@ export function LandingHero() {
   ];
 
   return (
-    <section id="inicio" className="relative min-h-[90vh] flex items-center">
+    <section id="inicio" className="relative min-h-[65vh] sm:min-h-[80vh] lg:min-h-[90vh] flex items-center pt-16 scroll-mt-16">
       <div className="container mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
           {/* ===== COLUMNA IZQUIERDA ===== */}
           <div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-6">
               Aprende a operar en mercados financieros junto a{" "}
               <span className="text-[#D6A556]">traders profesionales</span>
             </h1>
@@ -69,7 +69,7 @@ export function LandingHero() {
             </p>
 
             {/* ===== STATS ===== */}
-            <div className="grid grid-cols-3 gap-6 mb-10 max-w-md">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10 max-w-md">
               {stats.map((stat, index) => (
                 <div key={index}>
                   <div className="flex items-center gap-2 mb-1">
@@ -114,15 +114,17 @@ export function LandingHero() {
           </div>
 
           {/* ===== COLUMNA DERECHA (IMAGEN GRANDE) ===== */}
-          <div className="relative h-[420px] sm:h-[520px] lg:h-[640px] w-full">
-            <Image
-              src="/images/hero.avif"
-              alt="Trader operando desde celular"
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover rounded-3xl"
-            />
+          <div className="relative w-full">
+            <div style={{ aspectRatio: '16/10', minHeight: 180 }} className="w-full overflow-hidden rounded-3xl">
+              <Image
+                src="/images/hero.avif"
+                alt="Trader operando desde celular"
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover w-full h-full"
+              />
+            </div>
           </div>
 
         </div>

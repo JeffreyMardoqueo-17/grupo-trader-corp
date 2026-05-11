@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef, useLayoutEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -22,15 +22,6 @@ export function LandingHeader() {
 
   /* ================= ACTIVE LINK TRACKING ================= */
 
-  const navRef = useRef<HTMLElement | null>(null);
-
-  useLayoutEffect(() => {
-    const nav = navRef.current;
-    if (!nav) return;
-
-    const el = nav.querySelector(`a[href="${activeHref}"]`) as HTMLElement | null;
-    if (!el) return;
-  }, [activeHref]);
 
   useEffect(() => {
     if (pathname !== "/") {
@@ -92,15 +83,15 @@ export function LandingHeader() {
             <Image
               src="/images/logo.jpg"
               alt="Grupo Trade Corp"
-              width={80}
-              height={80}
+              width={40}
+              height={40}
               className="h-12 w-auto"
               priority
             />
           </Link>
 
           {/* Desktop Nav */}
-          <nav ref={navRef} className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => {
               const active = isLinkActive(item.href);
               return (
