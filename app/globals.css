@@ -50,7 +50,7 @@
 
 :root {
   /* Brand palette - Colores oficiales */
-  --brand-base: #000418;
+  --brand-base: #0c1526;
   --brand-blue: #041935;
   --brand-gold: #D6A556;
   --white: #ffffff;
@@ -175,18 +175,13 @@
   
   html {
     scroll-behavior: smooth;
-    color-scheme: light;
+    color-scheme: dark;
     scrollbar-width: thin;
-    scrollbar-color: var(--brand-blue) transparent;
+    scrollbar-color: var(--brand-gold) transparent;
     select::selection {
       background-color: var(--brand-gold);
       color: var(--white);
     }
-  }
-  
-  .dark {
-    color-scheme: dark;
-    scrollbar-color: var(--brand-gold) transparent;
   }
   
   body {
@@ -207,20 +202,12 @@
   }
   
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, var(--brand-blue), #041935);
+    background: linear-gradient(180deg, var(--brand-gold), #c4913f);
     border-radius: 10px;
     transition: background 0.3s ease;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, var(--brand-gold), #c4913f);
-  }
-  
-  .dark ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, var(--brand-gold), #c4913f);
-  }
-  
-  .dark ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(180deg, #e6b566, var(--brand-gold));
   }
   

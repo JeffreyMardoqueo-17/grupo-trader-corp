@@ -8,7 +8,7 @@ export type TeamMember = {
 };
 
 export const teamMembers: TeamMember[] = [
-  { name: "Denis Gutiérrez", role: "Fundador & CEO", initials: "DG", slug: "denis", href: "/team/denis", image: "/images/denis.jpeg" },
+  // { name: "Denis Gutiérrez", role: "Fundador & CEO", initials: "DG", slug: "denis", href: "/team/denis", image: "/images/denis.jpeg" },
   { name: "Valeria Aragón", role: "Fundadora & CCO", initials: "VA", slug: "valeria-aragon", href: "/team/valeria-aragon" },
   { name: "Juan Huiza", role: "Gerente de Ventas", initials: "JH", slug: "juan-huiza", href: "/team/juan-huiza" },
   { name: "Xenia Aragón", role: "Subgerente de Ventas", initials: "XA", slug: "xenia-aragon", href: "/team/xenia-aragon" },

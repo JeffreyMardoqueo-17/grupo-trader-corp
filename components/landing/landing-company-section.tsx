@@ -36,11 +36,14 @@ export function LandingCompanySection() {
   }, []);
 
   const academyWhatsAppLink = buildWhatsAppLink(
-    "Hola buen día, quisiera saber más información sobre la academia de trading."
+    "Hola buen día, quisiera saber más información sobre la academia de trading.",
   );
 
   return (
-    <section id="nosotros" className={`py-20 lg:py-32 ${isDark ? "bg-linear-to-b from-[#000208] via-[#041935] to-[#000208]" : "bg-white"}`}>
+    <section
+      id="nosotros"
+      className={`py-20 lg:py-32 ${isDark ? "bg-linear-to-b from-[#000208] via-[#041935] to-[#000208]" : "bg-white"}`}
+    >
       {/* Background glow effects */}
       {isDark && (
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(74,144,226,0.1),transparent_50%)]" />
@@ -64,14 +67,16 @@ export function LandingCompanySection() {
           >
             {/* Carrusel Container */}
             <div className="space-y-4">
-              <div className={`relative aspect-4/3 overflow-hidden rounded-3xl ${isDark ? "ring-1 ring-white/5" : "shadow-2xl"}`}>
+              <div
+                className={`relative aspect-4/3 overflow-hidden rounded-3xl ${isDark ? "ring-1 ring-white/5" : "shadow-2xl"}`}
+              >
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentSlide}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.1}}
+                    transition={{ duration: 0.1 }}
                     className="relative w-full h-full"
                   >
                     <Image
@@ -120,7 +125,9 @@ export function LandingCompanySection() {
             </div>
 
             {/* Decorative glow */}
-            <div className={`absolute -left-6 -top-6 h-32 w-32 rounded-full blur-3xl ${isDark ? "bg-[#D6A556]/20" : "bg-[#D6A556]/10"}`} />
+            <div
+              className={`absolute -left-6 -top-6 h-32 w-32 rounded-full blur-3xl ${isDark ? "bg-[#D6A556]/20" : "bg-[#D6A556]/10"}`}
+            />
           </motion.div>
 
           {/* Right: Content */}
@@ -136,7 +143,7 @@ export function LandingCompanySection() {
                 isDark ? "text-[#D6A556]" : "text-[#D6A556]"
               }`}
             >
-              Grupo Trade Corp
+              Sobre nosotros
             </span>
 
             <h2
@@ -144,16 +151,17 @@ export function LandingCompanySection() {
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >
-              Una forma{" "}
-              <span className="text-[#D6A556]">estructurada</span> de aprender y operar en los mercados
+              Una forma <span className="text-[#D6A556]">estructurada</span> de
+              aprender y operar en los mercados
             </h2>
-
             <p
               className={`mt-6 leading-relaxed ${
                 isDark ? "text-white/60" : "text-gray-600"
               }`}
             >
-              Grupo Trade Corp es una comunidad privada donde aprendes, entiendes y ejecutas con criterio.
+              TradeCorp es una comunidad privada enfocada en educación sobre la
+              bolsa de valores y herramientas modernas para que puedas
+              desenvolverte en los mercados financieros de forma inteligente.
             </p>
 
             <p
@@ -161,50 +169,61 @@ export function LandingCompanySection() {
                 isDark ? "text-white/50" : "text-gray-500"
               }`}
             >
-              Combinamos formación profesional con herramientas como CopyTrading para que avances incluso si estás empezando.
-            </p>
-
-            <p
-              className={`mt-4 leading-relaxed ${
-                isDark ? "text-white/50" : "text-gray-500"
-              }`}
-            >
-              Aquí no se trata de improvisar. Se trata de construir disciplina y tomar decisiones financieras con claridad.
+              Combinamos formación profesional con herramientas como CopyTrading
+              para que avances incluso si estás empezando.
             </p>
 
             {/* Stats */}
             <div
               className={`mt-8 grid grid-cols-3 gap-6 rounded-2xl  p-6 ${
-                isDark
-                  ? " "
-                  : " bg-white"
+                isDark ? " " : " bg-white"
               }`}
             >
               <div>
                 <p className="text-3xl font-bold text-[#D6A556]">500+</p>
-                <p className={`text-sm ${isDark ? "text-white/40" : "text-gray-400"}`}>Traders activos</p>
+                <p
+                  className={`text-sm ${isDark ? "text-white/40" : "text-gray-400"}`}
+                >
+                  Traders activos
+                </p>
               </div>
               <div>
-                <p className="text-3xl font-bold text-[#D6A556]">+10</p>
-                <p className={`text-sm ${isDark ? "text-white/40" : "text-gray-400"}`}>Años de experiencia</p>
+                <p className="text-3xl font-bold text-[#D6A556]">10+</p>
+                <p
+                  className={`text-sm ${isDark ? "text-white/40" : "text-gray-400"}`}
+                >
+                  Años de experiencia
+                </p>
               </div>
               <div>
                 <p className="text-3xl font-bold text-[#D6A556]">100%</p>
-                <p className={`text-sm ${isDark ? "text-white/40" : "text-gray-400"}`}>Metodología probada</p>
+                <p
+                  className={`text-sm ${isDark ? "text-white/40" : "text-gray-400"}`}
+                >
+                  Metodología probada
+                </p>
               </div>
             </div>
 
             {/* CTA */}
             <div className="mt-8">
               <a
-                href={academyWhatsAppLink}
-                target="_blank"
-                rel="noreferrer"
+                href="/denis"
                 className="inline-flex items-center gap-2 rounded-xl bg-[#D6A556] px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#D6A556]/90"
               >
-                Conocer la academia
-                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                Conoce al equipo
+                <svg
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
                 </svg>
               </a>
             </div>

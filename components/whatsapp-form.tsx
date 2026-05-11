@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { cn } from "@/lib/utils";
+import { ArrowRight } from "lucide-react";
 
 const phoneNumber = "50369842090";
 
@@ -31,7 +32,10 @@ export function WhatsAppForm({ className }: WhatsAppFormProps) {
       message ? `Mensaje: ${message}` : null,
     ].filter(Boolean);
 
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(parts.join("\n"))}`;
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      parts.join("\n")
+    )}`;
+
     window.open(url, "_blank", "noopener,noreferrer");
   }
 
@@ -39,94 +43,138 @@ export function WhatsAppForm({ className }: WhatsAppFormProps) {
     <form
       onSubmit={handleSubmit}
       className={cn(
-        "rounded-3xl bg-gray-50 p-6 sm:p-8 dark:bg-[var(--card)]",
+        "relative overflow-hidden rounded-[2rem] p-3  ",
         className
       )}
     >
-      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">Formulario de contacto</p>
-      <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground">Envíanos un mensaje</h2>
-      <p className="mt-2 max-w-xl text-sm leading-6 text-muted-foreground">
-        Te ayudamos de forma directa con una asesoría personalizada según tu etapa actual en trading.
-      </p>
+      {/* Glow */}
+      <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[#D6A556]/10 blur-3xl" />
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">
-        <label className="space-y-2 text-sm font-medium text-foreground">
-          Nombre
-          <input
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-            placeholder="Escriba su nombre"
-            required
-            className="h-12 w-full rounded-xl border border-border bg-background px-4 text-sm text-foreground outline-none transition focus:border-[var(--brand-gold)]"
-          />
-        </label>
-        <label className="space-y-2 text-sm font-medium text-foreground">
-          Apellido
-          <input
-            value={lastName}
-            onChange={(event) => setLastName(event.target.value)}
-            placeholder="Escriba su apellido"
-            required
-            className="h-12 w-full rounded-xl border border-border bg-background px-4 text-sm text-foreground outline-none transition focus:border-[var(--brand-gold)]"
-          />
-        </label>
-        <label className="space-y-2 text-sm font-medium text-foreground sm:col-span-2">
-          Email
-          <input
-            type="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            placeholder="ejemplo@correo.com"
-            required
-            className="h-12 w-full rounded-xl border border-border bg-background px-4 text-sm text-foreground outline-none transition focus:border-[var(--brand-gold)]"
-          />
-        </label>
-        <label className="space-y-2 text-sm font-medium text-foreground sm:col-span-2">
-          Teléfono
-          <div className="grid grid-cols-[110px_1fr] gap-2">
-            <select
-              value={countryCode}
-              onChange={(event) => setCountryCode(event.target.value)}
-              className="h-12 rounded-xl border border-border bg-background px-3 text-sm text-foreground outline-none transition focus:border-[var(--brand-gold)]"
-            >
-              {countryCodes.map((code) => (
-                <option key={code} value={code}>
-                  {code}
-                </option>
-              ))}
-            </select>
+      <div className="relative z-10">
+        {/* Header */}
+        <div className="mb-8">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#D6A556]/20 bg-[#D6A556]/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-[#D6A556]">
+            Formulario de contacto
+          </span>
+
+          <h2 className="mt-5 text-4xl font-black tracking-tight text-gray-900 dark:text-white">
+            Envíanos un mensaje
+          </h2>
+
+          <p className="mt-4 max-w-xl text-sm leading-7 text-gray-600 dark:text-white/60">
+            Completa el formulario y continuaremos la conversación directamente
+            por WhatsApp.
+          </p>
+        </div>
+
+        {/* Inputs */}
+        <div className="grid gap-5 sm:grid-cols-2">
+          {/* Nombre */}
+          <label className="space-y-2">
+            <span className="text-sm font-medium text-gray-700 dark:text-white/70">
+              Nombre
+            </span>
+
             <input
-              value={phone}
-              onChange={(event) => setPhone(event.target.value)}
-              placeholder="Su número de contacto"
+              value={name}
+              onChange={(event) => setName(event.target.value)}
+              placeholder="Kevin"
               required
-              className="h-12 w-full rounded-xl border border-border bg-background px-4 text-sm text-foreground outline-none transition focus:border-[var(--brand-gold)]"
+              className="h-14 w-full rounded-2xl border border-black/5 bg-gray-50 px-5 text-sm outline-none transition-all focus:border-[#D6A556]/40 focus:bg-white dark:border-white/10 dark:bg-white/[0.03] dark:text-white"
             />
-          </div>
-        </label>
-        <label className="space-y-2 text-sm font-medium text-foreground sm:col-span-2">
-          Mensaje
-          <textarea
-            value={message}
-            onChange={(event) => setMessage(event.target.value)}
-            placeholder="Cuéntanos qué te gustaría lograr en trading y qué tipo de ayuda necesitas."
-            required
-            className="min-h-36 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition focus:border-[var(--brand-gold)]"
-          />
-        </label>
-      </div>
+          </label>
 
-      <div className="mt-6">
-        <button
-          type="submit"
-          className="inline-flex w-full items-center justify-center rounded-full bg-[#0b1020] px-7 py-3 text-sm font-semibold text-white transition hover:opacity-95 dark:bg-[#D6A556] dark:text-[#0b1020]"
-        >
-          Enviar mensaje
-        </button>
+          {/* Apellido */}
+          <label className="space-y-2">
+            <span className="text-sm font-medium text-gray-700 dark:text-white/70">
+              Apellido
+            </span>
 
-        <p className="mt-3 text-sm leading-6 text-muted-foreground">
-          Al enviarlo, se abrirá WhatsApp con toda tu información para responderte más rápido.
-        </p>
+            <input
+              value={lastName}
+              onChange={(event) => setLastName(event.target.value)}
+              placeholder="Hernández"
+              required
+              className="h-14 w-full rounded-2xl border border-black/5 bg-gray-50 px-5 text-sm outline-none transition-all focus:border-[#D6A556]/40 focus:bg-white dark:border-white/10 dark:bg-white/[0.03] dark:text-white"
+            />
+          </label>
+
+          {/* Email */}
+          <label className="space-y-2 sm:col-span-2">
+            <span className="text-sm font-medium text-gray-700 dark:text-white/70">
+              Email
+            </span>
+
+            <input
+              type="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              placeholder="correo@ejemplo.com"
+              required
+              className="h-14 w-full rounded-2xl border border-black/5 bg-gray-50 px-5 text-sm outline-none transition-all focus:border-[#D6A556]/40 focus:bg-white dark:border-white/10 dark:bg-white/[0.03] dark:text-white"
+            />
+          </label>
+
+          {/* Phone */}
+          <label className="space-y-2 sm:col-span-2">
+            <span className="text-sm font-medium text-gray-700 dark:text-white/70">
+              Teléfono
+            </span>
+
+            <div className="grid grid-cols-[120px_1fr] gap-3">
+              <select
+                value={countryCode}
+                onChange={(event) => setCountryCode(event.target.value)}
+                className="h-14 rounded-2xl border border-black/5 bg-gray-50 px-4 text-sm outline-none transition-all focus:border-[#D6A556]/40 dark:border-white/10 dark:bg-white/[0.03] dark:text-white"
+              >
+                {countryCodes.map((code) => (
+                  <option key={code} value={code}>
+                    {code}
+                  </option>
+                ))}
+              </select>
+
+              <input
+                value={phone}
+                onChange={(event) => setPhone(event.target.value)}
+                placeholder="0000 0000"
+                required
+                className="h-14 w-full rounded-2xl border border-black/5 bg-gray-50 px-5 text-sm outline-none transition-all focus:border-[#D6A556]/40 focus:bg-white dark:border-white/10 dark:bg-white/[0.03] dark:text-white"
+              />
+            </div>
+          </label>
+
+          {/* Message */}
+          <label className="space-y-2 sm:col-span-2">
+            <span className="text-sm font-medium text-gray-700 dark:text-white/70">
+              Mensaje
+            </span>
+
+            <textarea
+              value={message}
+              onChange={(event) => setMessage(event.target.value)}
+              placeholder="Cuéntanos qué buscas lograr y en qué etapa te encuentras actualmente."
+              required
+              className="min-h-[160px] w-full rounded-2xl border border-black/5 bg-gray-50 px-5 py-4 text-sm leading-7 outline-none transition-all focus:border-[#D6A556]/40 focus:bg-white dark:border-white/10 dark:bg-white/[0.03] dark:text-white"
+            />
+          </label>
+        </div>
+
+        {/* Button */}
+        <div className="mt-8">
+          <button
+            type="submit"
+            className="group inline-flex h-14 w-full items-center justify-center gap-3 rounded-2xl bg-[#D6A556] px-7 text-sm font-semibold text-black transition-all duration-300 hover:scale-[1.01] hover:bg-[#c8933f]"
+          >
+            Continuar por WhatsApp
+
+            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </button>
+
+          <p className="mt-4 text-center text-xs leading-6 text-gray-500 dark:text-white/40">
+            Tu información se utilizará únicamente para continuar el contacto.
+          </p>
+        </div>
       </div>
     </form>
   );

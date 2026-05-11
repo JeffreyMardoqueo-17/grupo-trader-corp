@@ -51,12 +51,12 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `const theme = localStorage.getItem('theme') || 'dark'; if (theme === 'dark') document.documentElement.classList.add('dark');`,
+            __html: `document.documentElement.classList.add('dark'); localStorage.setItem('theme', 'dark');`,
           }}
         />
         <style
           dangerouslySetInnerHTML={{
-            __html: `html { background-color: #ffffff; color: #000418; color-scheme: light; } html.dark { background-color: #000208; color: #ffffff; color-scheme: dark; } body { margin: 0; padding: 0; }`,
+            __html: `html { background-color: #000208; color: #ffffff; color-scheme: dark; } body { margin: 0; padding: 0; background-color: #000208; color: #ffffff; }`,
           }}
         />
       </head>

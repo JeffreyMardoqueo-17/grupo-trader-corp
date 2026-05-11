@@ -8,14 +8,12 @@ export function ThemeInitializer() {
 
   useEffect(() => {
     const root = document.documentElement;
-    const isDark = theme === "dark";
-
-    root.classList.toggle("dark", isDark);
-    root.style.colorScheme = isDark ? "dark" : "light";
+    root.classList.add("dark");
+    root.style.colorScheme = "dark";
 
     if (typeof document !== "undefined") {
-      document.body.style.backgroundColor = isDark ? "#000208" : "#ffffff";
-      document.body.style.color = isDark ? "#ffffff" : "#000418";
+      document.body.style.backgroundColor = "#000208";
+      document.body.style.color = "#ffffff";
     }
 
     console.log("🎨 Tema aplicado:", theme);

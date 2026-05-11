@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useTheme } from "@/components/theme-provider";
-import { LandingContact } from "./landing-contact";
+import { LandingTeam } from "./landing-team";
+import { LandingPrinciples } from "./landing-principles";
 
 export function LandingDenis() {
   const { theme } = useTheme();
@@ -16,28 +17,43 @@ export function LandingDenis() {
   return (
     <section
       id="denis"
-      className={`py-20 lg:py-32 ${
+      className={`relative py-24 lg:py-40 overflow-hidden ${
         isDark
-          ? "bg-gradient-to-b from-[#000418] via-[#041935] to-[#000418]"
-          : "bg-gradient-to-b from-white via-gray-50 to-white"
+          ? "bg-[#0a0e1a]"
+          : "bg-[#fafbfc]"
       }`}
     >
-      <div className="container mx-auto max-w-6xl px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div className="absolute inset-0 opacity-40">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: isDark
+              ? "linear-gradient(to right, rgba(214,165,86,0.05) 1px, transparent 1px)"
+              : "linear-gradient(to right, rgba(214,165,86,0.03) 1px, transparent 1px)",
+            backgroundSize: "80px 100%",
+          }}
+        />
+      </div>
+      
+      <div className="relative container mx-auto max-w-7xl px-6 sm:px-8">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Left: Image */}
           <motion.div
             className="relative order-2 lg:order-1"
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <div
-              className={`relative rounded-3xl overflow-hidden shadow-2xl ${goldGlow} ${
-                isDark ? "ring-1 ring-white/5" : "ring-1 ring-gray-200"
+              className={`relative rounded-2xl overflow-hidden ${
+                isDark 
+                  ? "ring-1 ring-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
+                  : "ring-1 ring-gray-200/50 shadow-[0_8px_24px_rgba(0,0,0,0.06)]"
               }`}
+              style={{ aspectRatio: "4 / 5" }}
             >
-              <div className="relative aspect-[4/5]">
+              <div className="relative h-full w-full">
                 <Image
                   src="/images/denis.jpeg"
                   alt="Denis Gutiérrez - Fundador Grupo Trade Corp"
@@ -47,56 +63,55 @@ export function LandingDenis() {
                 />
               </div>
               <div
-                className={`absolute inset-0 bg-gradient-to-t ${
-                  isDark ? "from-[#000418]/60 to-transparent" : "from-black/20 to-transparent"
+                className={`absolute inset-0 bg-linear-to-t ${
+                  isDark ? "from-[#0a0e1a]/70 via-transparent to-transparent" : "from-black/10 to-transparent"
                 }`}
               />
             </div>
-            <div className={`absolute -top-6 -left-6 w-32 h-32 rounded-full ${goldBg} blur-3xl opacity-50`} />
-            <div className={`absolute -bottom-6 -right-6 w-40 h-40 rounded-full ${goldBg} blur-3xl opacity-40`} />
           </motion.div>
 
           {/* Right: Content */}
-          <div className="order-1 lg:order-2">
+          <div className="order-1 lg:order-2 space-y-8">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="space-y-3"
             >
               <span
-                className={`inline-block text-sm font-semibold tracking-widest uppercase ${
-                  isDark ? "text-white/50" : "text-gray-400"
-                } mb-2`}
-              >
-                Fundador · Grupo Trade Corp
-              </span>
-              <h2
-                className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 ${
-                  isDark ? "text-white" : "text-gray-900"
+                className={`text-xs font-bold tracking-widest uppercase ${
+                  isDark ? "text-[#D6A556]" : "text-[#9a6f28]"
                 }`}
               >
-                Denis Gutiérrez
+                Fundador · Mentor
+              </span>
+              <h2
+                className={`text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-none ${
+                  isDark ? "text-white" : "text-[#0a0e1a]"
+                }`}
+              >
+                Denis<br />Gutiérrez
               </h2>
             </motion.div>
 
             <motion.blockquote
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className={`text-3xl sm:text-4xl font-bold italic mb-8 leading-tight ${gold}`}
+              transition={{ duration: 0.6, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className={`text-2xl sm:text-3xl font-bold leading-snug ${gold}`}
             >
               "Piensa como los bancos."
             </motion.blockquote>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className={`space-y-4 mb-10 text-base sm:text-lg leading-relaxed ${
-                isDark ? "text-white/70" : "text-gray-600"
+              transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className={`space-y-4 text-base sm:text-lg leading-relaxed ${
+                isDark ? "text-white/70" : "text-[#4a5568]"
               }`}
             >
               <p>
@@ -109,38 +124,40 @@ export function LandingDenis() {
 
             {/* Stats */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className={`grid grid-cols-3 gap-6 sm:gap-10 p-6 rounded-2xl ${
+              transition={{ duration: 0.6, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className={`grid grid-cols-3 gap-6 p-6 rounded-xl mt-8 ${
                 isDark
-                  ? "bg-white/[0.03]  backdrop-blur-sm"
-                  : "bg-white border "
+                  ? "bg-white/5 border border-white/10"
+                  : "bg-white/50 border border-gray-200/30"
               }`}
             >
               <div>
-                <p className={`text-4xl sm:text-5xl font-bold ${gold}`}>13+</p>
-                <p className={`text-sm mt-1 ${isDark ? "text-white/40" : "text-gray-400"}`}>
-                  Años operando
+                <p className={`text-4xl sm:text-5xl font-black ${gold}`}>10+</p>
+                <p className={`text-xs sm:text-sm mt-2 font-medium ${isDark ? "text-white/50" : "text-gray-600"}`}>
+                  Años de experiencia
                 </p>
               </div>
               <div>
-                <p className={`text-4xl sm:text-5xl font-bold ${gold}`}>4</p>
-                <p className={`text-sm mt-1 ${isDark ? "text-white/40" : "text-gray-400"}`}>
-                  Mercados globales
+                <p className={`text-4xl sm:text-5xl font-black ${gold}`}>4</p>
+                <p className={`text-xs sm:text-sm mt-2 font-medium ${isDark ? "text-white/50" : "text-gray-600"}`}>
+                  Mercados
                 </p>
               </div>
               <div>
-                <p className={`text-4xl sm:text-5xl font-bold ${gold}`}>500+</p>
-                <p className={`text-sm mt-1 ${isDark ? "text-white/40" : "text-gray-400"}`}>
-                  Traders formados
+                <p className={`text-4xl sm:text-5xl font-black ${gold}`}>500+</p>
+                <p className={`text-xs sm:text-sm mt-2 font-medium ${isDark ? "text-white/50" : "text-gray-600"}`}>
+                  Traders
                 </p>
               </div>
             </motion.div>
           </div>
         </div>
       </div>
+      <LandingTeam />
+      <LandingPrinciples />
       {/* <LandingContact /> */}
     </section>
   );

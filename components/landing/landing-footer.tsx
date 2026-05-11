@@ -9,11 +9,11 @@ export function LandingFooter() {
           <div className="flex items-center gap-3">
             <div className="flex items-center">
               <Image
-                src="/images/logo.svg"
+                src="/images/logo.jpg"
                 alt="Grupo Trade Corp"
                 width={500}
                 height={500}
-                className="h-14 w-auto"
+                className="h-20 w-auto"
                 priority
               />
             </div>
