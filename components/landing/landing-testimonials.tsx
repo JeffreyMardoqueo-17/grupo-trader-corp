@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 
 interface Testimonial {
   name: string;
@@ -45,18 +44,16 @@ function StarIcon() {
 
 export function LandingTestimonials() {
   return (
-    <motion.section
+    <section
       id="testimonios"
-      className="relative overflow-hidden px-6 py-20 sm:py-28"
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-120px" }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="relative overflow-x-hidden px-6 py-20 sm:py-28"
     >
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute inset-0 bg-linear-to-b from-white via-gray-50/80 to-white dark:hidden" />
         <div className="absolute inset-0 hidden bg-linear-to-b from-slate-950 via-[#0a1428]/90 to-slate-950 dark:block" />
+
         <div className="absolute -top-32 left-1/3 h-96 w-96 rounded-full bg-amber-200/10 blur-3xl dark:bg-amber-900/5" />
+
         <div className="absolute -bottom-32 right-1/3 h-96 w-96 rounded-full bg-blue-200/10 blur-3xl dark:bg-blue-900/5" />
       </div>
 
@@ -91,15 +88,11 @@ export function LandingTestimonials() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {testimonials.map((testimonial, index) => (
-            <motion.article
+          {testimonials.map((testimonial) => (
+            <article
               key={testimonial.name}
-              className="flex h-full min-h-77.5 flex-col rounded-3xl border border-black/5 bg-white p-7 shadow-[0_10px_30px_rgba(0,0,0,0.04)] transition-all duration-300 hover:border-[#D6A556]/20 hover:shadow-[0_18px_40px_rgba(0,0,0,0.08)] dark:border-white/10 dark:bg-white/3"
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5, delay: index * 0.08, ease: "easeOut" }}
-              whileHover={{ y: -5 }}
+              className="flex h-full min-h-77.5 flex-col rounded-3xl border border-black/5 bg-white p-7 shadow-[0_10px_30px_rgba(0,0,0,0.04)] will-change-transform dark:border-white/10 dark:bg-white/3"
+              style={{ transition: "transform 180ms ease, box-shadow 180ms ease" }}
             >
               <div className="flex items-center gap-4">
                 <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border border-[#D6A556]/20">
@@ -136,10 +129,10 @@ export function LandingTestimonials() {
               <p className="mt-5 flex-1 text-sm leading-7 text-slate-700 dark:text-white/80">
                 "{testimonial.text}"
               </p>
-            </motion.article>
+            </article>
           ))}
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

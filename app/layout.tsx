@@ -60,7 +60,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${manrope.variable} min-h-screen bg-background text-foreground`} suppressHydrationWarning>
+      <body className={`${manrope.variable} min-h-screen bg-background text-foreground`}>
         <ThemeProvider>
           <ThemeInitializer />
           <RouterMonitor />

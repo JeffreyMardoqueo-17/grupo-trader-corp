@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+ 
 import { useTheme } from "@/components/theme-provider";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { LandingBenefits } from "@/components/landing/landing-benefits";
@@ -15,16 +15,7 @@ function AnimatedItem({
   children: React.ReactNode;
   delay?: number;
 }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, delay, ease: "easeOut" }}
-    >
-      {children}
-    </motion.div>
-  );
+  return <div>{children}</div>;
 }
 
 function StepCard({
@@ -180,12 +171,7 @@ export function LandingCopyTrading() {
         <div className="absolute inset-0 bg-black/70" />
 
         <div className="relative z-10 flex flex-col justify-center min-h-[500px] sm:min-h-[600px] px-8 sm:px-16 lg:px-24 py-20">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-16"
-          >
+          <div className="mb-16">
             <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#D6A556]">
               Estrategia real
             </p>
@@ -204,7 +190,7 @@ export function LandingCopyTrading() {
             Un entorno diseñado para que aprendas viendo operaciones reales, con
             seguimiento constante y sin perder el control de tu cuenta.
           </p>
-          </motion.div>
+          </div>
 
           <div className="max-w-2xl">
             {features.map((feature: any, i: number) => {
@@ -212,13 +198,7 @@ export function LandingCopyTrading() {
               const isActive = activeIndex === i;
 
               return (
-                <motion.div
-                  key={feature.title}
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.15 }}
-                >
+                <div key={feature.title}>
                   <button
                     onClick={() => setActiveIndex(isActive ? null : i)}
                     className="group w-full text-left py-5 flex items-center gap-5 transition-all duration-300"
@@ -245,11 +225,7 @@ export function LandingCopyTrading() {
                           {feature.title}
                         </h4>
 
-                        <motion.div
-                          animate={{ rotate: isActive ? 90 : 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="flex-shrink-0"
-                        >
+                        <div className="flex-shrink-0">
                           <svg
                             className={`h-5 w-5 ${isActive ? "text-[#D6A556]" : "text-white/20"}`}
                             fill="none"
@@ -263,23 +239,19 @@ export function LandingCopyTrading() {
                               d="M9 5l7 7-7 7"
                             />
                           </svg>
-                        </motion.div>
+                        </div>
                       </div>
 
                       {isActive && (
-                        <motion.p
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.4, ease: "easeOut" }}
+                        <p
                           className="overflow-hidden text-sm text-white/70 mt-2 leading-relaxed"
                         >
                           {feature.desc}
-                        </motion.p>
+                        </p>
                       )}
                     </div>
                   </button>
-                </motion.div>
+                </div>
               );
             })}
           </div>
@@ -410,13 +382,7 @@ export function LandingCopyTrading() {
             </div>
 
             <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -40, rotate: -6 }}
-                whileInView={{ opacity: 1, x: 0, rotate: -3 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className="relative"
-              >
+              <div className="relative">
                 <div
                   className={`relative min-h-[400px] lg:min-h-[500px] overflow-hidden rounded-2xl transform -rotate-3 `}
                 >
@@ -428,15 +394,9 @@ export function LandingCopyTrading() {
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, x: 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                className="flex flex-col gap-6"
-              >
+              <div className="flex flex-col gap-6">
                 <div>
                   <h3
                     className={`text-3xl font-black leading-tight sm:text-4xl ${isDark ? "text-white" : "text-gray-900"}`}
@@ -461,14 +421,7 @@ export function LandingCopyTrading() {
                     { big: "100%", text: "Aprendes viendo operaciones reales" },
                     { big: "100%", text: "Mantienes el control de tu cuenta" },
                   ].map((item, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, x: 30 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: 0.3 + i * 0.15 }}
-                      className="flex items-center gap-6"
-                    >
+                    <div key={i} className="flex items-center gap-6">
                       <div
                         className={`text-6xl font-black text-[#D6A556]`}
                       >
@@ -481,7 +434,7 @@ export function LandingCopyTrading() {
                           {item.text}
                         </p>
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
 
@@ -514,7 +467,7 @@ export function LandingCopyTrading() {
                 >
                   "TU DINERO SIEMPRE ESTÁ EN TUS MANOS"
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </AnimatedItem>

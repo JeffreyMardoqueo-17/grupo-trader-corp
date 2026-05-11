@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useTheme } from "@/components/theme-provider";
 
 const values = [
@@ -35,13 +34,7 @@ export function LandingPrinciples() {
       </div>
 
       <div className="relative mx-auto max-w-7xl px-6 sm:px-8 h-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-20 text-center"
-        >
+        <div className="mb-20 text-center">
           <span className="text-xs font-bold tracking-widest uppercase text-[#D6A556]">
             Nuestros Principios
           </span>
@@ -53,19 +46,12 @@ export function LandingPrinciples() {
             Construimos sobre
             <span className="block text-[#D6A556]">una base sólida</span>
           </h2>
-        </motion.div>
+        </div>
 
         {/* TOP CARDS */}
         <div className="grid gap-6 lg:grid-cols-3">
           {/* PRINCIPIOS */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className={`rounded-3xl border p-8 ${isDark ? "border-white/8" : "border-gray-200 bg-white"}`}
-            style={isDark ? { backgroundColor: "rgba(255,255,255,0.03)" } : undefined}
-          >
+          <div className={`rounded-3xl border p-8 ${isDark ? "border-white/8" : "border-gray-200 bg-white"}`} style={isDark ? { backgroundColor: "rgba(255,255,255,0.03)" } : undefined}>
             <div className="mb-6 inline-flex rounded-full border border-[#D6A556]/20 bg-[#D6A556]/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[#D6A556]">
               Principios
             </div>
@@ -86,17 +72,10 @@ export function LandingPrinciples() {
               Construimos procesos basados en disciplina, estructura y visión de
               largo plazo. Cada decisión debe tener lógica, gestión y propósito.
             </p>
-          </motion.div>
+          </div>
 
           {/* MISION */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className={`rounded-3xl border p-8 ${isDark ? "border-white/8" : "border-gray-200 bg-white"}`}
-            style={isDark ? { backgroundColor: "rgba(255,255,255,0.03)" } : undefined}
-          >
+          <div className={`rounded-3xl border p-8 ${isDark ? "border-white/8" : "border-gray-200 bg-white"}`} style={isDark ? { backgroundColor: "rgba(255,255,255,0.03)" } : undefined}>
             <div className="mb-6 inline-flex rounded-full border border-[#D6A556]/20 bg-[#D6A556]/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[#D6A556]">
               Misión
             </div>
@@ -118,17 +97,10 @@ export function LandingPrinciples() {
               responsabilidad financiera y capacidad estratégica para generar
               oportunidades sostenibles.
             </p>
-          </motion.div>
+          </div>
 
           {/* VISION */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className={`rounded-3xl border p-8 ${isDark ? "border-white/8" : "border-gray-200 bg-white"}`}
-            style={isDark ? { backgroundColor: "rgba(255,255,255,0.03)" } : undefined}
-          >
+          <div className={`rounded-3xl border p-8 ${isDark ? "border-white/8" : "border-gray-200 bg-white"}`} style={isDark ? { backgroundColor: "rgba(255,255,255,0.03)" } : undefined}>
             <div className="mb-6 inline-flex rounded-full border border-[#D6A556]/20 bg-[#D6A556]/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[#D6A556]">
               Visión
             </div>
@@ -150,7 +122,7 @@ export function LandingPrinciples() {
               desarrollo financiero y construcción de patrimonio con enfoque
               disciplinado.
             </p>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

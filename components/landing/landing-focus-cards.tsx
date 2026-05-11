@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { useTheme } from "@/components/theme-provider";
 
 const cards = [
@@ -80,20 +79,7 @@ export function LandingFocusCards() {
         {/* GRID */}
         <div className="grid gap-6 lg:grid-cols-2">
           {cards.map((card, index) => (
-            <motion.div
-              key={card.title}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{
-                once: true,
-                amount: 0.15,
-              }}
-              transition={{
-                duration: 0.45,
-                delay: index * 0.08,
-              }}
-              className="h-full"
-            >
+            <div key={card.title} className="h-full">
               <Link
                 href={card.href}
                 className={`group relative flex h-full flex-col overflow-hidden rounded-[2rem] border transition-colors duration-300 ${
@@ -192,7 +178,7 @@ export function LandingFocusCards() {
                   </div>
                 </div>
               </Link>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

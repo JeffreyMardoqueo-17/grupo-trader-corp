@@ -4,7 +4,7 @@ import { WhatsAppForm } from "@/components/whatsapp-form";
 import { Mail, MessageCircle, Phone } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+ 
 
 const steps = [
   {
@@ -44,14 +44,10 @@ export function LandingContact() {
   }, []);
 
   return (
-    <motion.section
+    <section
       ref={sectionRef}
       id="contacto"
-      initial={{ opacity: 0, x: 120 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, amount: 0.18 }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className={`relative overflow-hidden border-t  lg:py-28 transition-colors scroll-mt-16 ${
+      className={`relative overflow-hidden border-t lg:py-28 transition-colors scroll-mt-16 ${
         isDark ? "border-white/10 bg-[#000208]" : "border-black/5 bg-white"
       }`}
     >
@@ -101,15 +97,7 @@ export function LandingContact() {
                 : "border-black/5 bg-gray-50/80"
             }`}
           >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentStep}
-                initial={{ opacity: 0, y: 25 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -25 }}
-                transition={{ duration: 0.45 }}
-              >
-                <div className="flex items-start gap-6">
+            <div className="flex items-start gap-6">
                   {/* NUMBER */}
                   <div className="shrink-0">
                     <span className="text-6xl font-black leading-none text-[#D6A556] lg:text-7xl">
@@ -135,9 +123,7 @@ export function LandingContact() {
                       {steps[currentStep].description}
                     </p>
                   </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
+            </div>
 
             {/* INDICATORS */}
             <div className="mt-10 flex items-center gap-3">
@@ -351,6 +337,6 @@ export function LandingContact() {
           </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

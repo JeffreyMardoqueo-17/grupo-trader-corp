@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "@/components/theme-provider";
 import { teamMembers } from "@/components/landing/team-data";
-import { motion } from "framer-motion";
 
 export function LandingTeam() {
   const { theme } = useTheme();
@@ -34,12 +33,8 @@ export function LandingTeam() {
   };
 
   return (
-    <motion.section
+    <section
       id="equipo"
-      initial={{ opacity: 0, x: 120 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, amount: 0.18 }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       className={`scroll-mt-16 relative overflow-hidden py-32 lg:py-40 ${
         isDark ? "bg-[#0a0e1a]" : "bg-[#fafbfc]"
       }`}
@@ -55,13 +50,7 @@ export function LandingTeam() {
       <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
         {/* HEADER */}
         <div className="mx-auto max-w-4xl text-center mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
-          >
+          <div className="space-y-6">
             <span className="text-xs font-bold tracking-widest uppercase text-[#D6A556]">
               Nuestro Equipo
             </span>
@@ -82,24 +71,14 @@ export function LandingTeam() {
             >
               Profesionales con años de experiencia comprometidos con tu éxito financiero.
             </p>
-          </motion.div>
+          </div>
 
         </div>
 
         {/* GRID */}
         <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 justify-items-center max-w-7xl mx-auto">
           {teamMembers.map((member, index) => (
-            <motion.div
-              key={member.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.05,
-              }}
-              className={`w-full max-w-[16rem] ${getCardPositionClass(index)}`}
-            >
+            <div key={member.name} className={`w-full max-w-[16rem] ${getCardPositionClass(index)}`}>
               <div
                 className={`group relative flex h-full flex-col overflow-hidden rounded-xl border transition-all duration-300 ${
                   isDark
@@ -160,12 +139,12 @@ export function LandingTeam() {
                   </Link>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
       {/* <LandingFocusCards /> */}
       {/* <LandingContact /> */}
-    </motion.section>
+    </section>
   );
 }

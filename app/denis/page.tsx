@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { LandingHeader } from "@/components/landing/landing-header";
 import { LandingDenis } from "@/components/landing/landing-denis";
+import { LandingMissionVisionValues } from "@/components/landing/landing-mission-vision-values";
+import type { MissionVisionValuesData } from "@/components/landing/landing-mission-vision-values";
 import { LandingContact } from "@/components/landing/landing-contact";
 import { LandingFooter } from "@/components/landing/landing-footer";
 
@@ -10,17 +11,40 @@ export const metadata: Metadata = {
   description: "Conoce la visión, experiencia y enfoque de Denis Gutiérrez dentro de Grupo Trade Corp.",
 };
 
+const missionVisionData: MissionVisionValuesData = {
+  badge: "La base del trabajo",
+  title: "Misión, visión y valores",
+  mission: {
+    label: "Misión",
+    title: "Desarrollar estrategias que impulsen crecimiento",
+    description:
+      "Fundamentadas en disciplina, experiencia y resultados comprobables que generen oportunidades y construyan un patrimonio sólido y sostenible.",
+  },
+  vision: {
+    label: "Visión",
+    title: "Ser referente en disciplina y estrategia",
+    description:
+      "Convertirnos en guía para personas y empresas disciplinadas, capaces de tomar decisiones inteligentes y construir crecimiento con consistencia.",
+  },
+  values: {
+    label: "Valores",
+    title: "Principios que nos guían",
+    items: [
+      { icon: "✓", title: "Disciplina", description: "Hacemos lo necesario, incluso cuando no es fácil." },
+      { icon: "✓", title: "Criterio", description: "No actuamos por impulso, sino por entendimiento." },
+      { icon: "✓", title: "Responsabilidad", description: "Cada resultado es consecuencia de nuestras decisiones." },
+      { icon: "✓", title: "Crecimiento continuo", description: "Nunca dejamos de aprender ni de mejorar." },
+    ],
+  },
+};
+
 export default function DenisPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <LandingHeader />
         <main className="overflow-x-hidden">
-        {/* <div className="mx-auto max-w-6xl px-4 pt-8 sm:px-6 lg:px-8">
-          <Link href="/#explora" className="inline-flex rounded-full border border-border px-4 py-2 text-sm text-muted-foreground transition hover:border-[var(--brand-gold)] hover:text-foreground">
-            Volver a las cards
-          </Link>
-        </div> */}
         <LandingDenis />
+        <LandingMissionVisionValues data={missionVisionData} />
         <LandingContact />
         <LandingFooter />
       </main>

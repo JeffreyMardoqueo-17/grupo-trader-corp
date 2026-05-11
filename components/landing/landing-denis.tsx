@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { useTheme } from "@/components/theme-provider";
 import { LandingTeam } from "./landing-team";
@@ -38,13 +37,7 @@ export function LandingDenis() {
       <div className="relative container mx-auto max-w-7xl px-6 sm:px-8">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Left: Image */}
-          <motion.div
-            className="relative order-2 lg:order-1"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-          >
+          <div className="relative order-2 lg:order-1">
             <div
               className={`relative rounded-2xl overflow-hidden ${
                 isDark 
@@ -68,17 +61,11 @@ export function LandingDenis() {
                 }`}
               />
             </div>
-          </motion.div>
+          </div>
 
           {/* Right: Content */}
           <div className="order-1 lg:order-2 space-y-8">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-              className="space-y-3"
-            >
+            <div className="space-y-3">
               <span
                 className={`text-xs font-bold tracking-widest uppercase ${
                   isDark ? "text-[#D6A556]" : "text-[#9a6f28]"
@@ -93,23 +80,15 @@ export function LandingDenis() {
               >
                 Denis<br />Gutiérrez
               </h2>
-            </motion.div>
+            </div>
 
-            <motion.blockquote
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+            <blockquote
               className={`text-2xl sm:text-3xl font-bold leading-snug ${gold}`}
             >
               "Piensa como los bancos."
-            </motion.blockquote>
+            </blockquote>
 
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+            <div
               className={`space-y-4 text-base sm:text-lg leading-relaxed ${
                 isDark ? "text-white/70" : "text-[#4a5568]"
               }`}
@@ -120,14 +99,10 @@ export function LandingDenis() {
               <p>
                 Ha desarrollado una comunidad donde las personas aprenden a operar con estructura, no solo a consumir información.
               </p>
-            </motion.div>
+            </div>
 
             {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+            <div
               className={`grid grid-cols-3 gap-6 p-6 rounded-xl mt-8 ${
                 isDark
                   ? "bg-white/5 border border-white/10"
@@ -152,7 +127,7 @@ export function LandingDenis() {
                   Traders
                 </p>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

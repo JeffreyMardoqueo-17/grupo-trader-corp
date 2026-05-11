@@ -252,13 +252,7 @@ export function LandingAcademia() {
 
         {/* Contenido del Hero */}
         <div className="container relative z-10 mx-auto max-w-6xl px-6 h-full flex items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="max-w-4xl"
-          >
+          <div className="max-w-4xl">
             <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-md">
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#D6A556]" />
               Academia de Trading
@@ -295,7 +289,7 @@ export function LandingAcademia() {
                 />
               </svg>
             </a>
-          </motion.div>
+          </div>
         </div>
 
         {/* Gradiente de transición suave hacia el contenido */}
@@ -311,13 +305,7 @@ export function LandingAcademia() {
            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(214,165,86,0.06),transparent_45%),linear-gradient(180deg,#ffffff,#fafafa)]" />
          )}
          <div className="container relative z-10 mx-auto max-w-6xl px-6 py-20">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-20"
-          >
+          <div className="mb-20">
             <h3
               className={`mb-6 text-center text-2xl font-bold sm:text-3xl ${
                 isDark ? "text-white" : "text-gray-900"
@@ -329,12 +317,8 @@ export function LandingAcademia() {
               {features.map((feature, index) => {
                 const Icon = feature.icon;
                 return (
-                  <motion.div
+                  <div
                     key={feature.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.05, duration: 0.4 }}
                     className={`group relative min-w-[200px] overflow-hidden rounded-xl border p-4 transition-all duration-300 hover:-translate-y-0.5 sm:min-w-0 ${
                       isDark
                         ? "border-white/5 bg-white/[0.02] hover:border-[#D6A556]/30 hover:bg-white/[0.04]"
@@ -360,20 +344,14 @@ export function LandingAcademia() {
                     >
                       {feature.description}
                     </p>
-                  </motion.div>
+                  </div>
                 );
               })}
             </div>
-          </motion.div>
+          </div>
 
           {/* Experience Section - Split Layout */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="mb-20 grid items-center gap-12 lg:grid-cols-2 lg:gap-20"
-          >
+          <div className="mb-20 grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <div className="relative overflow-hidden rounded-3xl">
               <div className="relative aspect-4/3">
                 <Image
@@ -430,16 +408,10 @@ export function LandingAcademia() {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Final CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
+          <div className="text-center">
             <div
               className={`relative overflow-hidden rounded-3xl p-10 sm:p-16 ${
                 isDark ? "" : ""
@@ -485,7 +457,7 @@ export function LandingAcademia() {
                 </a>
               </div>
             </div>
-          </motion.div>
+          </div>
           <LandingContact />
         </div>
       </div>

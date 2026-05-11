@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/components/theme-provider";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { useState, useEffect } from "react";
@@ -50,35 +49,15 @@ export function LandingCompanySection() {
       )}
 
       <div className="container relative z-10 mx-auto max-w-6xl px-6">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20"
-        >
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Left: Carrusel */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="relative order-2 lg:order-1"
-          >
+          <div className="relative order-2 lg:order-1">
             {/* Carrusel Container */}
             <div className="space-y-4">
               <div
                 className={`relative aspect-4/3 overflow-hidden rounded-3xl ${isDark ? "ring-1 ring-white/5" : "shadow-2xl"}`}
               >
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={currentSlide}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                      transition={{ duration: 0.05 }}
-                    className="relative w-full h-full"
-                  >
+                <div className="relative w-full h-full">
                     <Image
                       src={slides[currentSlide].image}
                       alt={slides[currentSlide].phrase}
@@ -89,28 +68,18 @@ export function LandingCompanySection() {
                     <div
                       className={`absolute inset-0 ${isDark ? "bg-linear-to-tr from-[#000208]/40 to-transparent" : "bg-linear-to-tr from-black/20 to-transparent"}`}
                     />
-                  </motion.div>
-                </AnimatePresence>
+                  </div>
               </div>
 
               {/* Phrase below image */}
-              <AnimatePresence mode="wait">
-                <motion.p
-                  key={currentSlide}
-                  initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.05 }}
-                  className={`text-center text-lg font-semibold ${isDark ? "text-[#D6A556]" : "text-[#D6A556]"}`}
-                >
+              <p className={`text-center text-lg font-semibold ${isDark ? "text-[#D6A556]" : "text-[#D6A556]"}`}>
                   {slides[currentSlide].phrase}
-                </motion.p>
-              </AnimatePresence>
+              </p>
 
               {/* Indicadores */}
               <div className="flex justify-center gap-2">
                 {slides.map((_, idx) => (
-                  <motion.button
+                  <button
                     key={idx}
                     onClick={() => setCurrentSlide(idx)}
                     className={`h-2 rounded-full transition-all ${
@@ -118,7 +87,6 @@ export function LandingCompanySection() {
                         ? "bg-[#D6A556] w-8"
                         : `${isDark ? "bg-white/20" : "bg-gray-300"} w-2`
                     }`}
-                    whileHover={{ scale: 1.2 }}
                   />
                 ))}
               </div>
@@ -128,16 +96,10 @@ export function LandingCompanySection() {
             <div
               className={`absolute -left-6 -top-6 h-32 w-32 rounded-full blur-3xl ${isDark ? "bg-[#D6A556]/20" : "bg-[#D6A556]/10"}`}
             />
-          </motion.div>
+          </div>
 
           {/* Right: Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="order-1 lg:order-2"
-          >
+          <div className="order-1 lg:order-2">
             <span
               className={`inline-block text-sm font-medium tracking-[0.2em] uppercase ${
                 isDark ? "text-[#D6A556]" : "text-[#D6A556]"
@@ -227,8 +189,8 @@ export function LandingCompanySection() {
                 </svg>
               </a>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
