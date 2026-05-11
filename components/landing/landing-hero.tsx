@@ -46,7 +46,7 @@ function AwardIcon({ className }: { className?: string }) {
 
 export function LandingHero() {
   const stats = [
-    { label: "Traders transformados", value: "500+", icon: UsersIcon },
+    { label: "Traders formados", value: "500+", icon: UsersIcon },
     { label: "Rentabilidad media", value: "24%", icon: TrendingUpIcon },
     { label: "Años de experiencia", value: "10+", icon: AwardIcon },
   ];
