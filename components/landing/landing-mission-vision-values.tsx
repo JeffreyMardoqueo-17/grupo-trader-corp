@@ -14,6 +14,7 @@ export interface ColumnContent {
 }
 
 export interface ValueItem {
+  icon: string;
   title: string;
   description: string;
 }
