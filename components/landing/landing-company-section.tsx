@@ -76,7 +76,7 @@ export function LandingCompanySection() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.1 }}
+                      transition={{ duration: 0.05 }}
                     className="relative w-full h-full"
                   >
                     <Image
@@ -98,9 +98,9 @@ export function LandingCompanySection() {
                 <motion.p
                   key={currentSlide}
                   initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.05 }}
                   className={`text-center text-lg font-semibold ${isDark ? "text-[#D6A556]" : "text-[#D6A556]"}`}
                 >
                   {slides[currentSlide].phrase}

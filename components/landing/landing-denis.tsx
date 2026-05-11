@@ -40,10 +40,10 @@ export function LandingDenis() {
           {/* Left: Image */}
           <motion.div
             className="relative order-2 lg:order-1"
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
           >
             <div
               className={`relative rounded-2xl overflow-hidden ${
@@ -76,7 +76,7 @@ export function LandingDenis() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
               className="space-y-3"
             >
               <span
@@ -99,7 +99,7 @@ export function LandingDenis() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
               className={`text-2xl sm:text-3xl font-bold leading-snug ${gold}`}
             >
               "Piensa como los bancos."
@@ -109,7 +109,7 @@ export function LandingDenis() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
               className={`space-y-4 text-base sm:text-lg leading-relaxed ${
                 isDark ? "text-white/70" : "text-[#4a5568]"
               }`}
@@ -127,7 +127,7 @@ export function LandingDenis() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
               className={`grid grid-cols-3 gap-6 p-6 rounded-xl mt-8 ${
                 isDark
                   ? "bg-white/5 border border-white/10"

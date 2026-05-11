@@ -14,7 +14,7 @@ export default function DenisPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <LandingHeader />
-      <main className="overflow-x-hidden pt-16">
+        <main className="overflow-x-hidden">
         {/* <div className="mx-auto max-w-6xl px-4 pt-8 sm:px-6 lg:px-8">
           <Link href="/#explora" className="inline-flex rounded-full border border-border px-4 py-2 text-sm text-muted-foreground transition hover:border-[var(--brand-gold)] hover:text-foreground">
             Volver a las cards
