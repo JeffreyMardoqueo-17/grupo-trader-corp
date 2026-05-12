@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -6,7 +6,11 @@ import { motion } from "framer-motion";
 import { useTheme } from "@/components/theme-provider";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { LandingContact } from "./landing-contact";
- 
+import { MissionVisionValuesData } from "./landing-mission-vision-values";
+import {
+  Testimonials,
+  type TestimonialData,
+} from "@/components/ui/testimonials";
 
 function PlayIcon({ className }: { className?: string }) {
   return (
@@ -194,6 +198,29 @@ const carouselImages = [
   { src: "/images/academia/clase4.jpg", alt: "Análisis de mercado" },
 ];
 
+const featureCarousel = [...features, ...features];
+
+const academiaTestimonials: TestimonialData[] = [
+  {
+    name: "Carlos M.",
+    role: "Trader independiente",
+    text: "La metodología me permitió pasar de teoría a operaciones consistentes en semanas.",
+    image: "/images/team/mariarenee.jpg",
+  },
+  {
+    name: "María R.",
+    role: "Analista",
+    text: "La mentoría y el feedback en vivo marcaron la diferencia.",
+    image: "/images/testimonios/mujerfelizamarillo.avif",
+  },
+  {
+    name: "Andrés P.",
+    role: "Prop firm",
+    text: "Estructura, disciplina y resultados. Recomendado para traders serios.",
+    image: "/images/testimonios/hombrefelizgris.avif",
+  },
+];
+
 export function LandingAcademia() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
@@ -213,240 +240,378 @@ export function LandingAcademia() {
 
   return (
     <section id="academia" className="relative">
-      {/* Hero con imagen de fondo - toda la pantalla */}
-      <div className="relative h-screen min-h-[600px] overflow-hidden">
-        {/* Background Images Carousel */}
-         <div className="absolute inset-0 bg-black">
-           {carouselImages.map((image, index) => (
-             <div
-               key={image.src}
-               className="absolute inset-0"
-               style={{ opacity: index === currentImage ? 1 : 0, transition: "none" }}
-             >
-               <Image
-                 src={image.src}
-                 alt={image.alt}
-                 fill
-                 className="object-cover"
-                 priority={index === 0}
-               />
-             </div>
-           ))}
-
-          {/* Dark Overlay - siempre oscuro para ambos modos */}
-          <div className="absolute inset-0 bg-black/85" />
-
-          {/* Grid Pattern */}
-          <div
-            className="absolute inset-0 opacity-10"
-            style={{
-              backgroundImage: `linear-gradient(to right, white 1px, transparent 1px),
-                linear-gradient(to bottom, white 1px, transparent 1px)`,
-              backgroundSize: "64px 64px",
-            }}
-          />
-
-          {/* Radial Gradient */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.8)_100%)]" />
-        </div>
-
-        {/* Contenido del Hero */}
-        <div className="container relative z-10 mx-auto max-w-6xl px-6 h-full flex items-center">
-          <div className="max-w-4xl">
-            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-md">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#D6A556]" />
-              Academia de Trading
-            </span>
-
-            <h2 className="text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Aprenda a operar con{" "}
-              <span className="text-[#D6A556]">estructura</span>, no con
-              improvisación
-            </h2>
-
-            <p className="mt-4 max-w-2xl text-lg text-white/80">
-              Formación completa desde cero hasta ejecución real en mercado
-            </p>
-
-            <a
-              href={academyWhatsAppLink}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#D6A556] px-8 py-4 text-base font-semibold text-[#000418] shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#e6b566]"
+      <div className="relative h-screen min-h-[680px] overflow-hidden bg-[#030712]">
+        {/* ===== BACKGROUND ===== */}
+        <div className="absolute inset-0 overflow-hidden rounded-none md:rounded-[2.5rem]">
+          {carouselImages.map((image, index) => (
+            <div
+              key={image.src}
+              className="absolute inset-0 transition-opacity duration-700"
+              style={{ opacity: index === currentImage ? 1 : 0 }}
             >
-              Quiero aprender trading
-              <svg
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"
-                />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        {/* Gradiente de transición suave hacia el contenido */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#000208] to-transparent" />
-      </div>
-
-      {/* Resto del contenido */}
-       <div className={`relative ${isDark ? "bg-[#000208]" : "bg-white"}`}>
-         {isDark && (
-           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(74,144,226,0.08),transparent_45%),linear-gradient(180deg,#000208,#050b18)]" />
-         )}
-         {!isDark && (
-           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(214,165,86,0.06),transparent_45%),linear-gradient(180deg,#ffffff,#fafafa)]" />
-         )}
-         <div className="container relative z-10 mx-auto max-w-6xl px-6 py-20">
-          <div className="mb-20">
-            <h3
-              className={`mb-6 text-center text-2xl font-bold sm:text-3xl ${
-                isDark ? "text-white" : "text-gray-900"
-              }`}
-            >
-              Formación integral
-            </h3>
-            <div className="flex gap-3 overflow-x-auto pb-4 sm:grid sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7 sm:gap-4 sm:overflow-visible sm:pb-0">
-              {features.map((feature, index) => {
-                const Icon = feature.icon;
-                return (
-                  <div
-                    key={feature.title}
-                    className={`group relative min-w-[200px] overflow-hidden rounded-xl border p-4 transition-all duration-300 hover:-translate-y-0.5 sm:min-w-0 ${
-                      isDark
-                        ? "border-white/5 bg-white/[0.02] hover:border-[#D6A556]/30 hover:bg-white/[0.04]"
-                        : "border-gray-100 bg-white shadow-sm hover:border-[#D6A556]/30 hover:shadow-md"
-                    }`}
-                  >
-                    <div
-                      className={`mb-3 flex h-10 w-10 items-center justify-center rounded-lg ${
-                        isDark
-                          ? "bg-[#D6A556]/10 text-[#D6A556]"
-                          : "bg-[#D6A556]/5 text-[#D6A556]"
-                      }`}
-                    >
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <p
-                      className={`text-sm font-semibold ${isDark ? "text-white" : "text-gray-900"}`}
-                    >
-                      {feature.title}
-                    </p>
-                    <p
-                      className={`mt-1 text-xs leading-tight ${isDark ? "text-white/50" : "text-gray-500"}`}
-                    >
-                      {feature.description}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Experience Section - Split Layout */}
-          <div className="mb-20 grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-            <div className="relative overflow-hidden rounded-3xl">
-              <div className="relative aspect-4/3">
-                <Image
-                  src="/images/academia/clase.jpg"
-                  alt="Entorno de trading profesional"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-              <div
-                className={`absolute inset-0 ${
-                  isDark
-                    ? "bg-gradient-to-tr from-[#000208]/60 to-transparent"
-                    : "bg-gradient-to-tr from-black/30 to-transparent"
-                }`}
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                className="object-cover opacity-60 md:opacity-50"
+                priority={index === 0}
               />
             </div>
-            <div>
-              <h3
-                className={`mb-6 text-3xl font-bold sm:text-4xl ${
-                  isDark ? "text-white" : "text-gray-900"
-                }`}
-              >
-                Experiencia real de <span className={blueAccent}>mercado</span>
-              </h3>
-              <p
-                className={`mb-6 leading-relaxed ${isDark ? "text-white/60" : "text-gray-600"}`}
-              >
-                Aprende en un entorno profesional con múltiples pantallas,
-                análisis en tiempo real y dinámica de equipo. No solo consumes
-                información, desarrollas habilidades reales.
+          ))}
+
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-black/85 via-black/65 to-black/45 md:rounded-[2.5rem]" />
+
+          {/* Suavizado */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(0,0,0,0.2),rgba(0,0,0,0.8))] md:rounded-[2.5rem]" />
+        </div>
+
+        {/* ===== CONTENIDO ===== */}
+        <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6 md:px-10">
+          <div className="grid w-full grid-cols-1 md:grid-cols-12 items-center gap-10">
+            {/* Línea vertical – SOLO DESKTOP */}
+            <div className="hidden md:col-span-1 md:flex md:justify-end">
+              <div className="h-[420px] w-[2px] bg-[#D6A556]" />
+            </div>
+
+            {/* TEXTO */}
+            <div className="md:col-span-8 text-center md:text-left">
+              {/* Eyebrow */}
+              <p className="mb-5 text-xs uppercase tracking-[0.35em] text-[#D6A556]">
+                Academia profesional de trading
               </p>
-              <div
-                className={`space-y-4 p-6 ${
-                  isDark ? "border-white/5" : "border-gray-100 bg-white "
-                }`}
+
+              {/* Headline */}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white">
+                Trading con
+                <br />
+                <span className="text-[#D6A556]">estructura institucional</span>
+              </h1>
+
+              {/* Divisor */}
+              <div className="mx-auto md:mx-0 my-7 h-px w-24 bg-white/30" />
+
+              {/* Subtexto */}
+              <p className="mx-auto md:mx-0 max-w-xl text-base sm:text-lg text-white/80">
+                Formación diseñada para operadores que buscan consistencia,
+                gestión del riesgo y lectura real del mercado.
+              </p>
+
+              {/* Valores */}
+              <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm text-white/90">
+                <div>
+                  <p className="font-bold text-[#D6A556]">01</p>
+                  <p>Ejecución real</p>
+                </div>
+                <div>
+                  <p className="font-bold text-[#D6A556]">02</p>
+                  <p>Riesgo controlado</p>
+                </div>
+                <div>
+                  <p className="font-bold text-[#D6A556]">03</p>
+                  <p>Proceso validado</p>
+                </div>
+              </div>
+
+              {/* CTA */}
+              <div className="mt-12 flex justify-center md:justify-start">
+                <a
+                  href={academyWhatsAppLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-3 rounded-full border bg-accent text-white border-[#D6A556] px-10 py-4 text-sm font-bold uppercase tracking-widest  transition-all duration-300 hover:bg-[#D6A556] hover:text-black"
+                >
+                  Solicitar información
+                  <span>→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Resto del contenido */}
+      <div className={`relative ${isDark ? "bg-[#000208]" : "bg-white"}`}>
+        {isDark && (
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(214,165,86,0.08),rgba(74,144,226,0.04),transparent_70%),linear-gradient(180deg,#000208,#050b18)]" />
+        )}
+        {!isDark && (
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(214,165,86,0.08),transparent_50%),linear-gradient(180deg,#ffffff,#f5f5f5)]" />
+        )}
+        <div className="container relative z-10 mx-auto max-w-6xl px-6 py-32">
+          {/* Formación integral - Enhanced */}
+          <div className="mb-32">
+            <div className="mb-12 text-center">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#D6A556]/30 bg-[#D6A556]/5 px-4 py-2">
+                <div className="h-2 w-2 rounded-full bg-[#D6A556]" />
+                <span className="text-xs font-semibold uppercase tracking-widest text-[#D6A556]">
+                  Metodología
+                </span>
+              </div>
+              <h2 className="mt-6 text-4xl font-black leading-tight sm:text-5xl text-white">
+                Formación
+                <br />
+                <span className="bg-linear-to-r from-[#D6A556] via-[#E8B86F] to-[#D6A556] bg-clip-text text-transparent">
+                  integral y completa
+                </span>
+              </h2>
+              <p className="mx-auto mt-6 max-w-2xl text-lg text-white/60">
+                7 pilares fundamentales que te llevarán de la teoría a la
+                práctica con estructura institucional
+              </p>
+            </div>
+
+            <div className="relative overflow-hidden rounded-2xl">
+              <div className="absolute inset-y-0 left-0 w-20 bg-linear-to-r from-[#000208] to-transparent z-10" />
+              <div className="absolute inset-y-0 right-0 w-20 bg-linear-to-l from-[#000208] to-transparent z-10" />
+              <motion.div
+                className="flex w-max gap-6 py-2"
+                style={{ willChange: "transform" }}
+                animate={{ x: [0, "-50%"] }}
+                transition={{ duration: 45, ease: "linear", repeat: Infinity }}
               >
-                {[
-                  "Análisis en tiempo real",
-                  "Múltiples pantallas",
-                  "Dinámica de equipo",
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3">
+                {featureCarousel.map((feature, index) => {
+                  const Icon = feature.icon;
+                  return (
                     <div
-                      className={`h-2 w-2 rounded-full ${blueAccent.replace("text", "bg")}`}
-                    />
-                    <span
-                      className={isDark ? "text-white/70" : "text-gray-600"}
+                      key={`${feature.title}-${index}`}
+                      className={`group relative min-h-60 w-80 overflow-hidden rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${
+                        isDark
+                          ? "border-white/10 bg-gradient-to-br from-white/5 to-white/2 backdrop-blur hover:border-[#D6A556]/50 hover:from-white/8 hover:to-white/4"
+                          : "border-gray-200 bg-white shadow-lg hover:shadow-2xl hover:border-[#D6A556]/30"
+                      }`}
                     >
-                      {item}
-                    </span>
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#D6A556]/0 via-transparent to-[#D6A556]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                      <div className="relative">
+                        <div
+                          className={`mb-5 flex h-14 w-14 items-center justify-center rounded-xl transition-all duration-300 ${
+                            isDark
+                              ? "bg-gradient-to-br from-[#D6A556]/20 to-[#D6A556]/10 text-[#D6A556] group-hover:from-[#D6A556]/40 group-hover:to-[#D6A556]/20"
+                              : "bg-gradient-to-br from-[#D6A556]/15 to-[#D6A556]/5 text-[#D6A556]"
+                          }`}
+                        >
+                          <Icon className="h-6 w-6" />
+                        </div>
+                        <p
+                          className={`mb-3 text-lg font-bold leading-tight transition-colors duration-300 ${isDark ? "text-white group-hover:text-[#D6A556]" : "text-gray-900"}`}
+                        >
+                          {feature.title}
+                        </p>
+                        <p
+                          className={`text-sm leading-relaxed ${isDark ? "text-white/50 group-hover:text-white/70" : "text-gray-600"}`}
+                        >
+                          {feature.description}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Experience Section - Redesigned */}
+          <div className="mb-32 grid items-center gap-16 lg:grid-cols-2">
+            <div className="relative group">
+              <div className="absolute -inset-0.5 rounded-3xl bg-gradient-to-r from-[#D6A556] via-[#E8B86F] to-[#D6A556] opacity-20 blur-2xl group-hover:opacity-40 transition-all duration-300" />
+              <div className="relative overflow-hidden rounded-3xl bg-[#000208]">
+                <div className="relative aspect-4/3">
+                  <Image
+                    src="/images/academia/clase.jpg"
+                    alt="Entorno de trading profesional"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                </div>
+                <div
+                  className={`absolute inset-0 ${
+                    isDark
+                      ? "bg-linear-to-tr from-[#000208]/40 via-transparent to-[#D6A556]/10"
+                      : "bg-linear-to-tr from-black/40 to-transparent"
+                  }`}
+                />
+                <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-[#000208] to-transparent" />
+              </div>
+            </div>
+
+            <div>
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#D6A556]/30 bg-[#D6A556]/5 px-4 py-2">
+                <div className="h-2 w-2 rounded-full bg-[#D6A556]" />
+                <span className="text-xs font-semibold uppercase tracking-widest text-[#D6A556]">
+                  Experiencia real
+                </span>
+              </div>
+
+              <h3 className="text-4xl font-black leading-tight text-white mb-6">
+                Aprende en un entorno
+                <br />
+                <span className="bg-linear-to-r from-[#D6A556] to-[#E8B86F] bg-clip-text text-transparent">
+                  100% profesional
+                </span>
+              </h3>
+
+              <p className="mb-8 text-lg leading-relaxed text-white/70">
+                No es una plataforma. Es un verdadero entorno de trading con
+                múltiples pantallas, análisis en tiempo real y dinámica de
+                equipo profesional. Donde la teoría se convierte en ejecución.
+              </p>
+
+              <div className="space-y-4">
+                {[
+                  {
+                    icon: "✓",
+                    text: "Análisis técnico en tiempo real con múltiples fuentes",
+                  },
+                  {
+                    icon: "✓",
+                    text: "Operaciones en vivo con acompañamiento directo",
+                  },
+                  {
+                    icon: "✓",
+                    text: "Retroalimentación inmediata en cada operación",
+                  },
+                  {
+                    icon: "✓",
+                    text: "Ambiente colaborativo con traders profesionales",
+                  },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-4 group/item">
+                    <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#D6A556]/15 text-[#D6A556] font-bold text-sm group-hover/item:bg-[#D6A556]/25 transition-colors">
+                      {item.icon}
+                    </div>
+                    <p className="text-base leading-relaxed text-white/80 group-hover/item:text-white transition-colors">
+                      {item.text}
+                    </p>
                   </div>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Final CTA */}
-          <div className="text-center">
-            <div
-              className={`relative overflow-hidden rounded-3xl p-10 sm:p-16 ${
-                isDark ? "" : ""
-              }`}
-            >
-              {isDark && (
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(74,144,226,0.1),transparent_70%)]" />
-              )}
-              <div className="relative">
-                <h3
-                  className={`text-3xl font-bold sm:text-4xl lg:text-5xl ${
-                    isDark ? "text-white" : "text-gray-900"
-                  }`}
+          {/* Testimonials - Enhanced */}
+          <div className="mb-32">
+            <div className="mb-16 text-center">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#D6A556]/30 bg-[#D6A556]/5 px-4 py-2">
+                <div className="h-2 w-2 rounded-full bg-[#D6A556]" />
+                <span className="text-xs font-semibold uppercase tracking-widest text-[#D6A556]">
+                  Historias de éxito
+                </span>
+              </div>
+              <h2 className="mt-6 text-4xl font-black leading-tight sm:text-5xl text-white">
+                Lo que dicen nuestros
+                <br />
+                <span className="bg-linear-to-r from-[#D6A556] via-[#E8B86F] to-[#D6A556] bg-clip-text text-transparent">
+                  alumnos
+                </span>
+              </h2>
+              <p className="mx-auto mt-6 max-w-2xl text-lg text-white/60">
+                Testimonios reales de traders que transformaron su carrera con
+                nuestra metodología
+              </p>
+            </div>
+
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {academiaTestimonials.map((testimonial, idx) => (
+                <div
+                  key={testimonial.name}
+                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/8 via-white/4 to-white/2 p-8 backdrop-blur transition-all duration-300 hover:border-[#D6A556]/50 hover:from-white/12 hover:via-white/8 hover:to-white/4 hover:-translate-y-1"
                 >
-                  Convierte tu aprendizaje en{" "}
-                  <span className={blueAccent}>resultados reales</span>
-                </h3>
-                <p
-                  className={`mx-auto mt-4 max-w-2xl text-lg ${isDark ? "text-white/60" : "text-gray-500"}`}
-                >
-                  Únete a una comunidad que opera con estructura y disciplina
-                </p>
+                  <div className="absolute -top-1 -right-1 h-40 w-40 bg-gradient-to-br from-[#D6A556]/20 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  <div className="relative">
+                    {/* Stars */}
+                    <div className="mb-6 flex gap-1.5">
+                      {[...Array(5)].map((_, i) => (
+                        <svg
+                          key={i}
+                          className="h-5 w-5 text-[#D6A556] fill-current"
+                          viewBox="0 0 20 20"
+                        >
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      ))}
+                    </div>
+
+                    {/* Quote */}
+                    <p className="mb-8 text-lg leading-relaxed text-white/90 italic font-medium">
+                      "{testimonial.text}"
+                    </p>
+
+                    {/* Author */}
+                    <div className="flex items-center gap-4 border-t border-white/10 pt-6">
+                      <div className="relative h-14 w-14 overflow-hidden rounded-full ring-2 ring-[#D6A556]/30">
+                        <Image
+                          src={testimonial.image}
+                          alt={testimonial.name}
+                          fill
+                          className="object-cover"
+                          sizes="56px"
+                        />
+                      </div>
+                      <div>
+                        <p className="font-bold text-white">
+                          {testimonial.name}
+                        </p>
+                        <p className="text-sm text-[#D6A556]">
+                          {testimonial.role}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Final CTA - Side by Side Layout */}
+          <div className="grid items-center gap-16 lg:grid-cols-2">
+            {/* Left: Content */}
+            <div>
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#D6A556]/30 bg-[#D6A556]/5 px-4 py-2">
+                <div className="h-2 w-2 rounded-full bg-[#D6A556]" />
+                <span className="text-xs font-semibold uppercase tracking-widest text-[#D6A556]">
+                  Acceso a la formación
+                </span>
+              </div>
+
+              <h2 className="mb-8 text-5xl font-black leading-tight text-white lg:text-6xl">
+                Acceso a tu
+                <br />
+                <span className="bg-linear-to-r from-[#D6A556] via-[#E8B86F] to-[#D6A556] bg-clip-text text-transparent">
+                  formación profesional
+                </span>
+              </h2>
+
+              <p className="mb-6 text-lg leading-relaxed text-white/70">
+                Trabajamos con un número controlado de estudiantes para mantener
+                la calidad del entorno, el acompañamiento y la práctica en
+                tiempo real.
+                <br />
+                Por esta razón, los espacios disponibles se asignan conforme se
+                van reservando.
+              </p>
+
+              <p className="mb-10 text-sm font-medium text-white/80">
+                Asegura tu lugar y forma parte del próximo grupo operativo.
+              </p>
+
+              <div className="mb-8 flex flex-col gap-4 sm:flex-row">
                 <a
                   href={academyWhatsAppLink}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-8 inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 bg-[#D6A556] hover:bg-[#D6A556]/90"
+                  className="group relative inline-flex items-center justify-center gap-3 rounded-full bg-[#D6A556] px-12 py-4 text-base font-bold uppercase tracking-widest text-black transition-all duration-300 animate-soft-pulse hover:-translate-y-1 hover:bg-[#E8B86F] hover:shadow-2xl"
                 >
-                  Comenzar ahora
+                  {/* Glow */}
+                  <span className="absolute inset-0 -z-10 rounded-full bg-[#D6A556]/20 blur-xl opacity-70"></span>
+                  Reservar mi espacio
                   <svg
-                    className="h-5 w-5"
+                    className="h-5 w-5 transition-transform group-hover:translate-x-1"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    strokeWidth={2}
+                    strokeWidth={2.5}
                   >
                     <path
                       strokeLinecap="round"
@@ -456,11 +621,69 @@ export function LandingAcademia() {
                   </svg>
                 </a>
               </div>
+
+              <div className="flex items-center gap-6">
+                <div className="flex -space-x-3">
+                  {[...Array(3)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="h-10 w-10 rounded-full border-2 border-[#000208] bg-gradient-to-br from-[#D6A556] to-[#E8B86F]"
+                    />
+                  ))}
+                </div>
+                <div className="text-sm text-white/60">
+                  <p className="font-semibold text-white">
+                    +150 traders activos
+                  </p>
+                  <p>Operando juntos en vivo</p>
+                </div>
+              </div>
+
+              <p className="mt-4 text-xs text-white/50">
+                Los espacios se liberan según la capacidad operativa del
+                entorno.
+              </p>
+            </div>
+
+            {/* Right: Image */}
+            <div className="flex flex-col gap-6">
+              <div className="relative overflow-hidden rounded-3xl">
+                <div className="group relative aspect-4/3">
+                  <Image
+                    src="/images/academia/clase.jpg"
+                    alt="Entorno profesional de trading en vivo"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                </div>
+              </div>
+
+              {/* Info Badges Below Image */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="rounded-2xl border border-[#D6A556]/20 bg-[#D6A556]/5 p-5">
+                  <p className="mb-1 text-2xl font-black text-[#D6A556]">
+                    +4.9★
+                  </p>
+                  <p className="text-xs text-white/60">Calificación promedio</p>
+                </div>
+                <div className="rounded-2xl border border-[#D6A556]/20 bg-[#D6A556]/5 p-5">
+                  <p className="mb-1 text-2xl font-black text-[#D6A556]">
+                    150+
+                  </p>
+                  <p className="text-xs text-white/60">Traders activos</p>
+                </div>
+              </div>
             </div>
           </div>
-          <LandingContact />
         </div>
       </div>
+
+      <section className="mt-10 w-full">
+        <div className="mx-auto max-w-full ">
+          <LandingContact />
+        </div>
+      </section>
     </section>
   );
 }

@@ -5,6 +5,8 @@ import { LandingMissionVisionValues } from "@/components/landing/landing-mission
 import type { MissionVisionValuesData } from "@/components/landing/landing-mission-vision-values";
 import { LandingContact } from "@/components/landing/landing-contact";
 import { LandingFooter } from "@/components/landing/landing-footer";
+import { LandingFocusCards } from "@/components/landing/landing-focus-cards";
+import { LandingTeam } from "@/components/landing/landing-team";
 
 export const metadata: Metadata = {
   title: "Sobre Denis | Grupo Trade Corp",
@@ -45,6 +47,8 @@ export default function DenisPage() {
         <main className="overflow-x-hidden">
         <LandingDenis />
         <LandingMissionVisionValues data={missionVisionData} />
+        <LandingFocusCards />
+        <LandingTeam />
         <LandingContact />
         <LandingFooter />
       </main>

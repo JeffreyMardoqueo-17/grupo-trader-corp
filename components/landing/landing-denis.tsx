@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import { useTheme } from "@/components/theme-provider";
-import { LandingTeam } from "./landing-team";
-import { LandingPrinciples } from "./landing-principles";
+// import { LandingTeam } from "./landing-team";
 
 export function LandingDenis() {
   const { theme } = useTheme();
@@ -131,9 +130,7 @@ export function LandingDenis() {
           </div>
         </div>
       </div>
-      <LandingTeam />
-      <LandingPrinciples />
-      {/* <LandingContact /> */}
+      {/* <LandingTeam /> */}
     </section>
   );
 }
