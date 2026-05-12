@@ -8,9 +8,37 @@ import { LandingFooter } from "@/components/landing/landing-footer";
 import { LandingFocusCards } from "@/components/landing/landing-focus-cards";
 import { LandingTeam } from "@/components/landing/landing-team";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const description = "Conoce la visión, experiencia y enfoque de Denis Gutiérrez dentro de Grupo Trade Corp.";
+
 export const metadata: Metadata = {
   title: "Sobre Denis | Grupo Trade Corp",
-  description: "Conoce la visión, experiencia y enfoque de Denis Gutiérrez dentro de Grupo Trade Corp.",
+  description,
+  alternates: {
+    canonical: "/denis",
+  },
+  openGraph: {
+    type: "website",
+    locale: "es_ES",
+    url: `${siteUrl}/denis`,
+    siteName: "Grupo Trade Corp",
+    title: "Sobre Denis | Grupo Trade Corp",
+    description,
+    images: [
+      {
+        url: "/images/denis.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Sobre Denis | Grupo Trade Corp",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sobre Denis | Grupo Trade Corp",
+    description,
+    images: ["/images/denis.jpg"],
+  },
 };
 
 const missionVisionData: MissionVisionValuesData = {

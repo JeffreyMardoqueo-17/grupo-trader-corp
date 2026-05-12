@@ -117,11 +117,11 @@ export function LandingHero() {
           <div className="relative w-full">
             <div style={{ aspectRatio: '16/10', minHeight: 180 }} className="w-full overflow-hidden rounded-3xl">
               <Image
-                src="/images/hero.avif"
+                src="/images/hero.jpg"
                 alt="Trader operando desde celular"
                 fill
                 priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                sizes="(max-width: 1500px) 100vw, 100vw"
                 className="object-cover w-full h-full"
               />
             </div>

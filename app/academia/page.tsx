@@ -3,9 +3,37 @@ import { LandingHeader } from "@/components/landing/landing-header";
 import { LandingAcademia } from "@/components/landing/landing-academia";
 import { LandingFooter } from "@/components/landing/landing-footer";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const description = "Formación estructurada para aprender trading con contexto real, disciplina y criterio.";
+
 export const metadata: Metadata = {
   title: "Academia de Trading | Grupo Trade Corp",
-  description: "Formación estructurada para aprender trading con contexto real, disciplina y criterio.",
+  description,
+  alternates: {
+    canonical: "/academia",
+  },
+  openGraph: {
+    type: "website",
+    locale: "es_ES",
+    url: `${siteUrl}/academia`,
+    siteName: "Grupo Trade Corp",
+    title: "Academia de Trading | Grupo Trade Corp",
+    description,
+    images: [
+      {
+        url: "/images/hero.avif",
+        width: 1200,
+        height: 630,
+        alt: "Academia de Trading | Grupo Trade Corp",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Academia de Trading | Grupo Trade Corp",
+    description,
+    images: ["/images/hero.avif"],
+  },
 };
 
 export default function AcademiaPage() {

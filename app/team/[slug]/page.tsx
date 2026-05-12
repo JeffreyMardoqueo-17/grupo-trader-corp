@@ -25,11 +25,21 @@ export async function generateMetadata({
   return {
     title: advisor.seo.title,
     description: advisor.seo.description,
+    alternates: {
+      canonical: `/team/${params.slug}`,
+    },
     openGraph: {
       title: advisor.seo.title,
       description: advisor.seo.description,
+      url: `/team/${params.slug}`,
       images: [{ url: advisor.seo.image, width: 1200, height: 630, alt: advisor.seo.title }],
       type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: advisor.seo.title,
+      description: advisor.seo.description,
+      images: [advisor.seo.image],
     },
   };
 }

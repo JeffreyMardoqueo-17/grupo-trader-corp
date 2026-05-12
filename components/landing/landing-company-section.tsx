@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useTheme } from "@/components/theme-provider";
-import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { useState, useEffect } from "react";
 
 // Slides definidos fuera del componente para evitar recreación en cada render
@@ -33,10 +32,6 @@ export function LandingCompanySection() {
     }, 5000);
     return () => clearInterval(interval);
   }, []);
-
-  const academyWhatsAppLink = buildWhatsAppLink(
-    "Hola buen día, quisiera saber más información sobre la academia de trading.",
-  );
 
   return (
     <section
@@ -170,7 +165,7 @@ export function LandingCompanySection() {
             {/* CTA */}
             <div className="mt-8">
               <a
-                href="/denis"
+                href="/us"
                 className="inline-flex items-center gap-2 rounded-xl bg-[#D6A556] px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#D6A556]/90"
               >
                 Conoce al equipo

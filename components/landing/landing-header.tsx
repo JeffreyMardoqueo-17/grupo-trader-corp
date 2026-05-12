@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -31,27 +31,38 @@ export function LandingHeader() {
 
     const sections = ["inicio", "nosotros", "pilares", "testimonios"];
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter((e) => e.isIntersecting);
-        if (!visible.length) return;
+    const handleScroll = () => {
+      const probeLine = window.scrollY + window.innerHeight * 0.35;
+      let nextActiveHref = "/#inicio";
 
-        const top = visible.sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        const id = top.target.getAttribute("id");
-        if (id) setActiveHref(`/#${id}`);
-      },
-      {
-        threshold: [0.3, 0.6],
-        rootMargin: "-20% 0px -50% 0px",
+      for (const id of sections) {
+        const section = document.getElementById(id);
+        if (!section) continue;
+
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight;
+
+        if (probeLine >= sectionTop && probeLine < sectionBottom) {
+          nextActiveHref = `/#${id}`;
+          break;
+        }
+
+        if (probeLine >= sectionTop) {
+          nextActiveHref = `/#${id}`;
+        }
       }
-    );
 
-    sections.forEach((id) => {
-      const section = document.getElementById(id);
-      if (section) observer.observe(section);
-    });
+      setActiveHref(nextActiveHref);
+    };
 
-    return () => observer.disconnect();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, [pathname]);
 
   /* ================= STYLES ================= */

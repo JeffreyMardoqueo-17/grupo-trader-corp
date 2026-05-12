@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { LandingHeader } from "@/components/landing/landing-header";
 import { LandingHero } from "@/components/landing/landing-hero";
 import { LandingCompanySection } from "@/components/landing/landing-company-section";
@@ -34,6 +35,41 @@ const missionVisionData: MissionVisionValuesData = {
       { icon: "✓", title: "Responsabilidad", description: "Cada resultado es consecuencia de nuestras decisiones." },
       { icon: "✓", title: "Crecimiento continuo", description: "Nunca dejamos de aprender ni de mejorar." },
     ],
+  },
+};
+
+const siteDescription =
+  "Grupo Trade Corp es una comunidad privada donde aprendes, entiendes y ejecutas con criterio. Combinamos formación profesional con herramientas como CopyTrading para que avances incluso si estás empezando. Aquí no se trata de improvisar. Se trata de construir disciplina y tomar decisiones financieras con claridad.";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
+export const metadata: Metadata = {
+  title: "Grupo Trade Corp",
+  description: siteDescription,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "es_ES",
+    url: siteUrl,
+    siteName: "Grupo Trade Corp",
+    title: "Grupo Trade Corp",
+    description: siteDescription,
+    images: [
+      {
+        url: "/images/inversionistas.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Grupo Trade Corp",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Grupo Trade Corp",
+    description: siteDescription,
+    images: ["/images/inversionistas.jpeg"],
   },
 };
 

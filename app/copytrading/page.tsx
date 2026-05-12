@@ -3,9 +3,37 @@ import { LandingHeader } from "@/components/landing/landing-header";
 import { LandingCopyTrading } from "@/components/landing/landing-copytrading";
 import { LandingFooter } from "@/components/landing/landing-footer";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const description = "Conoce cómo funciona CopyTrading y cómo puede complementar tu aprendizaje en trading.";
+
 export const metadata: Metadata = {
   title: "CopyTrading | Grupo Trade Corp",
-  description: "Conoce cómo funciona CopyTrading y cómo puede complementar tu aprendizaje en trading.",
+  description,
+  alternates: {
+    canonical: "/copytrading",
+  },
+  openGraph: {
+    type: "website",
+    locale: "es_ES",
+    url: `${siteUrl}/copytrading`,
+    siteName: "Grupo Trade Corp",
+    title: "CopyTrading | Grupo Trade Corp",
+    description,
+    images: [
+      {
+        url: "/images/copy/hero.jpg",
+        width: 1200,
+        height: 630,
+        alt: "CopyTrading | Grupo Trade Corp",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CopyTrading | Grupo Trade Corp",
+    description,
+    images: ["/images/copy/hero.jpg"],
+  },
 };
 
 export default function CopyTradingPage() {
