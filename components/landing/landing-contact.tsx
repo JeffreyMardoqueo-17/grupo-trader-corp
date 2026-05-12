@@ -1,6 +1,6 @@
 "use client";
 
-import { WhatsAppForm } from "@/components/whatsapp-form";
+import { GmailForm } from "@/components/gmail-form";
 import { Mail, MessageCircle, Phone } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 import { useState, useEffect, useRef } from "react";
@@ -151,11 +151,7 @@ export function LandingContact() {
         <div className="mt-24 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
           {/* LEFT SIDE */}
           <div
-            className={`relative overflow-hidden rounded-[2.5rem] border p-8 lg:p-10 ${
-              isDark
-                ? "border-white/10 bg-[#050816]"
-                : "border-black/5 bg-white"
-            }`}
+            className={`relative overflow-hidden rounded-[2.5rem] border p-8 lg:p-10`}
           >
             {/* Glow */}
             <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#D6A556]/10 blur-3xl" />
@@ -191,11 +187,7 @@ export function LandingContact() {
                 {/* PHONE */}
                 <a
                   href="tel:+50369842090"
-                  className={`group flex items-center justify-between rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-1 ${
-                    isDark
-                      ? "border-white/10 bg-white/3 hover:border-[#D6A556]/30 hover:bg-white/5"
-                      : "border-black/5 bg-gray-50 hover:border-[#D6A556]/20 hover:bg-white"
-                  }`}
+                  className={`group flex items-center justify-between rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-1 `}
                 >
                   <div className="flex items-center gap-4">
                     <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#D6A556]/10 text-[#D6A556]">
@@ -333,7 +325,7 @@ export function LandingContact() {
                 : "border-black/5 bg-white"
             }`}
           >
-            <WhatsAppForm />
+            <GmailForm />
           </div>
         </div>
       </div>

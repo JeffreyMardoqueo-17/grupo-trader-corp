@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
- 
+
 import { useTheme } from "@/components/theme-provider";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { LandingBenefits } from "@/components/landing/landing-benefits";
@@ -186,10 +186,10 @@ export function LandingCopyTrading() {
                 con estructura.
               </span>
             </h2>
-              <p className="mt-12 text-xl leading-relaxed text-white  ">
-            Un entorno diseñado para que aprendas viendo operaciones reales, con
-            seguimiento constante y sin perder el control de tu cuenta.
-          </p>
+            <p className="mt-12 text-xl leading-relaxed text-white  ">
+              Un entorno diseñado para que aprendas viendo operaciones reales,
+              con seguimiento constante y sin perder el control de tu cuenta.
+            </p>
           </div>
 
           <div className="max-w-2xl">
@@ -243,9 +243,7 @@ export function LandingCopyTrading() {
                       </div>
 
                       {isActive && (
-                        <p
-                          className="overflow-hidden text-sm text-white/70 mt-2 leading-relaxed"
-                        >
+                        <p className="overflow-hidden text-sm text-white/70 mt-2 leading-relaxed">
                           {feature.desc}
                         </p>
                       )}
@@ -255,8 +253,6 @@ export function LandingCopyTrading() {
               );
             })}
           </div>
-
-        
         </div>
       </div>
     );
@@ -283,81 +279,69 @@ export function LandingCopyTrading() {
 
   return (
     <div className="relative overflow-x-hidden">
-      <div className="relative z-10 mx-auto max-w-7xl px-4 py-12 lg:py-16">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 py-20 lg:py-32">
         <AnimatedItem>
           <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
             <div className="order-1 lg:order-2">
-              <div
-                className={`mb-8 inline-flex items-center gap-2 rounded-full border px-5 py-2 ${isDark ? "border-[#D6A556]/20 bg-[#D6A556]/10" : "border-[#D6A556]/30 bg-[#D6A556]/20"}`}
-              >
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#D6A556]" />
+              <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-[#D6A556]/20 bg-[#D6A556]/5 px-5 py-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#D6A556]" />
                 <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[#D6A556]">
                   CopyTrading
                 </span>
               </div>
 
-              <h1
-                className={`text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl ${isDark ? "text-white" : "text-gray-900"}`}
-              >
-                Opera con <span className="text-[#D6A556]">estructura</span>
-                <br />
-                Opera mientras <span className="text-[#D6A556]">Aprendes</span>
+              <h1 className="text-5xl font-black leading-[1.15] tracking-tight sm:text-6xl lg:text-7xl text-white mb-8">
+                Opera con <br />
+                <span className="text-[#D6A556]">estructura institucional</span>
               </h1>
 
-              <p
-                className={`mt-6 max-w-2xl text-base leading-relaxed sm:text-lg ${isDark ? "text-white/60" : "text-gray-600"}`}
-              >
-                CopyTrading te permite acompañar estrategias reales dentro de tu
-                propia cuenta, con control y claridad.
+              <p className="max-w-2xl text-lg leading-relaxed text-white/70 mb-10">
+                Replicar operaciones reales sin perder el control de tu cuenta.
+                Aprendes viendo estrategias en ejecución, con claridad total y
+                gestión profesional.
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mb-12 space-y-3">
                 {[
-                  "Sin experiencia previa",
-                  "Operaciones reales",
-                  "Tú mantienes el control",
+                  "Sin experiencia previa necesaria",
+                  "Operaciones verificables en tiempo real",
+                  "Tu cuenta, tus reglas, tú controlas",
                 ].map((item) => (
-                  <div
-                    key={item}
-                    className={`rounded-full border px-5 py-2.5 text-sm backdrop-blur-sm transition-all duration-300 ${
-                      isDark
-                        ? "border-white/10 bg-white/[0.05] text-white/70 hover:border-[#D6A556]/30 hover:bg-[#D6A556]/5"
-                        : "border-gray-300 bg-white/50 text-gray-700 hover:border-[#D6A556]/40 hover:bg-white/80"
-                    }`}
-                  >
-                    {item}
+                  <div key={item} className="flex items-center gap-3">
+                    <div className="flex-shrink-0 h-2 w-2 rounded-full bg-[#D6A556]" />
+                    <span className="text-white/80">{item}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-10">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <a
                   href={copyTradingWhatsAppLink}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#D6A556] px-8 py-3.5 text-sm font-semibold text-[#000418] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#e6b566] hover:shadow-lg hover:shadow-[#D6A556]/20"
+                  className="animate-soft-pulse inline-flex items-center justify-center gap-3 rounded-full bg-[#D6A556] px-12 py-4 text-base font-bold uppercase tracking-widest text-black transition-all duration-300 hover:animate-none hover:bg-[#E8B86F] hover:shadow-2xl hover:-translate-y-1"
                 >
-                  Activar CopyTrading
+                  Asegurar acceso
                   <svg
-                    className="h-4 w-4"
+                    className="h-5 w-5"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    strokeWidth={2}
+                    strokeWidth={2.5}
                   >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
                     />
                   </svg>
                 </a>
               </div>
             </div>
-            
+
             <div className="flex items-center justify-center order-2 lg:order-1">
               <Image
-                src="/images/copy/ganancias.jpg"
+                src="/images/copy/hero.jpg"
                 alt="Captura de pantalla móvil"
                 width={400}
                 height={600}
@@ -366,7 +350,7 @@ export function LandingCopyTrading() {
               />
             </div>
           </div>
-          </AnimatedItem>
+        </AnimatedItem>
         <AnimatedItem delay={0.1}>
           <div className="mt-20 relative">
             <InteractiveFeatures isDark={isDark} features={features} />
@@ -374,102 +358,80 @@ export function LandingCopyTrading() {
         </AnimatedItem>
 
         <AnimatedItem delay={0.15}>
-          <div className="mt-24">
-            <div className="mx-auto mb-10 text-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#D6A556]">
-                ¿Qué es?
+          <section className="mt-40">
+            {/* HERO HEADER */}
+            <div className="max-w-4xl mx-auto text-center mb-28">
+              <span className="inline-block text-xs tracking-[0.35em] font-semibold uppercase text-[#D6A556] mb-6">
+                Sistema de replicación
+              </span>
+
+              <h2 className="text-5xl sm:text-6xl font-extrabold text-white leading-tight mb-8">
+                ¿Qué es
+                <span className="block text-[#D6A556] mt-2">CopyTrading?</span>
+              </h2>
+
+              <div className="h-px w-24 bg-[#D6A556] mx-auto mb-10" />
+
+              <p className="text-xl text-white/70 leading-relaxed max-w-3xl mx-auto">
+                Replica operaciones reales directamente en tu cuenta. Observas
+                cada movimient.
+                <span className="text-white">
+                  {" "}
+                  No delegas tu capital, mantienes el control total.
+                </span>
               </p>
             </div>
 
-            <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
-              <div className="relative">
-                <div
-                  className={`relative min-h-[400px] lg:min-h-[500px] overflow-hidden rounded-2xl transform -rotate-3 `}
-                >
-                  <Image
-                    src="/images/copy/calendar.jpg"
-                    alt="Calendario de trading"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
+            {/* CONTENT */}
+            <div className="grid lg:grid-cols-2 gap-20 lg:gap-28 items-center">
+              {/* IMAGE */}
+              <div className="relative h-[420px] lg:h-[540px] overflow-hidden rounded-2xl">
+                <Image
+                  src="/images/copy/calendar.jpg"
+                  alt="Sistema de CopyTrading"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
               </div>
 
-              <div className="flex flex-col gap-6">
+              {/* TEXT */}
+              <div className="flex flex-col gap-14">
+                {/* VALUE */}
                 <div>
-                  <h3
-                    className={`text-3xl font-black leading-tight sm:text-4xl ${isDark ? "text-white" : "text-gray-900"}`}
-                  >
-                    Copy<span className="text-[#D6A556]">Trading</span>
-                  </h3>
-                  <p
-                    className={`mt-4 text-base leading-relaxed ${isDark ? "text-white/70" : "text-gray-600"}`}
-                  >
-                    <span className="text-[#D6A556] font-semibold">
-                      CopyTrading
-                    </span>{" "}
-                    es una herramienta que te permite replicar operaciones
-                    dentro de tu propia cuenta, siguiendo estrategias
-                    previamente configuradas por nuestro equipo.
+                  <p className="text-7xl font-extrabold text-[#D6A556] leading-none mb-4">
+                    100%
+                  </p>
+                  <p className="text-2xl font-semibold text-white leading-snug max-w-xl">
+                    Aprendes observando operaciones reales, ejecutadas con
+                    capital real.
                   </p>
                 </div>
 
-                <div className="space-y-6">
+                {/* LIST */}
+                <ul className="space-y-6 text-white/80 max-w-xl">
                   {[
-                    { big: "0%", text: "Sin experiencia necesaria" },
-                    { big: "100%", text: "Aprendes viendo operaciones reales" },
-                    { big: "100%", text: "Mantienes el control de tu cuenta" },
+                    "Sin experiencia previa requerida",
+                    "Operaciones verificables en tiempo real",
+                    "Retiros y gestión bajo tu propio criterio",
                   ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-6">
-                      <div
-                        className={`text-6xl font-black text-[#D6A556]`}
-                      >
-                        {item.big}
-                      </div>
-                      <div className="flex-1">
-                        <p
-                          className={`text-lg font-semibold ${isDark ? "text-white" : "text-gray-900"}`}
-                        >
-                          {item.text}
-                        </p>
-                      </div>
-                    </div>
+                    <li key={i} className="flex items-start gap-5">
+                      <span className="text-[#D6A556] text-xl leading-none">
+                        —
+                      </span>
+                      <span className="leading-relaxed">{item}</span>
+                    </li>
                   ))}
-                </div>
+                </ul>
 
-                <div className="space-y-2">
-                  {["Ahorras tiempo", "Puedes retirarte cuando quieras"].map(
-                    (text, i) => (
-                      <div key={i} className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#D6A556]" />
-                        <span
-                          className={`text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}
-                        >
-                          {text}
-                        </span>
-                      </div>
-                    ),
-                  )}
-                </div>
-
-                <div
-                  className={`inline-block  px-6 py-3 rounded-full ${isDark ? "border-[#D6A556]/20  bg-[#D6A556]/20" : "border-[#D6A556]/30 bg-[#D6A556]/20"}`}>
-                  <p
-                    className={`text-sm font-bold ${isDark ? "text-[#D6A556]" : "text-[#D6A556]"}`}
-                  >
-                    Rendimientos: 0% - 10% mensual
-                  </p>
-                </div>
-
-                <div
-                  className={`text-center text-xs font-black tracking-widest ${isDark ? "text-[#D6A556]" : "text-[#D6A556]"}`}
-                >
-                  "TU DINERO SIEMPRE ESTÁ EN TUS MANOS"
-                </div>
+                {/* FOOTNOTE */}
+                <p className="text-sm uppercase tracking-[0.25em] text-[#D6A556]/80">
+                  Rendimientos históricos variables · 0% – 10% mensual
+                </p>
               </div>
             </div>
-          </div>
+          </section>
         </AnimatedItem>
 
         <AnimatedItem delay={0.2}>
@@ -501,40 +463,94 @@ export function LandingCopyTrading() {
         <LandingBenefits />
 
         <AnimatedItem delay={0.25}>
-          <div className="mt-16 text-center">
-            <div
-              className={`mx-auto max-w-2xl  p-6 `}
-            >
-              <p
-                className={`text-lg font-bold leading-tight sm:text-xl ${isDark ? "text-white" : "text-gray-900"}`}
-              >
-                Aprendes viendo operaciones reales{" "}
-                <span className="text-[#D6A556]">sin perder el control</span> de
-                tu cuenta.
-              </p>
-            </div>
-            <div className="mt-6">
-              <a
-                href={copyTradingWhatsAppLink}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl bg-[#D6A556] px-8 py-3 text-sm font-semibold text-[#000418] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#e6b566]"
-              >
-                Activar CopyTrading
-                <svg
-                  className="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+          <div className="mt-32">
+            <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
+              {/* Left: Content */}
+              <div>
+                <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#D6A556]/20 bg-[#D6A556]/5 px-4 py-2">
+                  <div className="h-2 w-2 rounded-full bg-[#D6A556]" />
+                  <span className="text-xs font-semibold uppercase tracking-widest text-[#D6A556]">
+                    Próxima cohorte
+                  </span>
+                </div>
+
+                <h2 className="text-5xl font-black leading-tight text-white mb-8 lg:text-6xl">
+                  Acceso a tu
+                  <br />
+                  <span className="text-[#D6A556]">formación en vivo</span>
+                </h2>
+
+                <p className="text-lg text-white/70 mb-10 leading-relaxed max-w-2xl">
+                  Plazas limitadas para acceso al sistema de CopyTrading.
+                  Acompañamiento directo, operaciones reales verificables y
+                  certificación de desempeño.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 mb-10">
+                  <a
+                    href={copyTradingWhatsAppLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="
+      relative inline-flex items-center justify-center gap-3
+      rounded-full bg-[#D6A556]
+      px-12 py-4
+      text-base font-bold uppercase tracking-widest text-black
+      transition-all duration-300
+      animate-softPulse
+      hover:bg-[#E8B86F]
+      hover:-translate-y-1
+      hover:shadow-2xl
+      hover:animate-none
+    "
+                  >
+                    Asegurar acceso
+                    <svg
+                      className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2.5}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M13 7l5 5m0 0l-5 5m5-5H6"
+                      />
+                    </svg>
+                  </a>
+                </div>
+
+                <div className="flex items-center gap-6">
+                  <div className="flex -space-x-3">
+                    {[...Array(3)].map((_, i) => (
+                      <div
+                        key={i}
+                        className="h-10 w-10 rounded-full border-2 border-[#000208] bg-gradient-to-br from-[#D6A556] to-[#E8B86F]"
+                      />
+                    ))}
+                  </div>
+                  <div className="text-sm text-white/60">
+                    <p className="font-semibold text-white">
+                      +80 operadores activos
+                    </p>
+                    <p>Operando con estructura institucional</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Image */}
+              <div className="relative">
+                <div className="relative min-h-[400px] lg:min-h-[500px] overflow-hidden rounded-3xl bg-white/5 flex items-center justify-center">
+                  <Image
+                    src="/images/copy/bghero.jpg"
+                    alt="CopyTrading en vivo"
+                    fill
+                    className="object-cover transition-transform duration-500 hover:scale-105"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
-                </svg>
-              </a>
+                </div>
+              </div>
             </div>
           </div>
         </AnimatedItem>

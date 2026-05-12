@@ -21,7 +21,7 @@ const cards = [
     description:
       "Accede a una experiencia guiada donde puedes avanzar mientras entiendes la lógica detrás de cada operación.",
     points: ["Control", "Seguimiento", "Estrategia"],
-    image: "/images/copy/nasdaq.jpg",
+    image: "/images/copy/bghero.jpg",
     href: "/copytrading",
     imageClass: "object-cover object-top",
   },
