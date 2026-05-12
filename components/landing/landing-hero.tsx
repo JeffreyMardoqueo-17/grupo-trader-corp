@@ -69,7 +69,7 @@ export function LandingHero() {
             </p>
 
             {/* ===== STATS ===== */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10 max-w-md">
+            <div className="grid grid-cols-3 gap-6 mb-10 max-w-md">
               {stats.map((stat, index) => (
                 <div key={index}>
                   <div className="flex items-center gap-2 mb-1">

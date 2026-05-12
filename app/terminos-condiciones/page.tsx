@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 import { LandingHeader } from "@/components/landing/landing-header";
+import { LandingFooter } from "@/components/landing/landing-footer";
 
 const sections = [
   { id: "uso-del-sitio", title: "Uso del sitio", number: "01" },
@@ -104,7 +105,7 @@ const principles = [
 
 export default function TerminosCondiciones() {
   const { resolvedTheme } = useTheme();
-  const isDark = resolvedTheme === "dark";
+  const isDark = true;
   const [activeSection, setActiveSection] = useState("uso-del-sitio");
   const [scrollProgress, setScrollProgress] = useState(0);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
@@ -116,42 +117,39 @@ export default function TerminosCondiciones() {
         document.documentElement.scrollHeight - window.innerHeight;
       const scrolled = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
       setScrollProgress(scrolled);
+
+      const probeLine = scrollTop + window.innerHeight * 0.38;
+      let nextActiveSection = sections[0].id;
+
+      for (const section of sections) {
+        const element = sectionRefs.current[section.id];
+        if (!element) {
+          continue;
+        }
+
+        const sectionTop = element.offsetTop;
+        const sectionBottom = sectionTop + element.offsetHeight;
+
+        if (probeLine >= sectionTop && probeLine < sectionBottom) {
+          nextActiveSection = section.id;
+          break;
+        }
+
+        if (probeLine >= sectionTop) {
+          nextActiveSection = section.id;
+        }
+      }
+
+      setActiveSection(nextActiveSection);
     };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter((entry) => entry.isIntersecting);
-        if (visible.length === 0) {
-          return;
-        }
-
-        const topEntry = visible.sort(
-          (a, b) => b.intersectionRatio - a.intersectionRatio,
-        )[0];
-        if (topEntry.target.id) {
-          setActiveSection(topEntry.target.id);
-        }
-      },
-      {
-        root: null,
-        rootMargin: "-24% 0px -60% 0px",
-        threshold: [0.2, 0.4, 0.6],
-      },
-    );
-
-    sections.forEach((section) => {
-      const element = sectionRefs.current[section.id];
-      if (element) {
-        observer.observe(element);
-      }
-    });
-
     window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
     handleScroll();
 
     return () => {
-      observer.disconnect();
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
     };
   }, []);
 
@@ -163,7 +161,8 @@ export default function TerminosCondiciones() {
   };
 
   return (
-    <main className={`min-h-screen ${isDark ? "bg-[#0b0f14] text-white" : "bg-white text-gray-950"}`}>
+    <main className="min-h-screen bg-[#000208] text-white">
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(214,165,86,0.08),rgba(74,144,226,0.04),transparent_70%),linear-gradient(180deg,#000208,#050b18)]" />
       <LandingHeader />
 
       <div
@@ -171,7 +170,7 @@ export default function TerminosCondiciones() {
         style={{ width: `${scrollProgress}%` }}
       />
 
-      <section className="w-full px-6 pb-16 pt-24 lg:px-10 lg:pt-28 mt-7">
+      <section className="w-full px-6 pb-20 pt-24 lg:px-10 lg:pt-28 mt-7">
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-12 xl:flex-row xl:items-start xl:justify-center xl:gap-16">
           <aside className="hidden h-fit xl:sticky xl:top-24 xl:block xl:w-[280px] xl:shrink-0">
             <div
@@ -181,12 +180,6 @@ export default function TerminosCondiciones() {
                   : "border-neutral-200 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.06)]"
               }`}
             >
-              <p
-                className={`text-[11px] font-semibold tracking-[0.3em] uppercase ${isDark ? "text-[#D6A556]" : "text-[#C9963A]"}`}
-              >
-                Contenido
-              </p>
-
               <nav className="mt-5 space-y-2">
                 {sections.map((section) => {
                   const isActive = activeSection === section.id;
@@ -245,7 +238,7 @@ export default function TerminosCondiciones() {
               </div>
             </div>
           </aside>
-          <article className="min-w-0 space-y-12 xl:max-w-5xl xl:flex-1">
+          <article className="min-w-0 space-y-16 xl:max-w-5xl xl:flex-1">
             <motion.section
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -293,7 +286,7 @@ export default function TerminosCondiciones() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.35 }}
                 transition={{ duration: 0.45, ease: "easeOut" }}
-                className="scroll-mt-24 border-b border-black/5 pb-10 last:border-b-0 last:pb-0 dark:border-white/10"
+                className="scroll-mt-40 border-b border-white/10 pb-16 last:border-b-0 last:pb-0"
               >
                 <div className="grid gap-4 md:grid-cols-[auto_minmax(0,1fr)] md:gap-6">
                   <span
@@ -315,7 +308,7 @@ export default function TerminosCondiciones() {
                     </p>
 
                     {section.id === "principios" ? (
-                      <div className="mt-8 space-y-8">
+                      <div className="mt-10 space-y-10 pb-4">
                         <div>
                           <h3 className="text-xl font-semibold text-[#D6A556]">
                             Misión
@@ -350,7 +343,7 @@ export default function TerminosCondiciones() {
                           >
                             Nuestros valores fundamentales
                           </h3>
-                          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                          <div className="mt-6 grid gap-4 sm:grid-cols-2">
                             {principles.map((principle) => (
                               <div
                                 key={principle.num}
@@ -390,7 +383,7 @@ export default function TerminosCondiciones() {
                             <p
                               className={`mt-1 text-base font-semibold ${isDark ? "text-white" : "text-gray-950"}`}
                             >
-                              escobarmaria.tcc@gmail.com
+                              info@grupotcorp.com
                             </p>
                           </div>
 
@@ -465,6 +458,8 @@ export default function TerminosCondiciones() {
           </article>
         </div>
       </section>
+
+      <LandingFooter />
     </main>
   );
 }

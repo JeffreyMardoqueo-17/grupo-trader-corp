@@ -41,17 +41,17 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <LandingHeader />
-      <main>
+      <main className="mb-2">
         <LandingHero />
         <LandingCompanySection />
           <LandingMissionVisionValues data={missionVisionData} />
         <LandingFocusCards />
         {/* <LandingMissionVisionValues /> */}
         {/* <LandingBenefits /> */}
+        <LandingTestimonials />
         <section className="bg-[#000208]">
           <LandingContact />
         </section>
-        <LandingTestimonials />
         {/* <LandingTeam /> */}
       </main>
       <LandingFooter />
