@@ -80,7 +80,7 @@ export default function Home() {
       <main className="mb-2">
         <LandingHero />
         <LandingCompanySection />
-          <LandingMissionVisionValues data={missionVisionData} />
+          {/* <LandingMissionVisionValues data={missionVisionData} /> */}
         <LandingFocusCards />
         {/* <LandingMissionVisionValues /> */}
         {/* <LandingBenefits /> */}

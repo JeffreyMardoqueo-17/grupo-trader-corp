@@ -1,331 +1,211 @@
 "use client";
 
 import { GmailForm } from "@/components/gmail-form";
-import { Mail, MessageCircle, Phone } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
-import { useState, useEffect, useRef } from "react";
- 
+import type { ReactNode } from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
-const steps = [
+const socialLinks = [
   {
-    number: "01",
-    title: "Diagnóstico inicial",
-    description:
-      "Escuchamos su meta, entendemos su contexto y detectamos el mejor punto de partida.",
+    name: "Instagram",
+    href: "#",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+        <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.5" />
+        <circle cx="12" cy="12" r="3.2" stroke="currentColor" strokeWidth="1.5" />
+        <circle cx="17.2" cy="6.8" r="0.75" fill="currentColor" />
+      </svg>
+    ),
   },
   {
-    number: "02",
-    title: "Estrategia clara",
-    description:
-      "Traducimos la idea en una ruta accionable, medible y aterrizada a su realidad.",
+    name: "TikTok",
+    href: "#",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+        <path d="M13.5 4.5v9.1a3.9 3.9 0 11-3-3.8V7.1a7 7 0 00-5 6.7 7.1 7.1 0 107-7.1c.4 0 .7 0 1 .1z" fill="currentColor" />
+        <path d="M13.5 4.5c1.1 1.9 2.7 3.1 4.9 3.4v2.4c-2-.1-3.7-.8-4.9-2V4.5z" fill="currentColor" opacity="0.35" />
+      </svg>
+    ),
   },
   {
-    number: "03",
-    title: "Seguimiento con disciplina",
-    description:
-      "No se trata solo de empezar bien, sino de sostener el avance con orden y enfoque.",
+    name: "Facebook",
+    href: "#",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3.2l.8-4H14V7a1 1 0 011-1h3z" fill="currentColor" />
+      </svg>
+    ),
   },
-];
+  {
+    name: "LinkedIn",
+    href: "#",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+        <path d="M4 4h4v16H4z" fill="currentColor" />
+        <path d="M8 8h4v2h.1c.7-1.2 2-2 4-2 3.9 0 4.9 2.6 4.9 6V20h-4v-5.7c0-1.5 0-3.3-2-3.3s-2.3 1.3-2.3 3.1V20H8z" fill="currentColor" />
+      </svg>
+    ),
+  },
+] as const;
+
+const faqs = [
+  {
+    value: "faq-1",
+    question: "¿Cómo funciona el proceso de contacto?",
+    answer:
+      "Completa el formulario, envía tu mensaje y nuestro equipo lo revisa para responderte por correo con el siguiente paso más adecuado.",
+  },
+  {
+    value: "faq-2",
+    question: "¿Cuánto tardan en responder?",
+    answer:
+      "Respondemos lo antes posible dentro del horario operativo. En la mayoría de casos, la respuesta llega el mismo día hábil.",
+  },
+  {
+    value: "faq-3",
+    question: "¿El contacto tiene algún costo?",
+    answer:
+      "No. El primer contacto es totalmente informativo y no implica compromiso alguno.",
+  },
+  {
+    value: "faq-4",
+    question: "¿Puedo escribir aunque aún no tenga claro lo que necesito?",
+    answer:
+      "Sí. De hecho, ese es el mejor punto de partida. Te ayudamos a ordenar la idea y a definir el camino correcto.",
+  },
+  {
+    value: "faq-5",
+    question: "¿Revisan mensajes de redes sociales?",
+    answer:
+      "Sí, pero el formulario por correo es el canal más estable para dar seguimiento formal y evitar que se pierda información.",
+  },
+  {
+    value: "faq-6",
+    question: "¿Puedo abrir una pregunta y cerrar la anterior?",
+    answer:
+      "Sí. El acordeón está configurado para que solo una pregunta quede abierta a la vez y puedas cerrarla tocándola otra vez.",
+  },
+] as const;
+
+function SocialIcon({
+  icon,
+  name,
+}: {
+  icon: ReactNode;
+  name: string;
+}) {
+  return (
+    <a
+      href="#"
+      aria-label={name}
+      className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-black/10 bg-white text-[#D6A556] transition-colors hover:bg-[#D6A556] hover:text-black focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D6A556] dark:border-white/10 dark:bg-white/4 dark:hover:bg-[#D6A556] dark:hover:text-black"
+    >
+      <span className="h-4.5 w-4.5 sm:h-5 sm:w-5">{icon}</span>
+    </a>
+  );
+}
 
 export function LandingContact() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
-  const [currentStep, setCurrentStep] = useState(0);
-
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentStep((prev) => (prev + 1) % steps.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section
-      ref={sectionRef}
       id="contacto"
-      className={`relative overflow-hidden border-t lg:py-28 transition-colors scroll-mt-16 ${
+      className={`relative border-t transition-colors scroll-mt-16 ${
         isDark ? "border-white/10 bg-[#000208]" : "border-black/5 bg-white"
-      }`}
+      } lg:py-12`}
     >
-      {/* BACKGROUND */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute -top-32 left-1/4 h-96 w-96 rounded-full bg-[#D6A556]/10 blur-3xl" />
-
-        <div className="absolute -bottom-32 right-1/4 h-96 w-96 rounded-full bg-blue-500/5 blur-3xl" />
-      </div>
-
-      <div className="mx-auto max-w-7xl px-6">
-        {/* ========================= */}
-        {/* TOP SECTION */}
-        {/* ========================= */}
-
-        <div className="grid items-center gap-14 lg:grid-cols-2">
-          {/* LEFT */}
-          <div className="max-w-xl">
-            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.28em] text-[#D6A556]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#D6A556]" />
-              Proceso
-            </span>
-
-            <h2
-              className={`mt-4 text-4xl font-black tracking-tight lg:text-5xl ${
-                isDark ? "text-white" : "text-gray-900"
-              }`}
-            >
-              Atención directa
-            </h2>
-
-            <p
-              className={`mt-5 max-w-lg text-base leading-7 lg:text-lg ${
-                isDark ? "text-white/70" : "text-gray-600"
-              }`}
-            >
-              Un proceso simple, cercano y con estructura para ayudarte a
-              avanzar con claridad y enfoque.
-            </p>
+      <div className="mx-auto max-w-screen-2xl px-5 sm:px-6 xl:px-8 mt-3">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-[0.92fr_1.08fr] lg:grid-cols-[0.92fr_1.08fr] items-stretch xl:gap-6">
+          <div className="rounded-[2rem]  bg-white p-2 dark:bg-[#0b0e14] lg:p-3">
+            <GmailForm className="h-full w-full border-0 bg-transparent p-5 sm:p-6 md:p-6 dark:bg-transparent lg:p-6" />
           </div>
 
-          {/* RIGHT - STEPS */}
-          <div
-            className={`relative overflow-hidden rounded-[2rem] border p-8 lg:p-10 ${
-              isDark
-                ? "border-white/10 bg-white/3"
-                : "border-black/5 bg-gray-50/80"
-            }`}
-          >
-            <div className="flex items-start gap-6">
-                  {/* NUMBER */}
-                  <div className="shrink-0">
-                    <span className="text-6xl font-black leading-none text-[#D6A556] lg:text-7xl">
-                      {steps[currentStep].number}
-                    </span>
-                  </div>
+          <div className="flex h-full flex-col rounded-[2rem] bg-white p-4 sm:p-5 lg:p-6 xl:p-7 dark:border-white/10 dark:bg-[#010308]">
+            <div>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div className="min-w-0">
+                  <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.28em] text-[#D6A556]">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#D6A556]" />
+                    Canales oficiales
+                  </span>
 
-                  {/* CONTENT */}
-                  <div className="pt-2">
-                    <h3
-                      className={`text-2xl font-bold lg:text-3xl ${
+                  <h3
+                    className={`mt-2 text-3xl font-extrabold tracking-tight ${
+                      isDark ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    Redes sociales
+                  </h3>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                  {socialLinks.map((social) => (
+                    <SocialIcon key={social.name} icon={social.icon} name={social.name} />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="my-5 border-t border-black/5 dark:border-white/10" />
+
+            <div className="flex-1">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div className="min-w-0">
+                  <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.28em] text-[#D6A556]">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#D6A556]" />
+                    Ayuda rápida
+                  </span>
+                  <h3
+                    className={`mt-2 text-2xl font-bold tracking-tight ${
+                      isDark ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    Preguntas frecuentes
+                  </h3>
+                </div>
+              </div>
+
+              <Accordion
+                type="single"
+                collapsible
+                className="mt-4 w-full max-w-full overflow-hidden rounded-[1.5rem] bg-white/70 backdrop-blur-sm dark:bg-white/3"
+              >
+                {faqs.map((faq) => (
+                  <AccordionItem
+                    key={faq.value}
+                    value={faq.value}
+                    className="px-3 sm:px-4 first:pt-1 last:pb-1"
+                  >
+                    <AccordionTrigger
+                      className={`py-3 text-left text-base font-medium tracking-tight sm:py-4 ${
                         isDark ? "text-white" : "text-gray-900"
                       }`}
                     >
-                      {steps[currentStep].title}
-                    </h3>
-
-                    <p
-                      className={`mt-4 text-base leading-7 ${
-                        isDark ? "text-white/70" : "text-gray-600"
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent
+                      className={`pb-3 text-sm leading-6 sm:pb-4 ${
+                        isDark ? "text-white/65" : "text-gray-600"
                       }`}
                     >
-                      {steps[currentStep].description}
-                    </p>
-                  </div>
-            </div>
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
 
-            {/* INDICATORS */}
-            <div className="mt-10 flex items-center gap-3">
-              {steps.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentStep(idx)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    idx === currentStep
-                      ? "w-10 bg-[#D6A556]"
-                      : isDark
-                        ? "w-2 bg-white/20"
-                        : "w-2 bg-gray-300"
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* ========================= */}
-        {/* BOTTOM SECTION */}
-        {/* ========================= */}
-
-        <div className="mt-24 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-          {/* LEFT SIDE */}
-          <div
-            className={`relative overflow-hidden rounded-[2.5rem] border p-8 lg:p-10`}
-          >
-            {/* Glow */}
-            <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#D6A556]/10 blur-3xl" />
-
-            {/* Badge */}
-            <div className="relative z-10">
-              <span className="inline-flex items-center gap-2 rounded-full border border-[#D6A556]/20 bg-[#D6A556]/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-[#D6A556]">
-                <span className="h-2 w-2 rounded-full bg-[#D6A556]" />
-                Contacto directo
-              </span>
-
-              {/* Title */}
-              <h2
-                className={`mt-7 text-4xl font-black leading-tight lg:text-5xl ${
-                  isDark ? "text-white" : "text-gray-900"
-                }`}
-              >
-                Hablemos sobre tu siguiente nivel
-              </h2>
-
-              {/* Description */}
-              <p
-                className={`mt-5 max-w-lg text-base leading-8 ${
-                  isDark ? "text-white/65" : "text-gray-600"
-                }`}
-              >
-                Si quieres aprender trading con más estructura, claridad y
-                acompañamiento real, este es el punto de inicio.
+              <p className={`mt-3 text-xs leading-5 ${isDark ? "text-white/45" : "text-gray-500"}`}>
+                Solo una pregunta permanece abierta a la vez y puedes cerrarla
+                tocándola de nuevo.
               </p>
-
-              {/* CONTACT GRID */}
-              <div className="mt-10 grid gap-4">
-                {/* PHONE */}
-                <a
-                  href="tel:+50369842090"
-                  className={`group flex items-center justify-between rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-1 `}
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#D6A556]/10 text-[#D6A556]">
-                      <Phone className="h-6 w-6" />
-                    </div>
-
-                    <div>
-                      <p
-                        className={`text-sm ${
-                          isDark ? "text-white/40" : "text-gray-500"
-                        }`}
-                      >
-                        Teléfono
-                      </p>
-
-                      <p
-                        className={`text-lg font-semibold transition-colors group-hover:text-[#D6A556] ${
-                          isDark ? "text-white" : "text-gray-900"
-                        }`}
-                      >
-                        +503 6984 2090
-                      </p>
-                    </div>
-                  </div>
-
-                  <span className="text-[#D6A556] transition-transform duration-300 group-hover:translate-x-1">
-                    →
-                  </span>
-                </a>
-
-                {/* WHATSAPP */}
-                <a
-                  href="https://wa.me/50369842090"
-                  target="_blank"
-                  rel="noreferrer"
-                  className={`group flex items-center justify-between rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-1 ${
-                    isDark
-                      ? "border-white/10 bg-white/3 hover:border-[#25D366]/30 hover:bg-white/5"
-                      : "border-black/5 bg-gray-50 hover:border-[#25D366]/20 hover:bg-white"
-                  }`}
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#25D366]/10 text-[#25D366]">
-                      <MessageCircle className="h-6 w-6" />
-                    </div>
-
-                    <div>
-                      <p
-                        className={`text-sm ${
-                          isDark ? "text-white/40" : "text-gray-500"
-                        }`}
-                      >
-                        WhatsApp
-                      </p>
-
-                      <p
-                        className={`text-lg font-semibold transition-colors group-hover:text-[#25D366] ${
-                          isDark ? "text-white" : "text-gray-900"
-                        }`}
-                      >
-                        Conversar ahora
-                      </p>
-                    </div>
-                  </div>
-
-                  <span className="text-[#25D366] transition-transform duration-300 group-hover:translate-x-1">
-                    →
-                  </span>
-                </a>
-
-                {/* EMAIL */}
-                <a
-                  href="mailto:info@grupotcorp.com"
-                  className={`group flex items-center justify-between rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-1 ${
-                    isDark
-                      ? "border-white/10 bg-white/3 hover:border-[#6C7DFF]/30 hover:bg-white/5"
-                      : "border-black/5 bg-gray-50 hover:border-[#6C7DFF]/20 hover:bg-white"
-                  }`}
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#6C7DFF]/10 text-[#6C7DFF]">
-                      <Mail className="h-6 w-6" />
-                    </div>
-
-                    <div>
-                      <p
-                        className={`text-sm ${
-                          isDark ? "text-white/40" : "text-gray-500"
-                        }`}
-                      >
-                        Correo
-                      </p>
-
-                      <p
-                        className={`text-lg font-semibold transition-colors group-hover:text-[#6C7DFF] ${
-                          isDark ? "text-white" : "text-gray-900"
-                        }`}
-                      >
-                        info@grupotcorp.com
-                      </p>
-                    </div>
-                  </div>
-
-                  <span className="text-[#6C7DFF] transition-transform duration-300 group-hover:translate-x-1">
-                    →
-                  </span>
-                </a>
-              </div>
-
-              {/* Bottom */}
-              <div
-                className={`mt-10 rounded-2xl  ${
-                  isDark
-                    ? "border-white/10 "
-                    : "border-black/5"
-                }`}
-              >
-                <p
-                  className={`text-sm leading-7 ${
-                    isDark ? "text-white/60" : "text-gray-600"
-                  }`}
-                >
-                  Respondemos personalmente y buscamos entender tu situación
-                  antes de recomendarte cualquier camino.
-                </p>
-              </div>
             </div>
-          </div>
-
-          {/* RIGHT - FORM */}
-          <div
-            className={`rounded-[2.5rem] border p-3 lg:p-5 ${
-              isDark
-                ? "border-white/10 bg-[#050816]"
-                : "border-black/5 bg-white"
-            }`}
-          >
-            <GmailForm />
           </div>
         </div>
       </div>

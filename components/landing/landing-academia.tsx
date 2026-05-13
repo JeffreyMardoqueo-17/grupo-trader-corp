@@ -244,26 +244,26 @@ export function LandingAcademia() {
         {/* ===== BACKGROUND ===== */}
         <div className="absolute inset-0 overflow-hidden rounded-none md:rounded-[2.5rem]">
           {carouselImages.map((image, index) => (
-            <div
-              key={image.src}
-              className="absolute inset-0 transition-opacity duration-700"
-              style={{ opacity: index === currentImage ? 1 : 0 }}
-            >
+              <div
+                key={image.src}
+                className="absolute inset-0 transition-opacity duration-700"
+                style={{ opacity: index === currentImage ? 1 : 0 }}
+              >
               <Image
                 src={image.src}
                 alt={image.alt}
                 fill
-                className="object-cover opacity-60 md:opacity-50"
+                className="object-cover"
                 priority={index === 0}
               />
             </div>
           ))}
 
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-black/85 via-black/65 to-black/45 md:rounded-[2.5rem]" />
+          {/* Overlay: más transparente para dejar ver mejor las imágenes */}
+          <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-black/60 via-black/80 to-black/70 md:rounded-[2.5rem]" />
 
-          {/* Suavizado */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(0,0,0,0.2),rgba(0,0,0,0.8))] md:rounded-[2.5rem]" />
+          {/* Suavizado: reducir opacidad del radial para menos oscuridad */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(0,0,0,0.08),rgba(0,0,0,0.45))] md:rounded-[2.5rem]" />
         </div>
 
         {/* ===== CONTENIDO ===== */}
@@ -298,18 +298,18 @@ export function LandingAcademia() {
               </p>
 
               {/* Valores */}
-              <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm text-white/90">
+              <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6 text-base sm:text-lg text-white/90">
                 <div>
-                  <p className="font-bold text-[#D6A556]">01</p>
-                  <p>Ejecución real</p>
+                  <p className="font-bold text-[#D6A556] text-3xl sm:text-4xl leading-tight">01</p>
+                  <p className="mt-1">Ejecución real</p>
                 </div>
                 <div>
-                  <p className="font-bold text-[#D6A556]">02</p>
-                  <p>Riesgo controlado</p>
+                  <p className="font-bold text-[#D6A556] text-3xl sm:text-4xl leading-tight">02</p>
+                  <p className="mt-1">Riesgo controlado</p>
                 </div>
                 <div>
-                  <p className="font-bold text-[#D6A556]">03</p>
-                  <p>Proceso validado</p>
+                  <p className="font-bold text-[#D6A556] text-3xl sm:text-4xl leading-tight">03</p>
+                  <p className="mt-1">Proceso validado</p>
                 </div>
               </div>
 

@@ -9,7 +9,7 @@ export function LandingStages() {
   const isDark = theme === "dark";
 
   return (
-    <section id="etapas" className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 space-y-0">
+    <section id="etapas" className="relative w-full overflow-hidden space-y-0">
       <div className="brand-stripe brand-stripe--head text-white">
         <div className="mx-auto w-full max-w-7xl px-6 py-14 lg:px-8 lg:py-18">
           <p className="text-xs uppercase tracking-[0.28em] text-white/70">Tres etapas importantes</p>
