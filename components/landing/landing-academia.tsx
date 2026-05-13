@@ -413,25 +413,25 @@ export function LandingAcademia() {
           {/* Experience Section - Redesigned */}
           <div className="mb-32 grid items-center gap-16 lg:grid-cols-2">
             <div className="relative group">
-              <div className="absolute -inset-0.5 rounded-3xl bg-gradient-to-r from-[#D6A556] via-[#E8B86F] to-[#D6A556] opacity-20 blur-2xl group-hover:opacity-40 transition-all duration-300" />
-              <div className="relative overflow-hidden rounded-3xl bg-[#000208]">
-                <div className="relative aspect-4/3">
+              <div className="absolute -inset-0.5 rounded-3xl rounded-2xl" />
+              <div className="relative overflow-hidden rounded-3xl bg-[#01050e]">
+                <div className="relative aspect-3/4 lg:aspect-4/3">
                   <Image
-                    src="/images/academia/clase.jpg"
+                    src="/images/ia/claseslinea.png"
                     alt="Entorno de trading profesional"
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-contain rounded-2xl object-center transition-transform duration-500"
+                    sizes="(max-width: 2000px) 100vw, 50vw"
                   />
                 </div>
                 <div
-                  className={`absolute inset-0 ${
+                  className={`absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-10 transition-opacity duration-300 ${
                     isDark
-                      ? "bg-linear-to-tr from-[#000208]/40 via-transparent to-[#D6A556]/10"
-                      : "bg-linear-to-tr from-black/40 to-transparent"
+                      ? "bg-linear-to-tr from-[#000208]/12 via-transparent to-[#D6A556]/8"
+                      : "bg-linear-to-tr from-black/12 to-transparent"
                   }`}
                 />
-                <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-[#000208] to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 h-12 bg-linear-to-t from-[#000208]/20 to-transparent" />
               </div>
             </div>
 
@@ -650,11 +650,11 @@ export function LandingAcademia() {
               <div className="relative overflow-hidden rounded-3xl">
                 <div className="group relative aspect-4/3">
                   <Image
-                    src="/images/academia/clase.jpg"
+                    src="/images/ia/clasesprecencial.png"
                     alt="Entorno profesional de trading en vivo"
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    sizes="(max-width: 2000px) 100vw, 50vw"
                   />
                 </div>
               </div>
