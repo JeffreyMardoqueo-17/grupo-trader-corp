@@ -68,15 +68,15 @@ export function LandingHeader() {
   /* ================= STYLES ================= */
 
   const linkBase =
-    "px-4 py-2 text-sm font-medium transition-all duration-200 rounded-full border border-transparent";
+    "px-4 py-1 text-sm font-medium transition-all duration-200 rounded-full border border-transparent";
 
   const linkStyle = isDark
     ? "text-white/70 hover:text-black hover:font-bold hover:border-yellow-400 hover:bg-[#d4a853]"
     : "text-gray-700 hover:text-gray-900 hover:font-bold hover:border-yellow-500 hover:bg-yellow-300";
 
   const activeLinkStyle = isDark
-    ? "text-white font-bold text-base"
-    : "text-gray-900 font-bold text-base";
+    ? "text-white font-semibold border-b-2 border-[#D6A556] pb-1"
+    : "text-gray-900 font-semibold border-b-2 border-[#D6A556] pb-1";
 
   const isLinkActive = (href: string) =>
     pathname === "/" && activeHref === href;
@@ -86,17 +86,18 @@ export function LandingHeader() {
   return (
     <>
       {/* ================= HEADER ================= */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0c1526]">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-3xl bg-[#05040a]/8 border-b border-white/10 shadow-2xl">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-2 sm:py-2.5 flex h-auto items-center justify-between">
+          <div className="flex h-12 items-center justify-between w-full">
           
           {/* Logo */}
           <Link href="/#inicio" className="flex items-center gap-2">
             <Image
               src="/images/logo.jpg"
               alt="Grupo Trade Corp"
-              width={40}
-              height={40}
-              className="h-12 w-auto"
+              width={32}
+              height={32}
+              className="h-8 w-auto"
               priority
             />
           </Link>
@@ -131,10 +132,11 @@ export function LandingHeader() {
 
             <Link
               href="/#contacto"
-              className="hidden sm:inline-flex rounded-lg bg-[#d4a853] px-5 py-2 text-sm font-semibold text-[#0b1020] hover:opacity-90 transition"
+              className="hidden sm:inline-flex rounded-lg bg-[#d4a853] px-5 py-1.5 text-sm font-semibold text-[#0b1020] hover:opacity-90 transition"
             >
               Contactar
             </Link>
+          </div>
           </div>
         </div>
       </header>

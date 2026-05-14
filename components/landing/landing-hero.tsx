@@ -199,57 +199,91 @@ export function LandingHero() {
         </svg>
       </div>
 
-      <div className="mx-auto w-full px-4 mt-6 sm:px-6 py-16 sm:py-24 md:py-28 lg:py-0 lg:min-h-screen lg:flex lg:items-center lg:max-w-7xl">
-        <div className="grid w-full items-center gap-8 sm:gap-12 lg:gap-16 lg:grid-cols-2">
+      <div className="mx-auto w-full px-4 sm:px-6 py-0 pt-24 sm:pt-32 lg:min-h-screen lg:flex lg:items-center lg:justify-center lg:max-w-7xl relative z-10">
+        <div className="grid w-full items-center gap-12 sm:gap-16 lg:gap-20 lg:grid-cols-2 py-24 sm:py-32 lg:py-0">
 
           {/* ================= LEFT ================= */}
-          <div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white mb-6">
-              Aprende a operar en la bolsa de valores junto a{" "}
-              <span className="text-[#D6A556]">traders profesionales</span>
-            </h1>
+          <div className="space-y-8">
+            {/* Main Headline */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.7 }}
+              className="space-y-4"
+            >
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.2] tracking-tight text-white">
+                Aprenda a operar en la <span className="bg-gradient-to-r from-[#D6A556] via-[#e0b365] to-[#D6A556] bg-clip-text text-transparent">Bolsa de valores</span> junto a <span className="text-[#D6A556]">traders profesionales</span>
+              </h1>
+              <p className="text-lg sm:text-xl text-gray-400 max-w-md leading-relaxed">
+                Trading bancario + análisis institucional + CopyTrading en vivo. Sin atajos, con estrategia.
+              </p>
+            </motion.div>
 
-            <p className="text-base sm:text-lg text-gray-300 mb-8 sm:mb-10 leading-relaxed">
-              Formación real en trading bancario, análisis institucional y
-              CopyTrading en tiempo real. Estrategia, disciplina y gestión de riesgo.
-            </p>
-
-            <div className="flex flex-wrap gap-6 sm:gap-8 mb-8 sm:mb-12">
+            {/* Stats Grid - Enhanced */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.7 }}
+              className="grid grid-cols-3 gap-3 sm:gap-4 py-2"
+            >
               {stats.map((stat, index) => (
-                <div key={index}>
-                  <div className="flex items-center gap-2">
-                    <stat.icon className="w-5 h-5 text-[#D6A556]" />
-                    <span className="text-xl sm:text-2xl font-bold text-white">
+                <div key={index} className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#D6A556]/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="relative p-4 rounded-2xl border border-white/5 hover:border-[#D6A556]/30 transition-all duration-300 backdrop-blur-sm bg-white/3">
+                    <div className="flex items-center gap-2 mb-2">
+                      <stat.icon className="w-5 h-5 text-[#D6A556]" />
+                    </div>
+                    <p className="text-2xl sm:text-3xl font-black text-white">
                       {stat.value}
-                    </span>
+                    </p>
+                    <p className="text-xs sm:text-sm text-gray-500 mt-1">{stat.label}</p>
                   </div>
-                  <p className="text-xs sm:text-sm text-gray-400">{stat.label}</p>
                 </div>
               ))}
-            </div>
+            </motion.div>
 
-            <a
-              href="#pilares"
-              className="group relative inline-flex items-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 bg-[#D6A556] text-[#0b1020] font-semibold text-sm sm:text-base rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+            {/* CTA Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.7 }}
             >
-              <span className="absolute inset-0 bg-white/30 opacity-0 scale-75 transition-all group-hover:opacity-100 group-hover:scale-100" />
-              <span className="relative z-10 flex items-center gap-2">
-                Conoce las oportunidades
-                <ArrowRightIcon className="w-4 h-4" />
-              </span>
-            </a>
+              <a
+                href="#pilares"
+                className="group relative inline-flex items-center gap-3 px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-[#D6A556] to-[#e0b365] text-[#0b1020] font-bold text-base sm:text-lg rounded-2xl overflow-hidden shadow-2xl hover:shadow-[0_0_40px_rgba(214,165,86,0.4)] transition-all duration-300 hover:-translate-y-1"
+              >
+                <span className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="relative z-10 flex items-center gap-3">
+                  Empieza ahora
+                  <motion.div
+                    animate={{ x: [0, 6, 0] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    <ArrowRightIcon className="w-5 h-5" />
+                  </motion.div>
+                </span>
+              </a>
+            </motion.div>
           </div>
 
           {/* ================= RIGHT ================= */}
 
           {/* ===== MOBILE / TABLET: CARRUSEL ===== */}
-          <div className="relative w-full h-72 sm:h-80 md:h-96 lg:hidden flex items-center justify-center overflow-hidden">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="relative w-full h-72 sm:h-80 md:h-96 lg:hidden flex items-center justify-center overflow-hidden"
+          >
+            {/* Glow effect */}
+            <div className="absolute inset-0 blur-3xl bg-gradient-to-br from-[#D6A556]/20 via-transparent to-[#D6A556]/10 rounded-full scale-125" />
+            
             <motion.div
               key={currentImage}
-              initial={{ opacity: 0.3, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3 }}
-              className="relative w-48 sm:w-56 md:w-64 aspect-4/5 rounded-3xl overflow-hidden shadow-2xl ring-2 ring-[#D6A556]/30"
+              initial={{ opacity: 0.3, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="relative w-48 sm:w-56 md:w-64 aspect-4/5 rounded-3xl overflow-hidden shadow-2xl ring-2 ring-[#D6A556]/50"
             >
               <div className="relative w-full h-full">
                 <Image 
@@ -261,48 +295,72 @@ export function LandingHero() {
                   priority
                 />
               </div>
+              {/* Shine overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent rounded-3xl" />
             </motion.div>
 
-            {/* Indicadores de puntos - Mejorados */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2.5 z-10">
+            {/* Indicadores de puntos */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-10">
               {heroImages.map((_, idx) => (
-                <button
+                <motion.button
                   key={idx}
                   onClick={() => setCurrentImage(idx)}
-                  className={`transition-all duration-200 ${
+                  whileHover={{ scale: 1.2 }}
+                  className={`transition-all duration-300 ${
                     idx === currentImage 
-                      ? "w-8 h-3 bg-[#D6A556] rounded-full shadow-lg" 
-                      : "w-2.5 h-2.5 bg-white/50 rounded-full hover:bg-white/70"
+                      ? "w-10 h-3 bg-gradient-to-r from-[#D6A556] to-[#e0b365] rounded-full shadow-lg shadow-[#D6A556]/50" 
+                      : "w-3 h-3 bg-white/30 rounded-full hover:bg-white/60"
                   }`}
                   aria-label={`Imagen ${idx + 1}`}
                 />
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* ===== DESKTOP ===== */}
           <div className="relative hidden lg:block h-144">
+            {/* Glow background */}
+            <div className="absolute -inset-20 blur-3xl bg-gradient-to-br from-[#D6A556]/15 via-transparent to-[#D6A556]/10 rounded-full" />
 
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 z-30 w-60 aspect-4/5 rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10">
+            {/* Center: Main Image */}
+            <motion.div 
+              initial={{ opacity: 0, y: 40, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 w-72 aspect-4/5 rounded-3xl overflow-hidden shadow-2xl ring-2 ring-[#D6A556]/40"
+            >
               <div className="relative w-full h-full">
-                <Image src="/images/ia/clasesprecencial.png" alt="" fill className="object-cover" sizes="240px" />
+                <Image src="/images/ia/clasesprecencial.png" alt="Clase presencial" fill className="object-cover" sizes="288px" priority />
               </div>
-            </div>
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent rounded-3xl" />
+            </motion.div>
 
-            <div className="absolute top-40 left-0 z-20 w-56 aspect-4/5 rounded-2xl overflow-hidden shadow-lg -rotate-3 ring-1 ring-white/10">
+            {/* Left: Tilted */}
+            <motion.div 
+              initial={{ opacity: 0, x: -60, rotateZ: -15 }}
+              animate={{ opacity: 1, x: 0, rotateZ: -8 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="absolute top-32 left-0 z-20 w-56 aspect-4/5 rounded-2xl overflow-hidden shadow-xl ring-1 ring-white/10"
+            >
               <div className="relative w-full h-full">
-                <Image src="/images/ia/claseslinea.png" alt="" fill className="object-cover" sizes="224px" />
+                <Image src="/images/ia/claseslinea.png" alt="Clase en línea" fill className="object-cover" sizes="224px" />
               </div>
-            </div>
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent rounded-2xl" />
+            </motion.div>
 
-            <div className="absolute top-52 right-0 z-20 w-56 aspect-4/5 rounded-2xl overflow-hidden shadow-lg rotate-3 ring-1 ring-white/10">
+            {/* Right: Tilted */}
+            <motion.div 
+              initial={{ opacity: 0, x: 60, rotateZ: 15 }}
+              animate={{ opacity: 1, x: 0, rotateZ: 8 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="absolute top-44 right-0 z-20 w-56 aspect-4/5 rounded-2xl overflow-hidden shadow-xl ring-1 ring-white/10"
+            >
               <div className="relative w-full h-full">
-                <Image src="/images/herobaground.jpg" alt="" fill className="object-cover" sizes="224px" />
+                <Image src="/images/herobaground.jpg" alt="Background hero" fill className="object-cover" sizes="224px" />
               </div>
-            </div>
-
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent rounded-2xl" />
+            </motion.div>
           </div>
-
         </div>
       </div>
     </section>

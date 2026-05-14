@@ -650,7 +650,7 @@ export function LandingAcademia() {
               <div className="relative overflow-hidden rounded-3xl">
                 <div className="group relative aspect-4/3">
                   <Image
-                    src="/images/ia/clasesprecencial.png"
+                    src="/images/nasdaq.svg"
                     alt="Entorno profesional de trading en vivo"
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
