@@ -279,71 +279,174 @@ export function LandingCopyTrading() {
 
   return (
     <div className="relative overflow-x-hidden">
-      <div className="relative z-10 mx-auto max-w-7xl px-6 py-20 lg:py-32">
-        <AnimatedItem>
-          <div className="grid gap-8 lg:grid-cols-2 lg:items-center h-dvh ">
-            <div className="order-1 lg:order-2">
-              <h1 className="text-5xl font-black leading-[1.15] tracking-tight sm:text-6xl lg:text-7xl text-white mb-8">
-                Opera con <br />
-                <span className="text-[#D6A556]">estructura institucional</span>
-              </h1>
+      {/* HERO SECTION */}
+      <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-black/50 blur-2xl" />
+        </div>
 
-              <p className="max-w-2xl text-lg leading-relaxed text-white/70 mb-10">
-                Replicar operaciones reales sin perder el control de tu cuenta.
-                Aprendes viendo estrategias en ejecución, con claridad total y
-                gestión profesional.
-              </p>
-
-              <div className="mb-12 space-y-3">
-                {[
-                  "Sin experiencia previa necesaria",
-                  "Operaciones verificables en tiempo real",
-                  "Tu cuenta, tus reglas, tú controlas",
-                ].map((item) => (
-                  <div key={item} className="flex items-center gap-3">
-                    <div className="flex-shrink-0 h-2 w-2 rounded-full bg-[#D6A556]" />
-                    <span className="text-white/80">{item}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a
-                  href={copyTradingWhatsAppLink}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="animate-soft-pulse inline-flex items-center justify-center gap-3 rounded-full bg-[#D6A556] px-12 py-4 text-base font-bold uppercase tracking-widest text-black transition-all duration-300 hover:animate-none hover:bg-[#E8B86F] hover:shadow-2xl hover:-translate-y-1"
-                >
-                  Asegurar acceso
-                  <svg
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2.5}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-center order-2 lg:order-1">
-              <Image
-                src="/images/copy/ganancias.jpg"
-                alt="Captura de pantalla móvil"
-                width={400}
-                height={600}
-                className="rounded-2xl object-contain w-8/12 sm:w-64 lg:w-auto h-auto"
-                priority
+        {/* Trend SVG */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
+          <svg
+            viewBox="0 0 1600 900"
+            className="absolute bottom-[-120px] left-0 w-full h-full opacity-60"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,760 L180,720 L320,610 L460,640 L620,500 L780,560 L960,390 L1120,450 L1280,260 L1440,320 L1600,140"
+              fill="none"
+              stroke="url(#copyHeroGlow3)"
+              strokeWidth="20"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              filter="url(#copyBlur3)"
+              opacity="0.9"
+            />
+            <path
+              d="M0,760 L180,720 L320,610 L460,640 L620,500 L780,560 L960,390 L1120,450 L1280,260 L1440,320 L1600,140"
+              fill="none"
+              stroke="url(#copyHeroLine3)"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              opacity="0.9"
+            />
+            <path
+              d="M0,760 L180,720 L320,610 L460,640 L620,500 L780,560 L960,390 L1120,450 L1280,260 L1440,320 L1600,140"
+              fill="none"
+              stroke="url(#copyMovingLight3)"
+              strokeWidth="8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeDasharray="260 1400"
+            >
+              <animate
+                attributeName="stroke-dashoffset"
+                from="1600"
+                to="-1600"
+                dur="4s"
+                repeatCount="indefinite"
               />
+            </path>
+            <defs>
+              <linearGradient
+                id="copyHeroGlow3"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#d7a45600" />
+                <stop offset="30%" stopColor="#d7a456" />
+                <stop offset="70%" stopColor="#d7a456" />
+                <stop offset="100%" stopColor="#d7a45600" />
+              </linearGradient>
+              <linearGradient
+                id="copyHeroLine3"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#d7a45600" />
+                <stop offset="40%" stopColor="#d7a456" />
+                <stop offset="60%" stopColor="#d7a456" />
+                <stop offset="100%" stopColor="#d7a45600" />
+              </linearGradient>
+              <linearGradient
+                id="copyMovingLight3"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#ffffff00" />
+                <stop offset="40%" stopColor="#fff4d2" />
+                <stop offset="60%" stopColor="#fff4d2" />
+                <stop offset="100%" stopColor="#ffffff00" />
+              </linearGradient>
+              <filter id="copyBlur3">
+                <feGaussianBlur stdDeviation="10" />
+              </filter>
+            </defs>
+          </svg>
+        </div>
+
+        {/* Content - Centered */}
+        <div className="relative z-20 mx-auto max-w-7xl px-6 w-full">
+          <AnimatedItem>
+            <div className="grid gap-12 lg:grid-cols-2 lg:items-center w-full">
+              <div className="order-1 lg:order-2 flex flex-col justify-center space-y-6">
+                <div>
+                  <h1 className="text-5xl font-black leading-[1.15] tracking-tight sm:text-6xl lg:text-7xl text-white mb-6">
+                    Opera con <br />
+                    <span className="text-[#D6A556]">
+                      estructura institucional
+                    </span>
+                  </h1>
+
+                  <p className="max-w-2xl text-lg leading-relaxed text-white/70 mb-8">
+                    Replicar operaciones reales sin perder el control de tu
+                    cuenta. Aprendes viendo estrategias en ejecución, con
+                    claridad total y gestión profesional.
+                  </p>
+                </div>
+
+                <div className="space-y-4">
+                  {[
+                    "Sin experiencia previa necesaria",
+                    "Operaciones verificables en tiempo real",
+                    "Tu cuenta, tus reglas, tú controlas",
+                  ].map((item) => (
+                    <div key={item} className="flex items-center gap-3">
+                      <div className="flex-shrink-0 h-2 w-2 rounded-full bg-[#D6A556]" />
+                      <span className="text-white/80">{item}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4 pt-6">
+                  <a
+                    href={copyTradingWhatsAppLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="animate-soft-pulse inline-flex items-center justify-center gap-3 rounded-full bg-[#D6A556] px-12 py-4 text-base font-bold uppercase tracking-widest text-black transition-all duration-300 hover:animate-none hover:bg-[#E8B86F] hover:shadow-2xl hover:-translate-y-1"
+                  >
+                    Asegurar acceso
+                    <svg
+                      className="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2.5}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M13 7l5 5m0 0l-5 5m5-5H6"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-center order-2 lg:order-1">
+                <Image
+                  src="/images/copy/ganancias.jpg"
+                  alt="Captura de pantalla móvil"
+                  width={400}
+                  height={600}
+                  className="rounded-2xl object-contain w-8/12 sm:w-64 lg:w-auto h-auto shadow-2xl ring-2 ring-[#D6A556]/30"
+                  priority
+                />
+              </div>
             </div>
-          </div>
-        </AnimatedItem>
+          </AnimatedItem>
+        </div>
+      </section>
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 py-20 lg:py-32">
         <AnimatedItem delay={0.1}>
           <div className="mt-20 relative">
             <InteractiveFeatures isDark={isDark} features={features} />
