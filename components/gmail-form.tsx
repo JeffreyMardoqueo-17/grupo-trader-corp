@@ -72,7 +72,7 @@ export function GmailForm({ className }: GmailFormProps) {
     >
       {/* Header */}
       <div className="mb-6">
-        <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+        <h2 className="text-2xl font-semibold text-[#D6A556]">
           Contáctanos
         </h2>
 
@@ -83,7 +83,7 @@ export function GmailForm({ className }: GmailFormProps) {
       </div>
 
       {/* Campos */}
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-2 sm:grid-cols-2">
         <label className="flex flex-col gap-2">
           <span className="text-xs font-medium text-gray-700 dark:text-white/60">
             Nombre
@@ -138,7 +138,7 @@ export function GmailForm({ className }: GmailFormProps) {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             required
-            className="min-h-30 w-full resize-none rounded-md border border-black/15 bg-white px-3 py-2 text-sm text-gray-900 outline-none transition-colors focus:border-[#D6A556] dark:border-white/15 dark:bg-white/2 dark:text-white"
+            className="min-h-20 w-full resize-none rounded-md border border-black/15 bg-white px-3 py-2 text-sm text-gray-900 outline-none transition-colors focus:border-[#D6A556] dark:border-white/15 dark:bg-white/2 dark:text-white"
           />
         </label>
       </div>

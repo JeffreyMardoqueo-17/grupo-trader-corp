@@ -36,7 +36,7 @@ export function LandingCompanySection() {
   return (
     <section
       id="nosotros"
-      className={`py-20 lg:py-32 ${isDark ? "bg-linear-to-b from-[#000208] via-[#041935] to-[#000208]" : "bg-white"}`}
+      className={`py-20 lg:py-32 ${isDark ? "bg-linear-to-b from-[#000208] via-[#010811] to-[#000208]" : "bg-white"}`}
     >
       {/* Background glow effects */}
       {isDark && (

@@ -200,11 +200,6 @@ export function LandingContact() {
                   </AccordionItem>
                 ))}
               </Accordion>
-
-              <p className={`mt-3 text-xs leading-5 ${isDark ? "text-white/45" : "text-gray-500"}`}>
-                Solo una pregunta permanece abierta a la vez y puedes cerrarla
-                tocándola de nuevo.
-              </p>
             </div>
           </div>
         </div>

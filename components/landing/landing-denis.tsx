@@ -51,7 +51,9 @@ export function LandingDenis() {
                   alt="Denis Gutiérrez - Fundador Grupo Trade Corp"
                   fill
                   className="object-cover object-top"
-                  sizes=""
+                  loading="eager"
+                  // sizes: image is roughly half/40% of viewport on large screens, half on md, full on small
+                  sizes="(min-width:1024px) 40vw, (min-width:640px) 50vw, 100vw"
                 />
               </div>
               <div

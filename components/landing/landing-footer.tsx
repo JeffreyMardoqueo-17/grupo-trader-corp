@@ -14,6 +14,7 @@ export function LandingFooter() {
             width={64}
             height={64}
             className="h-16 w-auto rounded-full"
+            style={{ width: "auto" }}
           />
 
           <div>

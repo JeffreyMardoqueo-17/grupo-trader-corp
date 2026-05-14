@@ -66,13 +66,146 @@ export function LandingHero() {
       id="inicio"
       className="relative min-h-screen w-full overflow-hidden bg-[#03050a]"
     >
-      <div className="mx-auto w-full px-4 sm:px-6 py-16 sm:py-24 md:py-28 lg:py-0 lg:min-h-screen lg:flex lg:items-center lg:max-w-7xl">
+      {/* ===== TREND BACKGROUND ===== */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <svg
+          viewBox="0 0 1600 900"
+          className="absolute bottom-[-120px] left-0 w-full h-full opacity-40"
+          preserveAspectRatio="none"
+        >
+          {/* Blur Glow */}
+          <path
+            d="
+              M0,760
+              L180,720
+              L320,610
+              L460,640
+              L620,500
+              L780,560
+              L960,390
+              L1120,450
+              L1280,260
+              L1440,320
+              L1600,140
+            "
+            fill="none"
+            stroke="url(#heroGlow)"
+            strokeWidth="18"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            filter="url(#blur)"
+            opacity="0.7"
+          />
+
+          {/* Main Soft Line */}
+          <path
+            d="
+              M0,760
+              L180,720
+              L320,610
+              L460,640
+              L620,500
+              L780,560
+              L960,390
+              L1120,450
+              L1280,260
+              L1440,320
+              L1600,140
+            "
+            fill="none"
+            stroke="url(#heroLine)"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            opacity="0.5"
+          />
+
+          {/* Animated Light */}
+          <path
+            d="
+              M0,760
+              L180,720
+              L320,610
+              L460,640
+              L620,500
+              L780,560
+              L960,390
+              L1120,450
+              L1280,260
+              L1440,320
+              L1600,140
+            "
+            fill="none"
+            stroke="url(#movingLight)"
+            strokeWidth="6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeDasharray="260 1400"
+          >
+            <animate
+              attributeName="stroke-dashoffset"
+              from="1600"
+              to="-1600"
+              dur="6s"
+              repeatCount="indefinite"
+            />
+          </path>
+
+          <defs>
+            {/* Gold Blur */}
+            <linearGradient
+              id="heroGlow"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="0%"
+            >
+              <stop offset="0%" stopColor="#d7a45600" />
+              <stop offset="50%" stopColor="#d7a456" />
+              <stop offset="100%" stopColor="#d7a45600" />
+            </linearGradient>
+
+            {/* Main Gold */}
+            <linearGradient
+              id="heroLine"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="0%"
+            >
+              <stop offset="0%" stopColor="#d7a45600" />
+              <stop offset="50%" stopColor="#d7a456" />
+              <stop offset="100%" stopColor="#d7a45600" />
+            </linearGradient>
+
+            {/* Moving Glow */}
+            <linearGradient
+              id="movingLight"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="0%"
+            >
+              <stop offset="0%" stopColor="#ffffff00" />
+              <stop offset="50%" stopColor="#fff4d2" />
+              <stop offset="100%" stopColor="#ffffff00" />
+            </linearGradient>
+
+            {/* Blur */}
+            <filter id="blur">
+              <feGaussianBlur stdDeviation="10" />
+            </filter>
+          </defs>
+        </svg>
+      </div>
+
+      <div className="mx-auto w-full px-4 mt-6 sm:px-6 py-16 sm:py-24 md:py-28 lg:py-0 lg:min-h-screen lg:flex lg:items-center lg:max-w-7xl">
         <div className="grid w-full items-center gap-8 sm:gap-12 lg:gap-16 lg:grid-cols-2">
 
           {/* ================= LEFT ================= */}
           <div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white mb-6">
-              Aprende a operar en mercados financieros junto a{" "}
+              Aprende a operar en la bolsa de valores junto a{" "}
               <span className="text-[#D6A556]">traders profesionales</span>
             </h1>
 
@@ -116,15 +249,18 @@ export function LandingHero() {
               initial={{ opacity: 0.3, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3 }}
-              className="w-48 sm:w-56 md:w-64 aspect-4/5 rounded-3xl overflow-hidden shadow-2xl ring-2 ring-[#D6A556]/30"
+              className="relative w-48 sm:w-56 md:w-64 aspect-4/5 rounded-3xl overflow-hidden shadow-2xl ring-2 ring-[#D6A556]/30"
             >
-              <Image 
-                src={heroImages[currentImage].src}
-                alt={heroImages[currentImage].alt}
-                fill
-                className="object-cover"
-                priority
-              />
+              <div className="relative w-full h-full">
+                <Image 
+                  src={heroImages[currentImage].src}
+                  alt={heroImages[currentImage].alt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 60vw, (max-width: 1024px) 40vw, 320px"
+                  priority
+                />
+              </div>
             </motion.div>
 
             {/* Indicadores de puntos - Mejorados */}
@@ -148,15 +284,21 @@ export function LandingHero() {
           <div className="relative hidden lg:block h-144">
 
             <div className="absolute top-0 left-1/2 -translate-x-1/2 z-30 w-60 aspect-4/5 rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10">
-              <Image src="/images/ia/clasesprecencial.png" alt="" fill className="object-cover" />
+              <div className="relative w-full h-full">
+                <Image src="/images/ia/clasesprecencial.png" alt="" fill className="object-cover" sizes="240px" />
+              </div>
             </div>
 
             <div className="absolute top-40 left-0 z-20 w-56 aspect-4/5 rounded-2xl overflow-hidden shadow-lg -rotate-3 ring-1 ring-white/10">
-              <Image src="/images/ia/claseslinea.png" alt="" fill className="object-cover" />
+              <div className="relative w-full h-full">
+                <Image src="/images/ia/claseslinea.png" alt="" fill className="object-cover" sizes="224px" />
+              </div>
             </div>
 
             <div className="absolute top-52 right-0 z-20 w-56 aspect-4/5 rounded-2xl overflow-hidden shadow-lg rotate-3 ring-1 ring-white/10">
-              <Image src="/images/herobaground.jpg" alt="" fill className="object-cover" />
+              <div className="relative w-full h-full">
+                <Image src="/images/herobaground.jpg" alt="" fill className="object-cover" sizes="224px" />
+              </div>
             </div>
 
           </div>

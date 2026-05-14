@@ -32,7 +32,7 @@ function AccordionItem({
       data-slot="accordion-item"
       className={cn(
         "not-last:border-b border-black/5 dark:border-white/10 transition-colors",
-        "data-[state=open]:bg-[#D6A556]/10",
+        "data-[state=open]:bg-black/10",
         className,
       )}
       {...props}
@@ -50,15 +50,15 @@ function AccordionTrigger({
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          "group/accordion-trigger relative flex flex-1 items-center justify-between gap-4 rounded-xl p-0 text-left text-sm font-medium outline-none transition-colors",
+          "group/accordion-trigger relative flex flex-1 items-center justify-between gap-4 rounded-xl p-0 text-left text-sm font-medium outline-none transition-colors cursor-pointer select-none",
           "hover:text-foreground/90 data-[state=open]:text-foreground",
           className,
         )}
         {...props}
       >
         {children}
-        <HugeiconsIcon icon={ArrowDown01Icon} strokeWidth={2} data-slot="accordion-trigger-icon" className="pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden" />
-        <HugeiconsIcon icon={ArrowUp01Icon} strokeWidth={2} data-slot="accordion-trigger-icon" className="pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline" />
+        <HugeiconsIcon icon={ArrowDown01Icon} strokeWidth={2} data-slot="accordion-trigger-icon" className="pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden transition-opacity duration-200" />
+        <HugeiconsIcon icon={ArrowUp01Icon} strokeWidth={2} data-slot="accordion-trigger-icon" className="pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline transition-opacity duration-200" />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   )
@@ -73,14 +73,19 @@ function AccordionContent({
     <AccordionPrimitive.Content
       data-slot="accordion-content"
       className={cn(
-        "overflow-hidden text-sm leading-7 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
+        "overflow-hidden text-sm leading-7 transition-[max-height] duration-300 ease-in-out",
+        "data-[state=closed]:max-h-0 data-[state=open]:max-h-[800px]",
+        // animate inner content opacity/translate for smoother feel
+        "data-[state=closed]:[&_div]:opacity-0 data-[state=open]:[&_div]:opacity-100",
+        "data-[state=closed]:[&_div]:translate-y-1 data-[state=open]:[&_div]:translate-y-0",
+        "[&_div]:transition-[opacity,transform] [&_div]:duration-200 [&_div]:ease-in-out",
         className,
       )}
       {...props}
     >
       <div
         className={cn(
-          "px-0 pt-0 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground [&_p:not(:last-child)]:mb-4",
+          "px-0 pt-0 opacity-0 translate-y-1 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground [&_p:not(:last-child)]:mb-4",
         )}
       >
         {children}

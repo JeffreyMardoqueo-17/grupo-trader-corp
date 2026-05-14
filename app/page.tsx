@@ -9,6 +9,7 @@ import { LandingTestimonials } from "@/components/landing/landing-testimonials";
 import { LandingContact } from "@/components/landing/landing-contact";
 import { LandingFooter } from "@/components/landing/landing-footer";
 import { LandingMissionVisionValues, MissionVisionValuesData } from "@/components/landing/landing-mission-vision-values";
+import TradingFeaturesSection from "@/components/ui/atencion";
 
 // /mision
 const missionVisionData: MissionVisionValuesData = {
@@ -86,6 +87,7 @@ export default function Home() {
         {/* <LandingBenefits /> */}
         <LandingTestimonials />
         <section className="bg-[#000208]">
+          {/* <TradingFeaturesSection /> */}
           <LandingContact />
         </section>
         {/* <LandingTeam /> */}

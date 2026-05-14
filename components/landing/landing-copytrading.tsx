@@ -281,7 +281,7 @@ export function LandingCopyTrading() {
     <div className="relative overflow-x-hidden">
       <div className="relative z-10 mx-auto max-w-7xl px-6 py-20 lg:py-32">
         <AnimatedItem>
-          <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
+          <div className="grid gap-8 lg:grid-cols-2 lg:items-center h-dvh ">
             <div className="order-1 lg:order-2">
               <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-[#D6A556]/20 bg-[#D6A556]/5 px-5 py-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#D6A556]" />
@@ -341,7 +341,7 @@ export function LandingCopyTrading() {
 
             <div className="flex items-center justify-center order-2 lg:order-1">
               <Image
-                src="/images/copy/hero.jpg"
+                src="/images/copy/hombrecopy.svg"
                 alt="Captura de pantalla móvil"
                 width={400}
                 height={600}
