@@ -86,7 +86,7 @@ export function LandingHeader() {
   return (
     <>
       {/* ================= HEADER ================= */}
-      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-3xl bg-[#05040a]/8 border-b border-white/10 shadow-2xl">
+      <header className="fixed select-none top-0 left-0 right-0 z-50 backdrop-blur-3xl bg-[#03040b]/80 border-b border-white/10 shadow-2xl">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-2 sm:py-2.5 flex h-auto items-center justify-between">
           <div className="flex h-12 items-center justify-between w-full">
           
@@ -98,6 +98,7 @@ export function LandingHeader() {
               width={32}
               height={32}
               className="h-8 w-auto"
+              style={{ width: "auto" }}
               priority
             />
           </Link>

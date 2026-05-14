@@ -1,6 +1,7 @@
 import { Variants } from "framer-motion";
 
-export const EASING = [0.2, 0.8, 0.2, 1];
+// framer-motion expects an Easing type; using `any` keeps types compatible
+export const EASING: any = [0.2, 0.8, 0.2, 1];
 
 export const DURATION = {
   short: 0.28,

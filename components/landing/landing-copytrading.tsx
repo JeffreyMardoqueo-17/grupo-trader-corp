@@ -283,7 +283,7 @@ export function LandingCopyTrading() {
       <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background image */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-black/50 blur-2xl" />
+          <div className="absolute inset-0 bg-black/50   blur-2xl" />
         </div>
 
         {/* Trend SVG */}
@@ -644,6 +644,8 @@ export function LandingCopyTrading() {
                     fill
                     className="object-cover transition-transform duration-500 hover:scale-105"
                     sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                    loading="eager"
                   />
                 </div>
               </div>

@@ -230,6 +230,17 @@
 .animate-in {
   animation: fadeIn 0.7s ease-out forwards;
 }
+/* Cambiar el color de selección en toda la página */
+::selection {
+  background-color: #d4a952; /* Color de fondo */
+  color: #000000;            /* Color del texto */
+}
+
+/* Para navegadores Firefox (opcional) */
+::-moz-selection {
+  background-color: #d4a952;
+  color: #000000;
+}
 
 .delay-1 { animation-delay: 0.1s; }
 .delay-2 { animation-delay: 0.2s; }

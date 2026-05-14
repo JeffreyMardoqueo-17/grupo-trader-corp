@@ -47,7 +47,7 @@ export function LandingDenis() {
             >
               <div className="relative h-full w-full">
                 <Image
-                  src="/images/denis.jpg"
+                  src="/images/denistradereeuu.png"
                   alt="Denis Gutiérrez - Fundador Grupo Trade Corp"
                   fill
                   className="object-cover object-top"
@@ -95,7 +95,7 @@ export function LandingDenis() {
               }`}
             >
               <p>
-                Operador con más de 13 años de experiencia en mercados internacionales. Su enfoque se centra en enseñar cómo entender y ejecutar dentro de los mercados financieros con criterio y disciplina.
+                Operador con más de 10años de experiencia en mercados internacionales. Su enfoque se centra en enseñar cómo entender y ejecutar dentro de los mercados financieros con criterio y disciplina.
               </p>
               <p>
                 Ha desarrollado una comunidad donde las personas aprenden a operar con estructura, no solo a consumir información.
