@@ -290,7 +290,7 @@ export function LandingCopyTrading() {
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
           <svg
             viewBox="0 0 1600 900"
-            className="absolute bottom-[-120px] left-0 w-full h-full opacity-60"
+            className="absolute bottom-[-120px] left-0 w-full h-full opacity-40"
             preserveAspectRatio="none"
           >
             <path
@@ -367,7 +367,7 @@ export function LandingCopyTrading() {
                 <stop offset="100%" stopColor="#ffffff00" />
               </linearGradient>
               <filter id="copyBlur3">
-                <feGaussianBlur stdDeviation="10" />
+                <feGaussianBlur stdDeviation="18" />
               </filter>
             </defs>
           </svg>
