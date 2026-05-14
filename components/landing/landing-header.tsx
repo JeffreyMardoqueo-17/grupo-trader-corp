@@ -93,7 +93,7 @@ export function LandingHeader() {
           {/* Logo */}
           <Link href="/#inicio" className="flex items-center gap-2">
             <Image
-              src="/images/logo.jpg"
+              src="/images/logo.png"
               alt="Grupo Trade Corp"
               width={32}
               height={32}
